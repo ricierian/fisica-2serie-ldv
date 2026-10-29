@@ -16,22 +16,22 @@ const FIG1_4 = plot({ aria:'Gráfico da temperatura em função do tempo: uma re
   pts:[[0,10],[20,50]] });
 
 /* Q6: curva de aquecimento com intervalos iguais de calor */
-const FIG1_6 = plot({ aria:'Curva de aquecimento: temperatura em função do calor recebido. A temperatura sobe de 20 a 140 graus Celsius no primeiro intervalo, fica constante em 140 graus durante quatro intervalos iguais e depois volta a subir. As linhas verticais tracejadas estão igualmente espaçadas.',
-  xmax:6.6, ymax:200, yt:[20,140], xl:'Q (cal)', yl:'θ (°C)', noxl:true,
-  L:[{ p:[[0,20],[1,140],[5,140],[6,196]], c:'var(--sign)' },
-     ...[1,2,3,4,5].map(x => ({ p:[[x,0],[x,140]], c:'var(--muted)', w:1.2, dash:'4 4' })) ],
-  ann:[[0.5,10,'Q₁','middle'],[3,160,'mudança de fase','middle']] });
+const FIG1_6 = plot({ aria:'Curva de aquecimento: temperatura em função do calor recebido. A temperatura sobe de 30 a 90 graus Celsius no primeiro intervalo, fica constante em 90 graus durante cinco intervalos iguais e depois volta a subir. As linhas verticais tracejadas estão igualmente espaçadas.',
+  xmax:7.6, ymax:130, yt:[30,90], xl:'Q (cal)', yl:'θ (°C)', noxl:true,
+  L:[{ p:[[0,30],[1,90],[6,90],[7,124]], c:'var(--sign)' },
+     ...[1,2,3,4,5,6].map(x => ({ p:[[x,0],[x,90]], c:'var(--muted)', w:1.2, dash:'4 4' })) ],
+  ann:[[0.5,10,'Q₁','middle'],[3.5,104,'vaporização','middle']] });
 
 /* Q10: piscina */
 const FIG1_10 = (() => {
-  return fig('-24 0 364 190', 'Piscina em forma de bloco retangular, completamente cheia: 10 metros de comprimento, 5 metros de largura e 1,6 metro de profundidade.',
+  return fig('-24 0 364 190', 'Piscina em forma de bloco retangular, completamente cheia: 8 metros de comprimento, 4 metros de largura e 1,5 metro de profundidade.',
     `<polygon points="40,70 230,70 300,30 110,30" fill="var(--sign)" opacity=".18" stroke="var(--ink)" stroke-width="1.5"/>
     <polygon points="40,70 230,70 230,140 40,140" fill="var(--sign)" opacity=".30" stroke="var(--ink)" stroke-width="1.5"/>
     <polygon points="230,70 300,30 300,100 230,140" fill="var(--sign)" opacity=".42" stroke="var(--ink)" stroke-width="1.5"/>
-    <text x="135" y="162" text-anchor="middle" class="pt pt-strong">10 m</text>
-    <text x="282" y="132" text-anchor="middle" class="pt pt-strong">5 m</text>
-    <text x="30" y="110" text-anchor="end" class="pt pt-strong">1,6 m</text>
-    <text x="170" y="22" text-anchor="middle" class="pt">15 °C → 30 °C</text>`, 320);
+    <text x="135" y="162" text-anchor="middle" class="pt pt-strong">8 m</text>
+    <text x="282" y="132" text-anchor="middle" class="pt pt-strong">4 m</text>
+    <text x="30" y="110" text-anchor="end" class="pt pt-strong">1,5 m</text>
+    <text x="170" y="22" text-anchor="middle" class="pt">18 °C → 28 °C</text>`, 320);
 })();
 
 const QL1 = [
@@ -90,32 +90,32 @@ const QL1 = [
   mod:'Baseada no Exemplo 3 dos slides do capítulo 20 (200 g, 200 cal/min, de 20 °C a 60 °C em 30 min), com outros valores.'
 },
 {
-  src:'Livro, p. 8', nivel:'intermediário',
-  text:`Um fogão solar pode fornecer uma quantidade de calor de 62 000 kcal durante um intervalo de tempo de 10 minutos. Para esse intervalo de tempo, a massa de água que pode ser aquecida de 20 °C até 100 °C e, em seguida, transformada completamente em vapor é:<p>Dados: c<sub>água</sub> = 1 cal/(g·°C); L<sub>V</sub> = 540 cal/g.</p>`,
-  opts:['0,1 kg','100 kg','115 kg','620 kg','775 kg'], ans:1,
-  hint:'São duas etapas: esquentar a água até 100 °C (calor sensível) e depois vaporizá-la (calor latente). O calor total do fogão paga as duas.',
+  src:'Livro, p. 8 (modificada)', nivel:'intermediário',
+  text:`Um fogão solar de grande porte fornece calor à água a uma taxa constante de 3 000 kcal por minuto. Em quanto tempo ele consegue aquecer 40 kg de água de 40 °C até 100 °C e, em seguida, transformá-la completamente em vapor?<p>Dados: c<sub>água</sub> = 1 cal/(g·°C); L<sub>V</sub> = 540 cal/g.</p>`,
+  opts:['0,8 min','7,2 min','8,0 min','8,5 min','80 min'], ans:2,
+  hint:'Calcule o calor total das duas etapas (aquecer até 100 °C e vaporizar). Depois divida pela taxa do fogão.',
   steps:[
-    ['Converter o calor', `<div class="eq">Q = 62 000 kcal = 62 000 000 cal</div>`],
-    ['Calor para cada grama', `<p>Esquentar 1 g de 20 °C a 100 °C: 1 · 1 · 80 = 80 cal.<br>Vaporizar 1 g: 540 cal.</p><div class="eq">Total por grama: 80 + 540 = 620 cal/g</div>`],
-    ['Massa', `<div class="eq">m = ${f('62 000 000','620')} = 100 000 g</div><div class="eq">m = <span class="hl">100 kg</span></div>`],
+    ['Calor por grama', `<p>Aquecer 1 g de 40 °C a 100 °C: 1 · 1 · 60 = 60 cal.<br>Vaporizar 1 g: 540 cal.</p><div class="eq">Total: 600 cal/g</div>`],
+    ['Calor total', `<div class="eq">Q = 40 000 · 600 = 24 000 000 cal = 24 000 kcal</div>`],
+    ['Tempo', `<div class="eq">Δt = ${f('Q','P')} = ${f('24 000','3 000')} = <span class="hl">8,0 min</span></div>`],
   ],
-  alt:'Monte a equação direto: 62 · 10<sup>6</sup> = m · 1 · 80 + m · 540 = 620 · m.',
-  warn:'Esquecer a etapa de aquecimento e usar só o calor latente dá cerca de 115 kg (alternativa c). E não converter kcal para cal leva a 0,1 kg (alternativa a).',
-  mod:'Questão do livro (“Agora é com você”, p. 8), transformada em múltipla escolha.'
+  alt:'Monte direto: P · Δt = m · c · ΔT + m · L → 3 000 · Δt = 40 · 60 + 40 · 540 (em kcal, com m em kg). 3 000 · Δt = 24 000.',
+  warn:'Esquecer o aquecimento até 100 °C e usar só o calor latente dá 7,2 min (alternativa b). Usar só o aquecimento dá 0,8 min (alternativa a).',
+  mod:'Livro, “Agora é com você” (p. 8, n.º 1): fogão de 62 000 kcal em 10 min, pedia a massa de água (100 kg). Modificada: fogão com taxa em kcal/min, 40 kg de água a 40 °C e pergunta o tempo.'
 },
 {
-  src:'Livro, p. 8', nivel:'intermediário',
-  text:`O gráfico representa a curva de aquecimento de um corpo de 100 g, inicialmente no estado líquido. As retas verticais tracejadas estão igualmente espaçadas, ou seja, cada intervalo entre elas representa a mesma quantidade de calor.${FIG1_6}Sabendo que o calor específico do corpo no estado líquido é 0,5 cal/(g·°C), o calor latente de vaporização dessa substância é:`,
-  opts:['60 cal/g','180 cal/g','240 cal/g','300 cal/g','480 cal/g'], ans:2,
-  hint:'Calcule quanto calor cabe no primeiro intervalo (o aquecimento do líquido). Depois conte quantos intervalos iguais dura o patamar.',
+  src:'Livro, p. 8 (modificada)', nivel:'intermediário',
+  text:`O gráfico representa a curva de aquecimento de 200 g de uma substância, inicialmente líquida a 30 °C. As retas verticais tracejadas estão igualmente espaçadas: cada intervalo entre elas representa a mesma quantidade de calor.${FIG1_6}Sabendo que o calor latente de vaporização dessa substância é 150 cal/g, o calor específico dela no estado líquido é:`,
+  opts:['0,33 cal/(g·°C)','0,42 cal/(g·°C)','0,50 cal/(g·°C)','0,63 cal/(g·°C)','2,0 cal/(g·°C)'], ans:2,
+  hint:'Desta vez você conhece o calor latente. Calcule o calor do patamar inteiro e descubra quanto vale cada intervalo.',
   steps:[
-    ['Primeiro intervalo', `<p>O líquido vai de 20 °C a 140 °C:</p><div class="eq">Q₁ = 100 · 0,5 · 120 = 6 000 cal</div>`],
-    ['Patamar', `<p>A vaporização (temperatura constante em 140 °C) ocupa <b>4 intervalos</b>:</p><div class="eq">Q<sub>V</sub> = 4 · 6 000 = 24 000 cal</div>`],
-    ['Calor latente', `<div class="eq">L<sub>V</sub> = ${f('Q<sub>V</sub>','m')} = ${f('24 000','100')} = <span class="hl">240 cal/g</span></div>`],
+    ['Calor do patamar', `<div class="eq">Q<sub>V</sub> = m · L = 200 · 150 = 30 000 cal</div><p>O patamar ocupa <b>5 intervalos</b>, então cada intervalo vale 30 000 ÷ 5 = 6 000 cal.</p>`],
+    ['Primeiro intervalo', `<p>O líquido recebe 6 000 cal e vai de 30 °C a 90 °C (ΔT = 60 °C).</p>`],
+    ['Calor específico', `<div class="eq">c = ${f('6 000','200 · 60')} = <span class="hl">0,50 cal/(g·°C)</span></div>`],
   ],
-  alt:'Use proporção: se 1 intervalo equivale a 60 cal por grama (6 000 ÷ 100), 4 intervalos equivalem a 4 · 60 = 240 cal/g.',
-  warn:'Contar 5 intervalos no patamar (incluindo o do aquecimento) dá 300 cal/g (alternativa d). O patamar começa só quando a temperatura para de subir.',
-  mod:'Questão do livro (“Agora é com você”, p. 8), transformada em múltipla escolha. Gráfico redesenhado.'
+  alt:'É o caminho inverso do exemplo do livro: lá se conhecia o c e se achava o L; aqui se conhece o L e se acha o c. A chave é a mesma: todos os intervalos valem o mesmo calor.',
+  warn:'Contar 4 ou 6 intervalos no patamar dá 0,63 ou 0,42 (alternativas d e b). Usar 90 °C como ΔT dá 0,33 (alternativa a).',
+  mod:'Livro, “Agora é com você” (p. 8, n.º 2): 100 g, c = 0,5, de 20 °C a 140 °C, pedia o calor latente (240 cal/g). Modificada: 200 g, de 30 °C a 90 °C, patamar de 5 intervalos, dado L e pedido o calor específico.'
 },
 {
   src:'Inédita', nivel:'intermediário',
@@ -147,32 +147,32 @@ const QL1 = [
   mod:'Baseada no Exemplo 2 (PUC) dos slides do capítulo 20, com outros valores e a pergunta mantida (calor específico do sólido).'
 },
 {
-  src:'Livro, p. 12', nivel:'avançado',
-  text:`Uma garrafa possui 1 000 g de água a 20 °C. Para resfriar essa água, colocam-se nela 200 g de gelo a −10 °C. Como a garrafa não é um sistema termicamente isolado, o meio externo fornece cerca de 600 cal ao sistema, contribuindo para que todo o gelo derreta. Após o equilíbrio térmico, a temperatura do sistema será:<p>Dados: despreze a capacidade térmica da garrafa; c<sub>água</sub> = 1,0 cal/(g·°C); c<sub>gelo</sub> = 0,5 cal/(g·°C); L<sub>fusão</sub> = 80 cal/g.</p>`,
-  opts:['0 °C','2,5 °C','3,0 °C','5,0 °C','10 °C'], ans:2,
-  hint:'Todo o gelo derrete, então a temperatura final T fica acima de 0 °C. Some todos os calores recebidos e iguale ao que a água quente cede mais as 600 cal do ambiente.',
+  src:'Livro, p. 12 (modificada)', nivel:'avançado',
+  text:`Para gelar 800 g de água a 25 °C, colocam-se numa garrafa 160 g de gelo a −10 °C. A garrafa não é termicamente isolada, e todo o gelo derrete. No equilíbrio, mede-se a temperatura de 8 °C, mais alta do que seria se o sistema estivesse isolado. A quantidade de calor que o ambiente forneceu ao sistema foi de:<p>Dados: despreze a capacidade térmica da garrafa; c<sub>água</sub> = 1,0 cal/(g·°C); c<sub>gelo</sub> = 0,5 cal/(g·°C); L<sub>fusão</sub> = 80 cal/g.</p>`,
+  opts:['zero','480 cal','1 280 cal','2 080 cal','14 880 cal'], ans:2,
+  hint:'Calcule tudo o que o gelo precisou receber até chegar a 8 °C e tudo o que a água cedeu ao esfriar até 8 °C. A diferença veio de fora.',
   steps:[
-    ['O que o gelo recebe', `<p>Esquentar até 0 °C: 200 · 0,5 · 10 = 1 000 cal<br>Derreter: 200 · 80 = 16 000 cal<br>Água do gelo, de 0 °C até T: 200 · 1 · T = 200T</p>`],
-    ['O que entra de fora', `<p>A água quente cede 1 000 · 1 · (20 − T) e o ambiente fornece 600 cal.</p>`],
-    ['Equilíbrio', `<div class="eq">1 000(20 − T) + 600 = 17 000 + 200T</div><div class="eq">20 600 − 1 000T = 17 000 + 200T</div><div class="eq">1 200T = 3 600 → T = <span class="hl">3,0 °C</span></div>`],
+    ['O que o gelo recebeu', `<p>De −10 °C a 0 °C: 160 · 0,5 · 10 = 800 cal<br>Fusão: 160 · 80 = 12 800 cal<br>De 0 °C a 8 °C: 160 · 1 · 8 = 1 280 cal</p><div class="eq">Total: 14 880 cal</div>`],
+    ['O que a água cedeu', `<div class="eq">800 · 1 · (25 − 8) = 13 600 cal</div>`],
+    ['Calor do ambiente', `<div class="eq">Q<sub>amb</sub> = 14 880 − 13 600 = <span class="hl">1 280 cal</span></div>`],
   ],
-  alt:'Faça em duas partes. Para levar tudo a 0 °C com o gelo derretido, sobram 20 000 + 600 − 17 000 = 3 600 cal. Elas aquecem os 1 200 g de água: ΔT = 3 600 ÷ 1 200 = 3 °C.',
-  warn:'Esquecer as 600 cal do ambiente dá 2,5 °C (alternativa b). E 0 °C (alternativa a) só valeria se sobrasse gelo, o que não acontece aqui.',
-  mod:'Questão do livro (“Agora é com você”, p. 12), transformada em múltipla escolha.'
+  alt:'Pense no balanço: ΣQ = 0 para o sistema mais o ambiente. 800 + 12 800 + 1 280 − 13 600 − Q<sub>amb</sub> = 0. Se a garrafa fosse ideal, o equilíbrio seria em cerca de 6,7 °C.',
+  warn:'Esquecer o aquecimento da água que veio do gelo (de 0 °C a 8 °C) dá zero (alternativa a). Esquecer o aquecimento do gelo até 0 °C dá 480 cal (alternativa b).',
+  mod:'Livro, “Agora é com você” (p. 12, n.º 3): 1 000 g de água a 20 °C, 200 g de gelo a −10 °C e 600 cal do ambiente, pedia a temperatura final (3 °C). Modificada: 800 g a 25 °C, 160 g de gelo, dada a temperatura final de 8 °C e pedido o calor do ambiente.'
 },
 {
-  src:'Livro, p. 9', nivel:'avançado',
-  text:`Deseja-se aquecer a água de uma piscina completamente cheia, de dimensões 1,6 m × 5 m × 10 m, de 15 °C até 30 °C.${FIG1_10}Apenas 98% da energia fornecida pelo sistema de aquecimento é aproveitada para aumentar a temperatura da água. Se 1 kWh custa R$ 0,70, o custo desse aquecimento é:<p>Dados: c<sub>água</sub> = 4 200 J/(kg·°C); densidade da água = 1 000 kg/m³; 1 kWh = 3,6 · 10<sup>6</sup> J.</p>`,
-  opts:['R$ 960,40','R$ 980,00','R$ 1 000,00','R$ 1 400,00','R$ 2 000,00'], ans:2,
-  hint:'Volume → massa → calor que a água precisa. Depois pense: se só 98% é aproveitado, o sistema precisa fornecer mais ou menos que isso?',
+  src:'Livro, p. 9 (modificada)', nivel:'avançado',
+  text:`Deseja-se aquecer a água de uma piscina completamente cheia, de dimensões 1,5 m × 4 m × 8 m, de 18 °C até 28 °C.${FIG1_10}O aquecedor é a gás e apenas 80% da energia que ele consome chega à água. Se cada kWh de energia consumida custa R$ 0,80, o custo desse aquecimento é:<p>Dados: c<sub>água</sub> = 4 200 J/(kg·°C); densidade da água = 1 000 kg/m³; 1 kWh = 3,6 · 10<sup>6</sup> J.</p>`,
+  opts:['R$ 358,40','R$ 448,00','R$ 560,00','R$ 700,00','R$ 1 568,00'], ans:2,
+  hint:'Volume → massa → calor que a água precisa. Se só 80% chega à água, o aquecedor precisa consumir mais ou menos que isso?',
   steps:[
-    ['Massa de água', `<div class="eq">V = 1,6 · 5 · 10 = 80 m³ → m = 80 000 kg</div>`],
-    ['Calor que a água recebe', `<div class="eq">Q = 80 000 · 4 200 · 15</div><div class="eq">Q = 5,04 · 10<sup>9</sup> J</div>`],
-    ['Energia fornecida', `<p>Esse calor é 98% do que o sistema fornece:</p><div class="eq">E = ${f('5,04 · 10<sup>9</sup>','0,98')} ≈ 5,14 · 10<sup>9</sup> J</div>`],
-    ['Custo', `<div class="eq">E = ${f('5,14 · 10<sup>9</sup>','3,6 · 10<sup>6</sup>')} ≈ 1 429 kWh</div><div class="eq">1 429 · 0,70 ≈ <span class="hl">R$ 1 000,00</span></div>`],
+    ['Massa de água', `<div class="eq">V = 1,5 · 4 · 8 = 48 m³ → m = 48 000 kg</div>`],
+    ['Calor que a água recebe', `<div class="eq">Q = 48 000 · 4 200 · 10</div><div class="eq">Q = 2,016 · 10<sup>9</sup> J</div>`],
+    ['Energia consumida', `<div class="eq">E = ${f('2,016 · 10<sup>9</sup>','0,80')} = 2,52 · 10<sup>9</sup> J</div><div class="eq">E = ${f('2,52 · 10<sup>9</sup>','3,6 · 10<sup>6</sup>')} = 700 kWh</div>`],
+    ['Custo', `<div class="eq">700 · 0,80 = <span class="hl">R$ 560,00</span></div>`],
   ],
-  alt:'Sem a perda, seriam 1 400 kWh (R$ 980,00). Como só 98% é aproveitado, o sistema precisa fornecer um pouco <b>mais</b>: 1 400 ÷ 0,98 ≈ 1 429 kWh.',
-  warn:'Multiplicar por 0,98 em vez de dividir dá R$ 960,40 (alternativa a): você estaria pagando menos do que a água precisa. Ignorar a perda dá R$ 980,00 (alternativa b).',
-  mod:'Questão do livro (“Agora é com você”, p. 9), transformada em múltipla escolha. Figura da piscina criada para a lista.'
+  alt:'Sem perdas seriam 560 kWh (R$ 448,00). Como só 80% chega à água, consome-se 560 ÷ 0,8 = 700 kWh.',
+  warn:'R$ 700,00 (alternativa d) é o número de kWh, não o custo. Multiplicar por 0,8 em vez de dividir dá R$ 358,40 (alternativa a); usar 28 °C como ΔT dá R$ 1 568,00 (alternativa e).',
+  mod:'Livro, “Agora é com você” (p. 9, n.º 3): piscina de 1,6 × 5 × 10 m, de 15 °C a 30 °C, 98% de aproveitamento e R$ 0,70/kWh (resposta R$ 1 000,00). Modificada: 1,5 × 4 × 8 m, de 18 °C a 28 °C, 80% e R$ 0,80/kWh.'
 },
 ];

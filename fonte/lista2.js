@@ -25,11 +25,11 @@ const FIG2_5 = plot({ aria:'Gráfico do volume, em litros, em função da temper
   pts:[[300,6]] });
 
 /* Q9: isoterma com pontos A, B, C, D */
-const FIG2_9 = plot({ aria:'Diagrama pressão, em 10 elevado a 5 pascal, em função do volume, em 10 elevado a menos 3 metros cúbicos. Uma curva passa pelos pontos A (1; 8), B (2; 4), C (3; cerca de 2,7) e D (4; 2), e continua até o volume 8 com pressão 1.',
-  xmax:8.6, ymax:9, xt:[1,2,3,4,5,6,7,8], yt:[1,2,3,4,5,6,7,8], xl:'V (10⁻³ m³)', yl:'p (10⁵ Pa)',
-  L:[{ p:hip(8, 1, 8), c:'var(--sign)' }],
-  pts:[[1,8],[2,4],[3,8/3],[4,2]],
-  ann:[[1.25,8.3,'A','start'],[2.25,4.3,'B','start'],[3.25,3.0,'C','start'],[4.25,2.3,'D','start']] });
+const FIG2_9 = plot({ aria:'Diagrama pressão, em 10 elevado a 5 pascal, em função do volume, em 10 elevado a menos 3 metros cúbicos. Uma curva passa pelos pontos A (1; 6), B (2; 3), C (3; 2) e D (4; 1,5), e continua até o volume 7.',
+  xmax:7.6, ymax:7, xt:[1,2,3,4,5,6,7], yt:[1,2,3,4,5,6], xl:'V (10⁻³ m³)', yl:'p (10⁵ Pa)',
+  L:[{ p:hip(6, 1, 7), c:'var(--sign)' }],
+  pts:[[1,6],[2,3],[3,2],[4,1.5]],
+  ann:[[1.25,6.3,'A','start'],[2.25,3.3,'B','start'],[3.25,2.3,'C','start'],[4.25,1.8,'D','start']] });
 
 const QL2 = [
 {
@@ -59,18 +59,18 @@ const QL2 = [
   mod:'Inédita, inspirada no Exemplo 1 dos slides do capítulo 22, com as curvas fora de ordem.'
 },
 {
-  src:'Livro, p. 37', nivel:'básico',
-  text:`O pneu de uma moto é calibrado com pressão de 35 psi num dia frio, a 7 °C. Após uma longa viagem, a temperatura do ar no interior do pneu chega a 37 °C. Considerando desprezível a variação do volume do pneu, a pressão final, em psi, é:`,
-  opts:['31,61','35,00','38,75','45,50','185,00'], ans:2,
-  hint:'Volume constante: é uma transformação isocórica. E as temperaturas precisam estar em kelvin.',
+  src:'Livro, p. 37 (modificada)', nivel:'básico',
+  text:`O pneu de uma moto é calibrado com 30 psi num dia a 17 °C. O fabricante recomenda que a pressão não passe de 36 psi. Considerando desprezível a variação do volume do pneu, a temperatura máxima que o ar dentro dele pode atingir para respeitar essa recomendação é:`,
+  opts:['−31 °C','20 °C','48 °C','75 °C','348 °C'], ans:3,
+  hint:'Volume constante: transformação isocórica. Converta para kelvin, calcule e, no fim, volte para °C.',
   steps:[
-    ['Tipo de transformação', `<p>O volume não muda: transformação <b>isocórica</b>. Vale ${f('p₀','T₀')} = ${f('p','T')}.</p>`],
-    ['Kelvin', `<p>T₀ = 7 + 273 = 280 K · T = 37 + 273 = 310 K</p>`],
-    ['Pressão final', `<div class="eq">p = 35 · ${f('310','280')} = <span class="hl">38,75 psi</span></div>`],
+    ['Tipo de transformação', `<p>Volume constante: <b>isocórica</b>. Vale ${f('p₀','T₀')} = ${f('p','T')}.</p>`],
+    ['Temperatura em kelvin', `<div class="eq">T₀ = 17 + 273 = 290 K</div><div class="eq">T = 290 · ${f('36','30')} = 348 K</div>`],
+    ['De volta para °C', `<div class="eq">θ = 348 − 273 = <span class="hl">75 °C</span></div>`],
   ],
-  alt:'A temperatura absoluta aumentou na razão 310/280 ≈ 1,11, cerca de 11%. A pressão aumenta na mesma proporção: 35 · 1,11 ≈ 38,75 psi.',
-  warn:'Usar as temperaturas em °C dá 35 · 37/7 = 185 psi (alternativa e), um absurdo: o pneu estouraria. Nas leis dos gases, a temperatura é sempre em kelvin.',
-  mod:'Questão do livro (“Agora é com você”, p. 37), item b, transformada em múltipla escolha.'
+  alt:'A pressão pode subir 20% (de 30 para 36 psi). A temperatura absoluta também pode subir 20%: 290 K · 1,2 = 348 K.',
+  warn:'Esquecer de converter de volta dá 348 °C (alternativa e). Fazer a proporção em °C dá cerca de 20 °C (alternativa b).',
+  mod:'Livro, “Agora é com você” (p. 37, n.º 1): 35 psi a 7 °C, aquecido a 37 °C, pedia a pressão final (38,75 psi). Modificada: 30 psi a 17 °C, dada a pressão máxima de 36 psi e pedida a temperatura máxima.'
 },
 {
   src:'Inédita', nivel:'intermediário',
@@ -141,18 +141,18 @@ const QL2 = [
   mod:'Inédita (transformações isocórica e isobárica, slides do capítulo 22).'
 },
 {
-  src:'Livro, p. 37', nivel:'avançado',
-  text:`Um mol de um gás sofre a transformação representada no diagrama p × V.${FIG2_9}A temperatura do gás no estado A e a pressão no estado C são, respectivamente:<p>Dado: R = 8,0 J/(mol·K).</p>`,
-  opts:['100 K e 2,7 · 10⁵ Pa','100 K e 3,0 · 10⁵ Pa','300 K e 2,7 · 10⁵ Pa','800 K e 2,7 · 10⁵ Pa','1 K e 2,7 · 10⁵ Pa'], ans:0,
-  hint:'Calcule p · V em A, B e D. Se der sempre o mesmo valor, que tipo de transformação é essa?',
+  src:'Livro, p. 37 (modificada)', nivel:'avançado',
+  text:`Uma amostra de 0,50 mol de gás ideal sofre a transformação representada no diagrama p × V.${FIG2_9}A temperatura do gás e o volume que ele ocupa quando a pressão é 1,2 · 10⁵ Pa valem, respectivamente:<p>Dado: R = 8,0 J/(mol·K).</p>`,
+  opts:['150 K e 5,0 · 10⁻³ m³','75 K e 5,0 · 10⁻³ m³','150 K e 6,0 · 10⁻³ m³','300 K e 5,0 · 10⁻³ m³','1,5 K e 5,0 · 10⁻³ m³'], ans:0,
+  hint:'Calcule p · V em A, B, C e D. Se for sempre igual, a temperatura não muda. O mesmo produto dá o volume pedido.',
   steps:[
-    ['Que transformação é essa', `<p>A: 8,0 · 10⁵ · 1,0 · 10⁻³ = 800 J<br>B: 4,0 · 10⁵ · 2,0 · 10⁻³ = 800 J<br>D: 2,0 · 10⁵ · 4,0 · 10⁻³ = 800 J</p><p>p · V é constante: <b>isotérmica</b>.</p>`],
-    ['Temperatura em A', `<div class="eq">T = ${f('p · V','n · R')} = ${f('800','1 · 8,0')} = <span class="hl">100 K</span></div>`],
-    ['Pressão em C', `<div class="eq">p<sub>C</sub> = ${f('800','3,0 · 10⁻³')} ≈ <span class="hl">2,7 · 10⁵ Pa</span></div>`],
+    ['Que transformação é essa', `<p>A: 6,0 · 10⁵ · 1,0 · 10⁻³ = 600 J<br>B: 3,0 · 10⁵ · 2,0 · 10⁻³ = 600 J<br>C: 2,0 · 10⁵ · 3,0 · 10⁻³ = 600 J</p><p>p · V constante: <b>isotérmica</b>.</p>`],
+    ['Temperatura', `<div class="eq">T = ${f('p · V','n · R')} = ${f('600','0,50 · 8,0')} = <span class="hl">150 K</span></div>`],
+    ['Volume a 1,2 · 10⁵ Pa', `<div class="eq">V = ${f('600','1,2 · 10⁵')} = <span class="hl">5,0 · 10⁻³ m³</span></div>`],
   ],
-  alt:'Como a curva é uma isoterma, a temperatura é a mesma (100 K) em todos os pontos, inclusive em C.',
-  warn:'Ler p<sub>C</sub> “no olho” pela malha leva a 3,0 · 10⁵ Pa (alternativa b), mas C está abaixo da linha de 3,0. E esquecer as potências de 10 (usar 8 · 1 = 8) dá T = 1 K (alternativa e).',
-  mod:'Questão do livro (“Agora é com você”, p. 37, n.º 3), itens b e c, transformada em múltipla escolha. Gráfico redesenhado.'
+  alt:'Na isoterma, a pressão de 1,2 · 10⁵ Pa é a quinta parte da pressão em A (6,0 · 10⁵ Pa). Então o volume é 5 vezes o de A: 5,0 · 10⁻³ m³.',
+  warn:'Esquecer o número de mols (usar n = 1) dá 75 K (alternativa b). Esquecer as potências de 10 dá 1,5 K (alternativa e).',
+  mod:'Livro, “Agora é com você” (p. 37, n.º 3): 1 mol, isoterma com A (1; 8) e B (2; 4), pedia a temperatura em A e a pressão em C. Modificada: 0,50 mol, nova isoterma, pedida a temperatura e o volume para uma pressão dada.'
 },
 {
   src:'Inédita', nivel:'avançado',
