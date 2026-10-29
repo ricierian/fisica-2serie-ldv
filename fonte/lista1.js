@@ -36,7 +36,7 @@ const FIG1_10 = (() => {
 
 const QL1 = [
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Numa conversa, alguém diz: “Esse café está cheio de calor, por isso queima a língua”. Do ponto de vista da Física, a forma correta de descrever a situação é dizer que:`,
   opts:['o café armazena calor e o libera aos poucos','o café tem temperatura alta e cede calor à língua','a língua cede frio para o café até os dois se igualarem','o café tem mais calor porque tem mais massa que a língua','calor e temperatura são a mesma grandeza, medida em °C'], ans:1,
   hint:'Calor é algo que um corpo “tem” ou algo que passa de um corpo para outro?',
@@ -46,10 +46,9 @@ const QL1 = [
   ],
   alt:'Pense em dinheiro numa transferência bancária: “transferência” só existe enquanto o dinheiro está passando de uma conta para a outra. O calor é a “transferência” da energia térmica.',
   warn:'A alternativa a parece certa porque é como falamos no dia a dia, mas o corpo não armazena calor. E não existe “frio” passando de um corpo para outro (alternativa c): só o calor, do mais quente para o mais frio.',
-  mod:'Inédita (conceito de calor do início do capítulo 20).'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Um corpo de massa 80 g recebe 480 cal e sua temperatura sobe de 10 °C para 40 °C, sem mudar de fase. A capacidade térmica do corpo e o calor específico da substância que o constitui valem, respectivamente:`,
   opts:['12 cal/°C e 0,15 cal/(g·°C)','16 cal/°C e 0,20 cal/(g·°C)','48 cal/°C e 0,60 cal/(g·°C)','16 cal/°C e 1,28 cal/(g·°C)','6 cal/°C e 0,08 cal/(g·°C)'], ans:1,
   hint:'Primeiro a variação de temperatura. A capacidade térmica é “calor por grau”; o calor específico é “calor por grau e por grama”.',
@@ -60,10 +59,9 @@ const QL1 = [
   ],
   alt:'Leia o resultado: o corpo inteiro precisa de 16 cal para subir 1 °C; cada grama dele precisa de 0,2 cal para subir 1 °C.',
   warn:'Usar a temperatura final (40 °C) no lugar de ΔT dá 12 cal/°C (alternativa a). O que importa é quanto a temperatura variou.',
-  mod:'Baseada no Exemplo 1 dos slides do capítulo 20 (50 g, 300 cal, de −10 °C a 20 °C), com outros valores.'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Blocos de mesma massa, feitos dos materiais da tabela, estão inicialmente à mesma temperatura. Cada um recebe a mesma quantidade de calor, sem mudar de fase.${tabela(['Material','Calor específico (cal/(g·°C))'], [['Água','1,0'],['Alumínio','0,22'],['Ferro','0,11'],['Cobre','0,092'],['Chumbo','0,031']])}<p>Qual deles termina com a <b>maior</b> temperatura?</p>`,
   opts:['Água','Alumínio','Ferro','Cobre','Chumbo'], ans:4,
   hint:'Isole ΔT em Q = m · c · ΔT. Com Q e m iguais, o que decide é o c.',
@@ -73,10 +71,9 @@ const QL1 = [
   ],
   alt:'O calor específico funciona como uma “inércia térmica”: quanto maior, mais difícil mudar a temperatura. A água, com c alto, é a que menos esquenta. Por isso a areia da praia queima o pé e a água do mar não.',
   warn:'Escolher a água (alternativa a) é ler a tabela ao contrário: o maior c é o que <b>menos</b> esquenta.',
-  mod:'Inédita. Valores de calor específico aproximados, de tabelas usuais.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Um corpo de massa 250 g é aquecido por uma fonte de potência constante, igual a 300 cal/min. O gráfico mostra a temperatura do corpo em função do tempo.${FIG1_4}O calor específico da substância que constitui o corpo é:`,
   opts:['0,03 cal/(g·°C)','0,48 cal/(g·°C)','0,60 cal/(g·°C)','1,20 cal/(g·°C)','2,50 cal/(g·°C)'], ans:2,
   hint:'O gráfico dá duas informações: quanto tempo a fonte ficou ligada e quanto a temperatura variou. Com o tempo e a potência, você tem o calor.',
@@ -87,10 +84,9 @@ const QL1 = [
   ],
   alt:'Calcule antes a capacidade térmica: C = 6 000 ÷ 40 = 150 cal/°C. Depois divida pela massa: 150 ÷ 250 = 0,60.',
   warn:'Ler só a temperatura final, 50 °C, como se fosse ΔT dá 0,48 (alternativa b). Usar 20 (o tempo) como ΔT dá 1,20 (alternativa d).',
-  mod:'Baseada no Exemplo 3 dos slides do capítulo 20 (200 g, 200 cal/min, de 20 °C a 60 °C em 30 min), com outros valores.'
 },
 {
-  src:'Livro, p. 8 (modificada)', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Um fogão solar de grande porte fornece calor à água a uma taxa constante de 3 000 kcal por minuto. Em quanto tempo ele consegue aquecer 40 kg de água de 40 °C até 100 °C e, em seguida, transformá-la completamente em vapor?<p>Dados: c<sub>água</sub> = 1 cal/(g·°C); L<sub>V</sub> = 540 cal/g.</p>`,
   opts:['0,8 min','7,2 min','8,0 min','8,5 min','80 min'], ans:2,
   hint:'Calcule o calor total das duas etapas (aquecer até 100 °C e vaporizar). Depois divida pela taxa do fogão.',
@@ -101,10 +97,9 @@ const QL1 = [
   ],
   alt:'Monte direto: P · Δt = m · c · ΔT + m · L → 3 000 · Δt = 40 · 60 + 40 · 540 (em kcal, com m em kg). 3 000 · Δt = 24 000.',
   warn:'Esquecer o aquecimento até 100 °C e usar só o calor latente dá 7,2 min (alternativa b). Usar só o aquecimento dá 0,8 min (alternativa a).',
-  mod:'Livro, “Agora é com você” (p. 8, n.º 1): fogão de 62 000 kcal em 10 min, pedia a massa de água (100 kg). Modificada: fogão com taxa em kcal/min, 40 kg de água a 40 °C e pergunta o tempo.'
 },
 {
-  src:'Livro, p. 8 (modificada)', nivel:'intermediário',
+  nivel:'intermediário',
   text:`O gráfico representa a curva de aquecimento de 200 g de uma substância, inicialmente líquida a 30 °C. As retas verticais tracejadas estão igualmente espaçadas: cada intervalo entre elas representa a mesma quantidade de calor.${FIG1_6}Sabendo que o calor latente de vaporização dessa substância é 150 cal/g, o calor específico dela no estado líquido é:`,
   opts:['0,33 cal/(g·°C)','0,42 cal/(g·°C)','0,50 cal/(g·°C)','0,63 cal/(g·°C)','2,0 cal/(g·°C)'], ans:2,
   hint:'Desta vez você conhece o calor latente. Calcule o calor do patamar inteiro e descubra quanto vale cada intervalo.',
@@ -113,12 +108,11 @@ const QL1 = [
     ['Primeiro intervalo', `<p>O líquido recebe 6 000 cal e vai de 30 °C a 90 °C (ΔT = 60 °C).</p>`],
     ['Calor específico', `<div class="eq">c = ${f('6 000','200 · 60')} = <span class="hl">0,50 cal/(g·°C)</span></div>`],
   ],
-  alt:'É o caminho inverso do exemplo do livro: lá se conhecia o c e se achava o L; aqui se conhece o L e se acha o c. A chave é a mesma: todos os intervalos valem o mesmo calor.',
+  alt:'Use a proporção entre os trechos: todos os intervalos valem o mesmo calor. Se 5 intervalos valem 30 000 cal, o primeiro vale 6 000 cal.',
   warn:'Contar 4 ou 6 intervalos no patamar dá 0,63 ou 0,42 (alternativas d e b). Usar 90 °C como ΔT dá 0,33 (alternativa a).',
-  mod:'Livro, “Agora é com você” (p. 8, n.º 2): 100 g, c = 0,5, de 20 °C a 140 °C, pedia o calor latente (240 cal/g). Modificada: 200 g, de 30 °C a 90 °C, patamar de 5 intervalos, dado L e pedido o calor específico.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Quanto calor é necessário para transformar 200 g de gelo a −10 °C em água a 30 °C?<p>Dados: c<sub>gelo</sub> = 0,5 cal/(g·°C); L<sub>fusão</sub> = 80 cal/g; c<sub>água</sub> = 1 cal/(g·°C).</p>`,
   opts:['7 kcal','16 kcal','17 kcal','22 kcal','23 kcal'], ans:4,
   hint:'O gelo passa por três etapas: esquenta até 0 °C, derrete a 0 °C e, já como água, esquenta até 30 °C.',
@@ -130,10 +124,9 @@ const QL1 = [
   ],
   alt:'Desenhe a curva de aquecimento: uma subida, um patamar (a fusão) e outra subida. Cada trecho é uma parcela da soma.',
   warn:'Pular o aquecimento do gelo de −10 °C até 0 °C dá 22 kcal (alternativa d). O gelo só começa a derreter quando chega a 0 °C.',
-  mod:'Baseada no Exemplo 2 dos slides do capítulo 20 (100 g de gelo a −20 °C até água a 60 °C), com outros valores.'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Um calorímetro de capacidade térmica 50 cal/°C contém 200 g de água, ambos a 20 °C. Um bloco metálico de 100 g, a 160 °C, é colocado dentro dele, e o equilíbrio térmico se estabelece a 35 °C. Desprezando as perdas de calor para o ambiente, o calor específico do metal é:<p>Dado: c<sub>água</sub> = 1 cal/(g·°C).</p>`,
   opts:['0,15 cal/(g·°C)','0,24 cal/(g·°C)','0,30 cal/(g·°C)','0,70 cal/(g·°C)','1,20 cal/(g·°C)'], ans:2,
   hint:'Quem esquenta? A água e o calorímetro. Quem esfria? O bloco. Tudo o que o bloco cede, os outros dois recebem.',
@@ -144,10 +137,9 @@ const QL1 = [
   ],
   alt:'Pense em “calor cedido = calor recebido”, em módulo: 100 · c · 125 = 3 000 + 750.',
   warn:'Esquecer o calorímetro dá 0,24 (alternativa b). Ele também esquenta e precisa entrar na conta com Q = C · ΔT.',
-  mod:'Baseada no Exemplo 2 (PUC) dos slides do capítulo 20, com outros valores e a pergunta mantida (calor específico do sólido).'
 },
 {
-  src:'Livro, p. 12 (modificada)', nivel:'avançado',
+  nivel:'avançado',
   text:`Para gelar 800 g de água a 25 °C, colocam-se numa garrafa 160 g de gelo a −10 °C. A garrafa não é termicamente isolada, e todo o gelo derrete. No equilíbrio, mede-se a temperatura de 8 °C, mais alta do que seria se o sistema estivesse isolado. A quantidade de calor que o ambiente forneceu ao sistema foi de:<p>Dados: despreze a capacidade térmica da garrafa; c<sub>água</sub> = 1,0 cal/(g·°C); c<sub>gelo</sub> = 0,5 cal/(g·°C); L<sub>fusão</sub> = 80 cal/g.</p>`,
   opts:['zero','480 cal','1 280 cal','2 080 cal','14 880 cal'], ans:2,
   hint:'Calcule tudo o que o gelo precisou receber até chegar a 8 °C e tudo o que a água cedeu ao esfriar até 8 °C. A diferença veio de fora.',
@@ -158,10 +150,9 @@ const QL1 = [
   ],
   alt:'Pense no balanço: ΣQ = 0 para o sistema mais o ambiente. 800 + 12 800 + 1 280 − 13 600 − Q<sub>amb</sub> = 0. Se a garrafa fosse ideal, o equilíbrio seria em cerca de 6,7 °C.',
   warn:'Esquecer o aquecimento da água que veio do gelo (de 0 °C a 8 °C) dá zero (alternativa a). Esquecer o aquecimento do gelo até 0 °C dá 480 cal (alternativa b).',
-  mod:'Livro, “Agora é com você” (p. 12, n.º 3): 1 000 g de água a 20 °C, 200 g de gelo a −10 °C e 600 cal do ambiente, pedia a temperatura final (3 °C). Modificada: 800 g a 25 °C, 160 g de gelo, dada a temperatura final de 8 °C e pedido o calor do ambiente.'
 },
 {
-  src:'Livro, p. 9 (modificada)', nivel:'avançado',
+  nivel:'avançado',
   text:`Deseja-se aquecer a água de uma piscina completamente cheia, de dimensões 1,5 m × 4 m × 8 m, de 18 °C até 28 °C.${FIG1_10}O aquecedor é a gás e apenas 80% da energia que ele consome chega à água. Se cada kWh de energia consumida custa R$ 0,80, o custo desse aquecimento é:<p>Dados: c<sub>água</sub> = 4 200 J/(kg·°C); densidade da água = 1 000 kg/m³; 1 kWh = 3,6 · 10<sup>6</sup> J.</p>`,
   opts:['R$ 358,40','R$ 448,00','R$ 560,00','R$ 700,00','R$ 1 568,00'], ans:2,
   hint:'Volume → massa → calor que a água precisa. Se só 80% chega à água, o aquecedor precisa consumir mais ou menos que isso?',
@@ -173,6 +164,5 @@ const QL1 = [
   ],
   alt:'Sem perdas seriam 560 kWh (R$ 448,00). Como só 80% chega à água, consome-se 560 ÷ 0,8 = 700 kWh.',
   warn:'R$ 700,00 (alternativa d) é o número de kWh, não o custo. Multiplicar por 0,8 em vez de dividir dá R$ 358,40 (alternativa a); usar 28 °C como ΔT dá R$ 1 568,00 (alternativa e).',
-  mod:'Livro, “Agora é com você” (p. 9, n.º 3): piscina de 1,6 × 5 × 10 m, de 15 °C a 30 °C, 98% de aproveitamento e R$ 0,70/kWh (resposta R$ 1 000,00). Modificada: 1,5 × 4 × 8 m, de 18 °C a 28 °C, 80% e R$ 0,80/kWh.'
 },
 ];

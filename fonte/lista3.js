@@ -53,7 +53,7 @@ const FIG3_10 = plot({ aria:'Diagrama pressão em função do volume com dois ca
 
 const QL3 = [
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Um gás recebe 500 J de calor e, ao mesmo tempo, realiza 200 J de trabalho sobre o meio externo. A variação da energia interna do gás é:`,
   opts:['−700 J','−300 J','200 J','300 J','700 J'], ans:3,
   hint:'Escreva a 1ª Lei e coloque os sinais: o gás recebe calor (Q positivo) e realiza trabalho (τ positivo).',
@@ -63,10 +63,9 @@ const QL3 = [
   ],
   alt:'Pense numa conta bancária: entram 500 (calor), saem 200 (trabalho que o gás “gasta” empurrando o meio). Ficam 300 guardados como energia interna.',
   warn:'Somar tudo (500 + 200 = 700 J, alternativa e) esquece que o trabalho realizado pelo gás é energia que <b>sai</b> dele.',
-  mod:'Inédita, inspirada nos Exemplos 1 (ENEM) e 2 (UERN) dos slides do capítulo 23.'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Um gás sofre uma transformação isocórica (volume constante) e recebe 360 J de calor do meio. O trabalho realizado pelo gás e a variação de sua energia interna são, respectivamente:`,
   opts:['360 J e zero','zero e 360 J','180 J e 180 J','zero e −360 J','−360 J e 360 J'], ans:1,
   hint:'Se o volume não muda, o gás empurra alguma coisa? Há trabalho?',
@@ -76,10 +75,9 @@ const QL3 = [
   ],
   alt:'Na isocórica, todo o calor recebido vira energia interna: a temperatura do gás sobe. É o que acontece num recipiente rígido aquecido.',
   warn:'A alternativa a troca as posições: não há trabalho porque o volume é constante, e é a energia interna que recebe os 360 J.',
-  mod:'Baseada no Exemplo 3 dos slides do capítulo 23 (isocórica com 240 J), com outro valor.'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Ao encher um pneu de bicicleta, a bomba esquenta. Suponha que o ar dentro dela seja comprimido tão rápido que não dá tempo de trocar calor com o ambiente (transformação adiabática).${FIG3_3}Para o ar dentro da bomba, nessa compressão:`,
   opts:['Q = 0 e τ &lt; 0, então ΔU &gt; 0 e a temperatura sobe','Q = 0 e τ &gt; 0, então ΔU &lt; 0 e a temperatura cai','Q &gt; 0 e τ = 0, então ΔU &gt; 0 e a temperatura sobe','Q &lt; 0 e τ &lt; 0, então ΔU = 0 e a temperatura fica','Q = 0 e τ = 0, então ΔU = 0 e a temperatura fica'], ans:0,
   hint:'Adiabática diz algo sobre Q. Compressão diz algo sobre o sinal de τ. Depois é só aplicar a 1ª Lei.',
@@ -90,10 +88,9 @@ const QL3 = [
   ],
   alt:'A energia que você gasta empurrando o êmbolo não tem para onde ir (não sai como calor) e fica no ar, aumentando sua energia interna.',
   warn:'Dizer que τ &gt; 0 (alternativa b) seria uma expansão. Na compressão o trabalho é negativo, e é por isso que ΔU fica positivo.',
-  mod:'Inédita (convenção de sinais da 1ª Lei, slides do capítulo 23).'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Em uma transformação isobárica, um gás perfeito, mantido a 3,0 · 10<sup>5</sup> N/m², recebe 2 000 J de calor, e seu volume aumenta de 2,0 L para 6,0 L. A variação da energia interna do gás é:<p>Dado: 1 L = 10<sup>−3</sup> m³.</p>`,
   opts:['800 J','1 200 J','2 000 J','3 200 J','−1,2 · 10⁶ J'], ans:0,
   hint:'Pressão constante: τ = p · ΔV, com o volume em m³. Depois use a 1ª Lei.',
@@ -104,10 +101,9 @@ const QL3 = [
   ],
   alt:'Dos 2 000 J que entraram, 1 200 J saíram como trabalho (o gás empurrou o êmbolo) e 800 J ficaram no gás, aumentando sua temperatura.',
   warn:'Deixar o volume em litros dá τ = 1,2 · 10⁶ J e uma energia interna negativa absurda (alternativa e). Pa · m³ é que dá joule.',
-  mod:'Baseada no Exemplo 4 dos slides do capítulo 23 (2,0 · 10⁵ N/m², 1 500 J, 3,0 L), com outros valores.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`O gráfico mostra as transformações AB e BC sofridas por um gás ideal.${FIG3_5}O trabalho realizado pelo gás de A até C é:`,
   opts:['80 J','100 J','140 J','160 J','200 J'], ans:2,
   hint:'O trabalho é a área sob a curva, até o eixo V. Divida em duas figuras: um trapézio (AB) e um retângulo (BC).',
@@ -118,10 +114,9 @@ const QL3 = [
   ],
   alt:'Divida o trecho AB num retângulo (20 · 2 = 40 J) e num triângulo (2 · 20 ÷ 2 = 20 J). Os 60 J do trapézio aparecem do mesmo jeito.',
   warn:'Calcular só o trecho a pressão constante dá 80 J (alternativa a). A área sob a reta inclinada também é trabalho.',
-  mod:'Baseada no Exemplo 1 (PUC-SP) da parte de trabalho dos slides do capítulo 23, com outros valores.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Um gás perfeito percorre o ciclo ABCDA representado no diagrama.${FIG3_6}Em cada ciclo, o gás:`,
   opts:['não troca calor, pois ΔU = 0','recebe 300 J de calor','recebe 600 J de calor','cede 600 J de calor','recebe 1 500 J de calor'], ans:2,
   hint:'Num ciclo, o gás volta ao estado inicial. O que isso diz sobre ΔU? E o trabalho é a área de dentro do ciclo.',
@@ -132,10 +127,9 @@ const QL3 = [
   ],
   alt:'É o funcionamento de uma máquina térmica: em cada volta, o calor que entra (em saldo) sai como trabalho.',
   warn:'ΔU = 0 não significa Q = 0 (alternativa a). Significa que todo o calor trocado em saldo vira trabalho: Q = τ.',
-  mod:'Baseada no Exemplo 1 da parte de transformações cíclicas dos slides do capítulo 23, com outros valores e perguntando o calor.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Uma amostra de 2,0 mols de hélio (gás monoatômico ideal) é aquecida de 300 K para 500 K. A variação de sua energia interna é:<p>Dado: R = 8,0 J/(mol·K).</p>`,
   opts:['2 400 J','3 200 J','4 800 J','8 000 J','12 000 J'], ans:2,
   hint:'Para gás monoatômico, ΔU = (3/2) · n · R · ΔT. Use a variação de temperatura, não a temperatura final.',
@@ -145,10 +139,9 @@ const QL3 = [
   ],
   alt:'Calcule U antes e depois: U₁ = 1,5 · 2 · 8 · 300 = 7 200 J e U₂ = 1,5 · 2 · 8 · 500 = 12 000 J. A diferença é 4 800 J.',
   warn:'Usar a temperatura final dá 12 000 J (alternativa e), que é a energia interna em 500 K, não a variação. Esquecer o fator 3/2 dá 3 200 J (alternativa b).',
-  mod:'Inédita (energia interna do gás monoatômico, slides do capítulo 23).'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Dois mols de um gás monoatômico ideal são aquecidos a pressão constante, de 300 K para 400 K. A quantidade de calor recebida pelo gás é:<p>Dado: R = 8,0 J/(mol·K).</p>`,
   opts:['800 J','1 600 J','2 400 J','4 000 J','5 600 J'], ans:3,
   hint:'Você não tem p nem V, mas tem n e ΔT. A pressão constante, p · ΔV = n · R · ΔT. Depois some a energia interna.',
@@ -159,10 +152,9 @@ const QL3 = [
   ],
   alt:'Para o gás monoatômico a pressão constante, Q = (5/2) · n · R · ΔT: uma parte (3/2) aquece o gás e outra (1) vira trabalho.',
   warn:'Calcular só a energia interna dá 2 400 J (alternativa c). A pressão constante o gás também se expande, e parte do calor sai como trabalho.',
-  mod:'Inédita (1ª Lei com Clapeyron e energia interna, slides dos capítulos 22 e 23).'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Um gás sofre a transformação cíclica ABCA indicada no diagrama.${FIG3_9}Em cada ciclo, o trabalho do gás e o calor trocado são:`,
   opts:['τ = +80 J; recebe 80 J de calor','τ = −80 J; cede 80 J de calor','τ = −160 J; cede 160 J de calor','τ = 0; não troca calor','τ = +160 J; recebe 160 J de calor'], ans:1,
   hint:'O trabalho é a área do triângulo. O sinal depende do sentido em que o ciclo é percorrido.',
@@ -173,10 +165,9 @@ const QL3 = [
   ],
   alt:'Compare a expansão AB (o gás realiza 200 · 0,4 = 80 J) com a compressão BC (o meio realiza sobre o gás a área do trapézio, 160 J). Saldo: 80 − 160 = −80 J.',
   warn:'Esquecer o sentido do ciclo leva à alternativa a. E usar o retângulo inteiro (0,4 · 400 = 160 J) em vez do triângulo leva à alternativa c ou e.',
-  mod:'Inédita, inspirada no Exemplo 2 (UFG) dos slides do capítulo 23, com o ciclo em sentido anti-horário.'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Um gás ideal pode ir do estado A ao estado C por dois caminhos diferentes, mostrados no diagrama.${FIG3_10}<p>Considere as afirmações:</p><p>I. A variação da energia interna é a mesma nos dois caminhos.<br>II. O trabalho realizado pelo gás é o mesmo nos dois caminhos.<br>III. O gás recebe mais calor no caminho 1 do que no caminho 2.</p><p>Está correto o que se afirma em:</p>`,
   opts:['I, apenas','II, apenas','I e III, apenas','II e III, apenas','I, II e III'], ans:2,
   hint:'A energia interna depende só do estado (início e fim). O trabalho depende da área sob o caminho. E o calor sai da 1ª Lei.',
@@ -187,6 +178,5 @@ const QL3 = [
   ],
   alt:'ΔU é como a diferença de altitude entre duas cidades: não depende da estrada. Trabalho e calor são como a distância percorrida: dependem do caminho.',
   warn:'É comum achar que, se o começo e o fim são iguais, tudo é igual (alternativa e). Só ΔU depende apenas do início e do fim; trabalho e calor dependem do caminho.',
-  mod:'Inédita (trabalho como área no gráfico p × V e 1ª Lei, slides do capítulo 23).'
 },
 ];

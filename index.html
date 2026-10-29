@@ -342,7 +342,7 @@ const FIG1_10 = (() => {
 
 const QL1 = [
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Numa conversa, alguém diz: “Esse café está cheio de calor, por isso queima a língua”. Do ponto de vista da Física, a forma correta de descrever a situação é dizer que:`,
   opts:['o café armazena calor e o libera aos poucos','o café tem temperatura alta e cede calor à língua','a língua cede frio para o café até os dois se igualarem','o café tem mais calor porque tem mais massa que a língua','calor e temperatura são a mesma grandeza, medida em °C'], ans:1,
   hint:'Calor é algo que um corpo “tem” ou algo que passa de um corpo para outro?',
@@ -352,10 +352,9 @@ const QL1 = [
   ],
   alt:'Pense em dinheiro numa transferência bancária: “transferência” só existe enquanto o dinheiro está passando de uma conta para a outra. O calor é a “transferência” da energia térmica.',
   warn:'A alternativa a parece certa porque é como falamos no dia a dia, mas o corpo não armazena calor. E não existe “frio” passando de um corpo para outro (alternativa c): só o calor, do mais quente para o mais frio.',
-  mod:'Inédita (conceito de calor do início do capítulo 20).'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Um corpo de massa 80 g recebe 480 cal e sua temperatura sobe de 10 °C para 40 °C, sem mudar de fase. A capacidade térmica do corpo e o calor específico da substância que o constitui valem, respectivamente:`,
   opts:['12 cal/°C e 0,15 cal/(g·°C)','16 cal/°C e 0,20 cal/(g·°C)','48 cal/°C e 0,60 cal/(g·°C)','16 cal/°C e 1,28 cal/(g·°C)','6 cal/°C e 0,08 cal/(g·°C)'], ans:1,
   hint:'Primeiro a variação de temperatura. A capacidade térmica é “calor por grau”; o calor específico é “calor por grau e por grama”.',
@@ -366,10 +365,9 @@ const QL1 = [
   ],
   alt:'Leia o resultado: o corpo inteiro precisa de 16 cal para subir 1 °C; cada grama dele precisa de 0,2 cal para subir 1 °C.',
   warn:'Usar a temperatura final (40 °C) no lugar de ΔT dá 12 cal/°C (alternativa a). O que importa é quanto a temperatura variou.',
-  mod:'Baseada no Exemplo 1 dos slides do capítulo 20 (50 g, 300 cal, de −10 °C a 20 °C), com outros valores.'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Blocos de mesma massa, feitos dos materiais da tabela, estão inicialmente à mesma temperatura. Cada um recebe a mesma quantidade de calor, sem mudar de fase.${tabela(['Material','Calor específico (cal/(g·°C))'], [['Água','1,0'],['Alumínio','0,22'],['Ferro','0,11'],['Cobre','0,092'],['Chumbo','0,031']])}<p>Qual deles termina com a <b>maior</b> temperatura?</p>`,
   opts:['Água','Alumínio','Ferro','Cobre','Chumbo'], ans:4,
   hint:'Isole ΔT em Q = m · c · ΔT. Com Q e m iguais, o que decide é o c.',
@@ -379,10 +377,9 @@ const QL1 = [
   ],
   alt:'O calor específico funciona como uma “inércia térmica”: quanto maior, mais difícil mudar a temperatura. A água, com c alto, é a que menos esquenta. Por isso a areia da praia queima o pé e a água do mar não.',
   warn:'Escolher a água (alternativa a) é ler a tabela ao contrário: o maior c é o que <b>menos</b> esquenta.',
-  mod:'Inédita. Valores de calor específico aproximados, de tabelas usuais.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Um corpo de massa 250 g é aquecido por uma fonte de potência constante, igual a 300 cal/min. O gráfico mostra a temperatura do corpo em função do tempo.${FIG1_4}O calor específico da substância que constitui o corpo é:`,
   opts:['0,03 cal/(g·°C)','0,48 cal/(g·°C)','0,60 cal/(g·°C)','1,20 cal/(g·°C)','2,50 cal/(g·°C)'], ans:2,
   hint:'O gráfico dá duas informações: quanto tempo a fonte ficou ligada e quanto a temperatura variou. Com o tempo e a potência, você tem o calor.',
@@ -393,10 +390,9 @@ const QL1 = [
   ],
   alt:'Calcule antes a capacidade térmica: C = 6 000 ÷ 40 = 150 cal/°C. Depois divida pela massa: 150 ÷ 250 = 0,60.',
   warn:'Ler só a temperatura final, 50 °C, como se fosse ΔT dá 0,48 (alternativa b). Usar 20 (o tempo) como ΔT dá 1,20 (alternativa d).',
-  mod:'Baseada no Exemplo 3 dos slides do capítulo 20 (200 g, 200 cal/min, de 20 °C a 60 °C em 30 min), com outros valores.'
 },
 {
-  src:'Livro, p. 8 (modificada)', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Um fogão solar de grande porte fornece calor à água a uma taxa constante de 3 000 kcal por minuto. Em quanto tempo ele consegue aquecer 40 kg de água de 40 °C até 100 °C e, em seguida, transformá-la completamente em vapor?<p>Dados: c<sub>água</sub> = 1 cal/(g·°C); L<sub>V</sub> = 540 cal/g.</p>`,
   opts:['0,8 min','7,2 min','8,0 min','8,5 min','80 min'], ans:2,
   hint:'Calcule o calor total das duas etapas (aquecer até 100 °C e vaporizar). Depois divida pela taxa do fogão.',
@@ -407,10 +403,9 @@ const QL1 = [
   ],
   alt:'Monte direto: P · Δt = m · c · ΔT + m · L → 3 000 · Δt = 40 · 60 + 40 · 540 (em kcal, com m em kg). 3 000 · Δt = 24 000.',
   warn:'Esquecer o aquecimento até 100 °C e usar só o calor latente dá 7,2 min (alternativa b). Usar só o aquecimento dá 0,8 min (alternativa a).',
-  mod:'Livro, “Agora é com você” (p. 8, n.º 1): fogão de 62 000 kcal em 10 min, pedia a massa de água (100 kg). Modificada: fogão com taxa em kcal/min, 40 kg de água a 40 °C e pergunta o tempo.'
 },
 {
-  src:'Livro, p. 8 (modificada)', nivel:'intermediário',
+  nivel:'intermediário',
   text:`O gráfico representa a curva de aquecimento de 200 g de uma substância, inicialmente líquida a 30 °C. As retas verticais tracejadas estão igualmente espaçadas: cada intervalo entre elas representa a mesma quantidade de calor.${FIG1_6}Sabendo que o calor latente de vaporização dessa substância é 150 cal/g, o calor específico dela no estado líquido é:`,
   opts:['0,33 cal/(g·°C)','0,42 cal/(g·°C)','0,50 cal/(g·°C)','0,63 cal/(g·°C)','2,0 cal/(g·°C)'], ans:2,
   hint:'Desta vez você conhece o calor latente. Calcule o calor do patamar inteiro e descubra quanto vale cada intervalo.',
@@ -419,12 +414,11 @@ const QL1 = [
     ['Primeiro intervalo', `<p>O líquido recebe 6 000 cal e vai de 30 °C a 90 °C (ΔT = 60 °C).</p>`],
     ['Calor específico', `<div class="eq">c = ${f('6 000','200 · 60')} = <span class="hl">0,50 cal/(g·°C)</span></div>`],
   ],
-  alt:'É o caminho inverso do exemplo do livro: lá se conhecia o c e se achava o L; aqui se conhece o L e se acha o c. A chave é a mesma: todos os intervalos valem o mesmo calor.',
+  alt:'Use a proporção entre os trechos: todos os intervalos valem o mesmo calor. Se 5 intervalos valem 30 000 cal, o primeiro vale 6 000 cal.',
   warn:'Contar 4 ou 6 intervalos no patamar dá 0,63 ou 0,42 (alternativas d e b). Usar 90 °C como ΔT dá 0,33 (alternativa a).',
-  mod:'Livro, “Agora é com você” (p. 8, n.º 2): 100 g, c = 0,5, de 20 °C a 140 °C, pedia o calor latente (240 cal/g). Modificada: 200 g, de 30 °C a 90 °C, patamar de 5 intervalos, dado L e pedido o calor específico.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Quanto calor é necessário para transformar 200 g de gelo a −10 °C em água a 30 °C?<p>Dados: c<sub>gelo</sub> = 0,5 cal/(g·°C); L<sub>fusão</sub> = 80 cal/g; c<sub>água</sub> = 1 cal/(g·°C).</p>`,
   opts:['7 kcal','16 kcal','17 kcal','22 kcal','23 kcal'], ans:4,
   hint:'O gelo passa por três etapas: esquenta até 0 °C, derrete a 0 °C e, já como água, esquenta até 30 °C.',
@@ -436,10 +430,9 @@ const QL1 = [
   ],
   alt:'Desenhe a curva de aquecimento: uma subida, um patamar (a fusão) e outra subida. Cada trecho é uma parcela da soma.',
   warn:'Pular o aquecimento do gelo de −10 °C até 0 °C dá 22 kcal (alternativa d). O gelo só começa a derreter quando chega a 0 °C.',
-  mod:'Baseada no Exemplo 2 dos slides do capítulo 20 (100 g de gelo a −20 °C até água a 60 °C), com outros valores.'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Um calorímetro de capacidade térmica 50 cal/°C contém 200 g de água, ambos a 20 °C. Um bloco metálico de 100 g, a 160 °C, é colocado dentro dele, e o equilíbrio térmico se estabelece a 35 °C. Desprezando as perdas de calor para o ambiente, o calor específico do metal é:<p>Dado: c<sub>água</sub> = 1 cal/(g·°C).</p>`,
   opts:['0,15 cal/(g·°C)','0,24 cal/(g·°C)','0,30 cal/(g·°C)','0,70 cal/(g·°C)','1,20 cal/(g·°C)'], ans:2,
   hint:'Quem esquenta? A água e o calorímetro. Quem esfria? O bloco. Tudo o que o bloco cede, os outros dois recebem.',
@@ -450,10 +443,9 @@ const QL1 = [
   ],
   alt:'Pense em “calor cedido = calor recebido”, em módulo: 100 · c · 125 = 3 000 + 750.',
   warn:'Esquecer o calorímetro dá 0,24 (alternativa b). Ele também esquenta e precisa entrar na conta com Q = C · ΔT.',
-  mod:'Baseada no Exemplo 2 (PUC) dos slides do capítulo 20, com outros valores e a pergunta mantida (calor específico do sólido).'
 },
 {
-  src:'Livro, p. 12 (modificada)', nivel:'avançado',
+  nivel:'avançado',
   text:`Para gelar 800 g de água a 25 °C, colocam-se numa garrafa 160 g de gelo a −10 °C. A garrafa não é termicamente isolada, e todo o gelo derrete. No equilíbrio, mede-se a temperatura de 8 °C, mais alta do que seria se o sistema estivesse isolado. A quantidade de calor que o ambiente forneceu ao sistema foi de:<p>Dados: despreze a capacidade térmica da garrafa; c<sub>água</sub> = 1,0 cal/(g·°C); c<sub>gelo</sub> = 0,5 cal/(g·°C); L<sub>fusão</sub> = 80 cal/g.</p>`,
   opts:['zero','480 cal','1 280 cal','2 080 cal','14 880 cal'], ans:2,
   hint:'Calcule tudo o que o gelo precisou receber até chegar a 8 °C e tudo o que a água cedeu ao esfriar até 8 °C. A diferença veio de fora.',
@@ -464,10 +456,9 @@ const QL1 = [
   ],
   alt:'Pense no balanço: ΣQ = 0 para o sistema mais o ambiente. 800 + 12 800 + 1 280 − 13 600 − Q<sub>amb</sub> = 0. Se a garrafa fosse ideal, o equilíbrio seria em cerca de 6,7 °C.',
   warn:'Esquecer o aquecimento da água que veio do gelo (de 0 °C a 8 °C) dá zero (alternativa a). Esquecer o aquecimento do gelo até 0 °C dá 480 cal (alternativa b).',
-  mod:'Livro, “Agora é com você” (p. 12, n.º 3): 1 000 g de água a 20 °C, 200 g de gelo a −10 °C e 600 cal do ambiente, pedia a temperatura final (3 °C). Modificada: 800 g a 25 °C, 160 g de gelo, dada a temperatura final de 8 °C e pedido o calor do ambiente.'
 },
 {
-  src:'Livro, p. 9 (modificada)', nivel:'avançado',
+  nivel:'avançado',
   text:`Deseja-se aquecer a água de uma piscina completamente cheia, de dimensões 1,5 m × 4 m × 8 m, de 18 °C até 28 °C.${FIG1_10}O aquecedor é a gás e apenas 80% da energia que ele consome chega à água. Se cada kWh de energia consumida custa R$ 0,80, o custo desse aquecimento é:<p>Dados: c<sub>água</sub> = 4 200 J/(kg·°C); densidade da água = 1 000 kg/m³; 1 kWh = 3,6 · 10<sup>6</sup> J.</p>`,
   opts:['R$ 358,40','R$ 448,00','R$ 560,00','R$ 700,00','R$ 1 568,00'], ans:2,
   hint:'Volume → massa → calor que a água precisa. Se só 80% chega à água, o aquecedor precisa consumir mais ou menos que isso?',
@@ -479,7 +470,6 @@ const QL1 = [
   ],
   alt:'Sem perdas seriam 560 kWh (R$ 448,00). Como só 80% chega à água, consome-se 560 ÷ 0,8 = 700 kWh.',
   warn:'R$ 700,00 (alternativa d) é o número de kWh, não o custo. Multiplicar por 0,8 em vez de dividir dá R$ 358,40 (alternativa a); usar 28 °C como ΔT dá R$ 1 568,00 (alternativa e).',
-  mod:'Livro, “Agora é com você” (p. 9, n.º 3): piscina de 1,6 × 5 × 10 m, de 15 °C a 30 °C, 98% de aproveitamento e R$ 0,70/kWh (resposta R$ 1 000,00). Modificada: 1,5 × 4 × 8 m, de 18 °C a 28 °C, 80% e R$ 0,80/kWh.'
 },
 ];
 
@@ -518,7 +508,7 @@ const FIG2_9 = plot({ aria:'Diagrama pressão, em 10 elevado a 5 pascal, em fun�
 
 const QL2 = [
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`No modelo de gás ideal (gás perfeito), qual das afirmações abaixo <b>não</b> faz parte das hipóteses do modelo?`,
   opts:['As partículas se movem o tempo todo, em todas as direções','O volume das partículas é desprezível perto do volume do recipiente','As partículas se atraem fortemente, mesmo afastadas umas das outras','As colisões entre as partículas e com as paredes são elásticas','Só há interação entre as partículas quando elas colidem'], ans:2,
   hint:'O gás ideal é o “gás mais simples possível”. Que tipo de força entre as partículas complicaria o modelo?',
@@ -528,10 +518,9 @@ const QL2 = [
   ],
   alt:'Gases reais se aproximam do ideal quando estão a baixa pressão e alta temperatura: as partículas ficam longe umas das outras e rápidas, e a atração entre elas quase não faz diferença.',
   warn:'Não confunda “só interagem quando colidem” (alternativa e, que é hipótese do modelo) com “se atraem à distância” (alternativa c, que não é).',
-  mod:'Inédita (hipóteses do gás ideal e da teoria cinética, slides dos capítulos 22 e 23).'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`O diagrama mostra três isotermas, T<sub>A</sub>, T<sub>B</sub> e T<sub>C</sub>, de uma mesma amostra de gás perfeito.${FIG2_2}Sobre as temperaturas absolutas, pode-se afirmar que:`,
   opts:['T<sub>A</sub> = T<sub>B</sub> = T<sub>C</sub>','T<sub>B</sub> &gt; T<sub>C</sub> &gt; T<sub>A</sub>','T<sub>A</sub> &gt; T<sub>C</sub> &gt; T<sub>B</sub>','T<sub>C</sub> &gt; T<sub>A</sub> &gt; T<sub>B</sub>','T<sub>B</sub> = T<sub>C</sub> &lt; T<sub>A</sub>'], ans:2,
   hint:'Escolha um mesmo volume e compare as pressões das três curvas. Pela equação de Clapeyron, com n e V fixos, quem tem maior pressão tem maior temperatura.',
@@ -541,10 +530,9 @@ const QL2 = [
   ],
   alt:'Cada isoterma tem p · V = n · R · T constante. A curva mais afastada da origem tem o maior produto p · V e, portanto, a maior temperatura.',
   warn:'Os índices não estão em ordem na figura de propósito. Não basta decorar “T₃ é a maior”: olhe qual curva está mais longe dos eixos.',
-  mod:'Inédita, inspirada no Exemplo 1 dos slides do capítulo 22, com as curvas fora de ordem.'
 },
 {
-  src:'Livro, p. 37 (modificada)', nivel:'básico',
+  nivel:'básico',
   text:`O pneu de uma moto é calibrado com 30 psi num dia a 17 °C. O fabricante recomenda que a pressão não passe de 36 psi. Considerando desprezível a variação do volume do pneu, a temperatura máxima que o ar dentro dele pode atingir para respeitar essa recomendação é:`,
   opts:['−31 °C','20 °C','48 °C','75 °C','348 °C'], ans:3,
   hint:'Volume constante: transformação isocórica. Converta para kelvin, calcule e, no fim, volte para °C.',
@@ -555,10 +543,9 @@ const QL2 = [
   ],
   alt:'A pressão pode subir 20% (de 30 para 36 psi). A temperatura absoluta também pode subir 20%: 290 K · 1,2 = 348 K.',
   warn:'Esquecer de converter de volta dá 348 °C (alternativa e). Fazer a proporção em °C dá cerca de 20 °C (alternativa b).',
-  mod:'Livro, “Agora é com você” (p. 37, n.º 1): 35 psi a 7 °C, aquecido a 37 °C, pedia a pressão final (38,75 psi). Modificada: 30 psi a 17 °C, dada a pressão máxima de 36 psi e pedida a temperatura máxima.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Um gás perfeito está num cilindro fechado por um pistão. No estado A: p<sub>A</sub> = 3,0 atm, V<sub>A</sub> = 2,0 L e T<sub>A</sub> = 27 °C. No estado B, a temperatura é 127 °C e a pressão é 2,0 atm. O volume V<sub>B</sub> é:`,
   opts:['2,25 L','3,0 L','4,0 L','4,5 L','14 L'], ans:2,
   hint:'Mudaram pressão, volume e temperatura ao mesmo tempo: use a lei geral dos gases, com T em kelvin.',
@@ -569,10 +556,9 @@ const QL2 = [
   ],
   alt:'Pense em dois efeitos: a pressão caiu de 3 para 2 atm (o volume aumenta 3/2 vezes) e a temperatura subiu de 300 para 400 K (o volume aumenta 4/3 vezes). 2,0 · 3/2 · 4/3 = 4,0 L.',
   warn:'Com as temperaturas em °C, a conta dá cerca de 14 L (alternativa e). E inverter a razão das temperaturas dá 2,25 L (alternativa a).',
-  mod:'Inédita, inspirada no Exemplo 2 (PUCCAMP) dos slides do capítulo 22, com outros valores.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`O gráfico mostra o volume de uma amostra de gás ideal em função da temperatura absoluta, numa transformação a pressão constante.${FIG2_5}Mantida a pressão, qual será o volume do gás a 87 °C?`,
   opts:['1,7 L','5,0 L','6,0 L','7,2 L','8,7 L'], ans:3,
   hint:'O eixo do gráfico está em kelvin, mas a temperatura pedida está em °C. Converta antes de usar a proporção.',
@@ -583,10 +569,9 @@ const QL2 = [
   ],
   alt:'A temperatura absoluta passou de 300 K para 360 K: aumentou 20%. O volume aumenta os mesmos 20%: 6,0 · 1,2 = 7,2 L.',
   warn:'Usar 87 direto na proporção dá cerca de 1,7 L (alternativa a): o gás “encolheria” ao ser aquecido, o que não faz sentido.',
-  mod:'Inédita (lei de Charles e o zero absoluto, slides do capítulo 22).'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Que volume devem ocupar 4,0 mols de um gás perfeito, a 27 °C, para exercer uma pressão de 12 atm nas paredes do recipiente?<p>Dado: R = 0,082 atm·L/(mol·K).</p>`,
   opts:['0,74 L','8,2 L','16,4 L','82 L','831 L'], ans:1,
   hint:'Equação de Clapeyron. Repare nas unidades de R: pressão em atm, volume em L e temperatura em K.',
@@ -596,10 +581,9 @@ const QL2 = [
   ],
   alt:'Como R está em atm·L/(mol·K), a pressão entra em atm e o volume já sai em litros. Não é preciso converter nada além da temperatura.',
   warn:'Usar 27 (°C) no lugar de 300 K dá 0,74 L (alternativa a). Usar R = 8,31 com a pressão em atm mistura unidades e dá 831 (alternativa e).',
-  mod:'Baseada no Exemplo 4 dos slides do capítulo 22 (6,0 mol, 227 °C, 12 atm), com outros valores.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Um cilindro rígido de 20 L contém oxigênio a 150 atm. O gás é usado para encher balões à pressão de 1,0 atm, na mesma temperatura do cilindro. Que volume esse gás ocuparia a 1,0 atm?`,
   opts:['7,5 L','150 L','300 L','1 500 L','3 000 L'], ans:4,
   hint:'A temperatura não muda: é uma transformação isotérmica. O produto p · V fica constante.',
@@ -609,10 +593,9 @@ const QL2 = [
   ],
   alt:'A pressão ficou 150 vezes menor. Na isotérmica, o volume fica 150 vezes maior: 20 · 150 = 3 000 L.',
   warn:'Dividir em vez de multiplicar (20 ÷ 150 ≈ 0,13 ou 150 ÷ 20 = 7,5, alternativa a) faria o gás ocupar menos espaço a uma pressão menor. Pressão e volume variam em sentidos opostos.',
-  mod:'Inédita (lei de Boyle-Mariotte, slides do capítulo 22).'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Uma amostra de gás ideal passa do estado 1 para o 2 e depois do 2 para o 3. Alguns valores estão na tabela.${tabela(['Estado','p (atm)','V (L)','T (K)'], [['1','2,0','6,0','300'],['2','3,0','6,0','T₂'],['3','3,0','V₃','600']])}<p>Os valores de T₂ e V₃ são, respectivamente:</p>`,
   opts:['200 K e 8,0 L','450 K e 4,5 L','450 K e 8,0 L','450 K e 12 L','900 K e 4,0 L'], ans:2,
   hint:'Olhe qual grandeza fica igual em cada etapa. De 1 para 2, o volume não muda; de 2 para 3, a pressão não muda.',
@@ -623,10 +606,9 @@ const QL2 = [
   ],
   alt:`Confira com a lei geral entre os estados 1 e 3: ${f('2,0 · 6,0','300')} = 0,04 e ${f('3,0 · 8,0','600')} = 0,04. Mesma amostra, mesmo valor de pV/T.`,
   warn:'Inverter a proporção na isobárica dá V₃ = 4,5 L (alternativa b): o gás seria aquecido e diminuiria de volume, o que não acontece a pressão constante.',
-  mod:'Inédita (transformações isocórica e isobárica, slides do capítulo 22).'
 },
 {
-  src:'Livro, p. 37 (modificada)', nivel:'avançado',
+  nivel:'avançado',
   text:`Uma amostra de 0,50 mol de gás ideal sofre a transformação representada no diagrama p × V.${FIG2_9}A temperatura do gás e o volume que ele ocupa quando a pressão é 1,2 · 10⁵ Pa valem, respectivamente:<p>Dado: R = 8,0 J/(mol·K).</p>`,
   opts:['150 K e 5,0 · 10⁻³ m³','75 K e 5,0 · 10⁻³ m³','150 K e 6,0 · 10⁻³ m³','300 K e 5,0 · 10⁻³ m³','1,5 K e 5,0 · 10⁻³ m³'], ans:0,
   hint:'Calcule p · V em A, B, C e D. Se for sempre igual, a temperatura não muda. O mesmo produto dá o volume pedido.',
@@ -637,10 +619,9 @@ const QL2 = [
   ],
   alt:'Na isoterma, a pressão de 1,2 · 10⁵ Pa é a quinta parte da pressão em A (6,0 · 10⁵ Pa). Então o volume é 5 vezes o de A: 5,0 · 10⁻³ m³.',
   warn:'Esquecer o número de mols (usar n = 1) dá 75 K (alternativa b). Esquecer as potências de 10 dá 1,5 K (alternativa e).',
-  mod:'Livro, “Agora é com você” (p. 37, n.º 3): 1 mol, isoterma com A (1; 8) e B (2; 4), pedia a temperatura em A e a pressão em C. Modificada: 0,50 mol, nova isoterma, pedida a temperatura e o volume para uma pressão dada.'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Um balão meteorológico é liberado na superfície com 6,0 m³ de gás, a 1,0 atm e 27 °C. Ao atingir certa altitude, a pressão do gás é 0,40 atm e a temperatura, −33 °C. Considerando o gás ideal e a quantidade de gás constante, o volume do balão nessa altitude é:`,
   opts:['1,9 m³','4,8 m³','12 m³','15 m³','18,75 m³'], ans:2,
   hint:'Pressão e temperatura mudam juntas. Use a lei geral com T em kelvin; cuidado com a temperatura negativa em °C.',
@@ -651,7 +632,6 @@ const QL2 = [
   ],
   alt:'Dois efeitos opostos. A pressão caiu para 0,40 da inicial: o volume multiplica por 2,5 (6 → 15 m³). O resfriamento de 300 K para 240 K multiplica por 0,8: 15 · 0,8 = 12 m³.',
   warn:'Considerar só a queda de pressão dá 15 m³ (alternativa d); considerar só o resfriamento dá 4,8 m³ (alternativa b). Os dois efeitos acontecem juntos.',
-  mod:'Inédita (lei geral dos gases perfeitos, slides do capítulo 22).'
 },
 ];
 
@@ -710,7 +690,7 @@ const FIG3_10 = plot({ aria:'Diagrama pressão em função do volume com dois ca
 
 const QL3 = [
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Um gás recebe 500 J de calor e, ao mesmo tempo, realiza 200 J de trabalho sobre o meio externo. A variação da energia interna do gás é:`,
   opts:['−700 J','−300 J','200 J','300 J','700 J'], ans:3,
   hint:'Escreva a 1ª Lei e coloque os sinais: o gás recebe calor (Q positivo) e realiza trabalho (τ positivo).',
@@ -720,10 +700,9 @@ const QL3 = [
   ],
   alt:'Pense numa conta bancária: entram 500 (calor), saem 200 (trabalho que o gás “gasta” empurrando o meio). Ficam 300 guardados como energia interna.',
   warn:'Somar tudo (500 + 200 = 700 J, alternativa e) esquece que o trabalho realizado pelo gás é energia que <b>sai</b> dele.',
-  mod:'Inédita, inspirada nos Exemplos 1 (ENEM) e 2 (UERN) dos slides do capítulo 23.'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Um gás sofre uma transformação isocórica (volume constante) e recebe 360 J de calor do meio. O trabalho realizado pelo gás e a variação de sua energia interna são, respectivamente:`,
   opts:['360 J e zero','zero e 360 J','180 J e 180 J','zero e −360 J','−360 J e 360 J'], ans:1,
   hint:'Se o volume não muda, o gás empurra alguma coisa? Há trabalho?',
@@ -733,10 +712,9 @@ const QL3 = [
   ],
   alt:'Na isocórica, todo o calor recebido vira energia interna: a temperatura do gás sobe. É o que acontece num recipiente rígido aquecido.',
   warn:'A alternativa a troca as posições: não há trabalho porque o volume é constante, e é a energia interna que recebe os 360 J.',
-  mod:'Baseada no Exemplo 3 dos slides do capítulo 23 (isocórica com 240 J), com outro valor.'
 },
 {
-  src:'Inédita', nivel:'básico',
+  nivel:'básico',
   text:`Ao encher um pneu de bicicleta, a bomba esquenta. Suponha que o ar dentro dela seja comprimido tão rápido que não dá tempo de trocar calor com o ambiente (transformação adiabática).${FIG3_3}Para o ar dentro da bomba, nessa compressão:`,
   opts:['Q = 0 e τ &lt; 0, então ΔU &gt; 0 e a temperatura sobe','Q = 0 e τ &gt; 0, então ΔU &lt; 0 e a temperatura cai','Q &gt; 0 e τ = 0, então ΔU &gt; 0 e a temperatura sobe','Q &lt; 0 e τ &lt; 0, então ΔU = 0 e a temperatura fica','Q = 0 e τ = 0, então ΔU = 0 e a temperatura fica'], ans:0,
   hint:'Adiabática diz algo sobre Q. Compressão diz algo sobre o sinal de τ. Depois é só aplicar a 1ª Lei.',
@@ -747,10 +725,9 @@ const QL3 = [
   ],
   alt:'A energia que você gasta empurrando o êmbolo não tem para onde ir (não sai como calor) e fica no ar, aumentando sua energia interna.',
   warn:'Dizer que τ &gt; 0 (alternativa b) seria uma expansão. Na compressão o trabalho é negativo, e é por isso que ΔU fica positivo.',
-  mod:'Inédita (convenção de sinais da 1ª Lei, slides do capítulo 23).'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Em uma transformação isobárica, um gás perfeito, mantido a 3,0 · 10<sup>5</sup> N/m², recebe 2 000 J de calor, e seu volume aumenta de 2,0 L para 6,0 L. A variação da energia interna do gás é:<p>Dado: 1 L = 10<sup>−3</sup> m³.</p>`,
   opts:['800 J','1 200 J','2 000 J','3 200 J','−1,2 · 10⁶ J'], ans:0,
   hint:'Pressão constante: τ = p · ΔV, com o volume em m³. Depois use a 1ª Lei.',
@@ -761,10 +738,9 @@ const QL3 = [
   ],
   alt:'Dos 2 000 J que entraram, 1 200 J saíram como trabalho (o gás empurrou o êmbolo) e 800 J ficaram no gás, aumentando sua temperatura.',
   warn:'Deixar o volume em litros dá τ = 1,2 · 10⁶ J e uma energia interna negativa absurda (alternativa e). Pa · m³ é que dá joule.',
-  mod:'Baseada no Exemplo 4 dos slides do capítulo 23 (2,0 · 10⁵ N/m², 1 500 J, 3,0 L), com outros valores.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`O gráfico mostra as transformações AB e BC sofridas por um gás ideal.${FIG3_5}O trabalho realizado pelo gás de A até C é:`,
   opts:['80 J','100 J','140 J','160 J','200 J'], ans:2,
   hint:'O trabalho é a área sob a curva, até o eixo V. Divida em duas figuras: um trapézio (AB) e um retângulo (BC).',
@@ -775,10 +751,9 @@ const QL3 = [
   ],
   alt:'Divida o trecho AB num retângulo (20 · 2 = 40 J) e num triângulo (2 · 20 ÷ 2 = 20 J). Os 60 J do trapézio aparecem do mesmo jeito.',
   warn:'Calcular só o trecho a pressão constante dá 80 J (alternativa a). A área sob a reta inclinada também é trabalho.',
-  mod:'Baseada no Exemplo 1 (PUC-SP) da parte de trabalho dos slides do capítulo 23, com outros valores.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Um gás perfeito percorre o ciclo ABCDA representado no diagrama.${FIG3_6}Em cada ciclo, o gás:`,
   opts:['não troca calor, pois ΔU = 0','recebe 300 J de calor','recebe 600 J de calor','cede 600 J de calor','recebe 1 500 J de calor'], ans:2,
   hint:'Num ciclo, o gás volta ao estado inicial. O que isso diz sobre ΔU? E o trabalho é a área de dentro do ciclo.',
@@ -789,10 +764,9 @@ const QL3 = [
   ],
   alt:'É o funcionamento de uma máquina térmica: em cada volta, o calor que entra (em saldo) sai como trabalho.',
   warn:'ΔU = 0 não significa Q = 0 (alternativa a). Significa que todo o calor trocado em saldo vira trabalho: Q = τ.',
-  mod:'Baseada no Exemplo 1 da parte de transformações cíclicas dos slides do capítulo 23, com outros valores e perguntando o calor.'
 },
 {
-  src:'Inédita', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Uma amostra de 2,0 mols de hélio (gás monoatômico ideal) é aquecida de 300 K para 500 K. A variação de sua energia interna é:<p>Dado: R = 8,0 J/(mol·K).</p>`,
   opts:['2 400 J','3 200 J','4 800 J','8 000 J','12 000 J'], ans:2,
   hint:'Para gás monoatômico, ΔU = (3/2) · n · R · ΔT. Use a variação de temperatura, não a temperatura final.',
@@ -802,10 +776,9 @@ const QL3 = [
   ],
   alt:'Calcule U antes e depois: U₁ = 1,5 · 2 · 8 · 300 = 7 200 J e U₂ = 1,5 · 2 · 8 · 500 = 12 000 J. A diferença é 4 800 J.',
   warn:'Usar a temperatura final dá 12 000 J (alternativa e), que é a energia interna em 500 K, não a variação. Esquecer o fator 3/2 dá 3 200 J (alternativa b).',
-  mod:'Inédita (energia interna do gás monoatômico, slides do capítulo 23).'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Dois mols de um gás monoatômico ideal são aquecidos a pressão constante, de 300 K para 400 K. A quantidade de calor recebida pelo gás é:<p>Dado: R = 8,0 J/(mol·K).</p>`,
   opts:['800 J','1 600 J','2 400 J','4 000 J','5 600 J'], ans:3,
   hint:'Você não tem p nem V, mas tem n e ΔT. A pressão constante, p · ΔV = n · R · ΔT. Depois some a energia interna.',
@@ -816,10 +789,9 @@ const QL3 = [
   ],
   alt:'Para o gás monoatômico a pressão constante, Q = (5/2) · n · R · ΔT: uma parte (3/2) aquece o gás e outra (1) vira trabalho.',
   warn:'Calcular só a energia interna dá 2 400 J (alternativa c). A pressão constante o gás também se expande, e parte do calor sai como trabalho.',
-  mod:'Inédita (1ª Lei com Clapeyron e energia interna, slides dos capítulos 22 e 23).'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Um gás sofre a transformação cíclica ABCA indicada no diagrama.${FIG3_9}Em cada ciclo, o trabalho do gás e o calor trocado são:`,
   opts:['τ = +80 J; recebe 80 J de calor','τ = −80 J; cede 80 J de calor','τ = −160 J; cede 160 J de calor','τ = 0; não troca calor','τ = +160 J; recebe 160 J de calor'], ans:1,
   hint:'O trabalho é a área do triângulo. O sinal depende do sentido em que o ciclo é percorrido.',
@@ -830,10 +802,9 @@ const QL3 = [
   ],
   alt:'Compare a expansão AB (o gás realiza 200 · 0,4 = 80 J) com a compressão BC (o meio realiza sobre o gás a área do trapézio, 160 J). Saldo: 80 − 160 = −80 J.',
   warn:'Esquecer o sentido do ciclo leva à alternativa a. E usar o retângulo inteiro (0,4 · 400 = 160 J) em vez do triângulo leva à alternativa c ou e.',
-  mod:'Inédita, inspirada no Exemplo 2 (UFG) dos slides do capítulo 23, com o ciclo em sentido anti-horário.'
 },
 {
-  src:'Inédita', nivel:'avançado',
+  nivel:'avançado',
   text:`Um gás ideal pode ir do estado A ao estado C por dois caminhos diferentes, mostrados no diagrama.${FIG3_10}<p>Considere as afirmações:</p><p>I. A variação da energia interna é a mesma nos dois caminhos.<br>II. O trabalho realizado pelo gás é o mesmo nos dois caminhos.<br>III. O gás recebe mais calor no caminho 1 do que no caminho 2.</p><p>Está correto o que se afirma em:</p>`,
   opts:['I, apenas','II, apenas','I e III, apenas','II e III, apenas','I, II e III'], ans:2,
   hint:'A energia interna depende só do estado (início e fim). O trabalho depende da área sob o caminho. E o calor sai da 1ª Lei.',
@@ -844,7 +815,6 @@ const QL3 = [
   ],
   alt:'ΔU é como a diferença de altitude entre duas cidades: não depende da estrada. Trabalho e calor são como a distância percorrida: dependem do caminho.',
   warn:'É comum achar que, se o começo e o fim são iguais, tudo é igual (alternativa e). Só ΔU depende apenas do início e do fim; trabalho e calor dependem do caminho.',
-  mod:'Inédita (trabalho como área no gráfico p × V e 1ª Lei, slides do capítulo 23).'
 },
 ];
 
@@ -879,7 +849,7 @@ const FIG4_9 = plot({ aria:'Diagrama pressão em função do volume. O processo 
 
 const QL4 = [
 {
-  src:'Estilo ENEM', nivel:'básico',
+  nivel:'básico',
   text:`Num dia de verão, ao meio-dia, um banhista percebe que a areia da praia está quente a ponto de queimar os pés, enquanto a água do mar continua fresca, embora as duas tenham recebido a luz do Sol durante toda a manhã.<p>A propriedade física que melhor explica essa diferença é que:</p>`,
   opts:['a água tem calor específico maior e precisa de mais energia para esquentar','a areia, por ser mais escura, recebe do Sol muito mais energia do que a água','a água armazena o frio da noite e o libera aos poucos durante o dia todo','a areia tem calor específico maior e por isso esquenta mais depressa que a água','a água transfere todo o calor recebido para o fundo do mar de forma instantânea'], ans:0,
   hint:'Pense em Q = m · c · ΔT. Para a mesma energia recebida por grama, quem varia mais a temperatura?',
@@ -889,10 +859,9 @@ const QL4 = [
   ],
   alt:'O mesmo explica por que, à noite, a areia esfria rápido e a água continua morna: a água “resiste” a mudar de temperatura nos dois sentidos.',
   warn:'Inverter a ideia (alternativa d) é o erro mais comum: calor específico maior significa esquentar <b>menos</b>, não mais depressa. E “frio armazenado” (alternativa c) não existe.',
-  mod:'Inédita, no estilo ENEM (situação do cotidiano e explicação conceitual).'
 },
 {
-  src:'Estilo ENEM', nivel:'básico',
+  nivel:'básico',
   text:`O rótulo de um desodorante aerossol traz o aviso: “Não expor a temperaturas superiores a 50 °C. Não perfurar nem incinerar, mesmo vazio”. Considere que, num dia ameno, a 27 °C, o gás dentro da lata está a 3,0 atm. Se a lata for esquecida no painel de um carro ao sol e atingir 87 °C, a pressão do gás, considerado ideal, passará a ser:`,
   opts:['2,5 atm','3,0 atm','3,6 atm','6,0 atm','9,7 atm'], ans:2,
   hint:'A lata é rígida: o volume não muda. Que lei vale nesse caso? E em que escala deve estar a temperatura?',
@@ -903,10 +872,9 @@ const QL4 = [
   ],
   alt:'A temperatura absoluta subiu 20% (de 300 K para 360 K); a pressão sobe os mesmos 20%. Por isso o fabricante limita a temperatura: a pressão poderia superar o que a lata suporta.',
   warn:'Usar °C dá 3,0 · 87/27 ≈ 9,7 atm (alternativa e). A proporção só funciona com temperatura absoluta.',
-  mod:'Inédita, no estilo ENEM (texto de rótulo como contexto).'
 },
 {
-  src:'Estilo UFRGS', nivel:'básico',
+  nivel:'básico',
   text:`Assinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.<p>Quando uma amostra de gás ideal é comprimida lentamente, mantendo-se a temperatura constante, sua pressão ........ e sua energia interna ........ .</p>`,
   opts:['aumenta – aumenta','aumenta – não se altera','diminui – diminui','diminui – não se altera','não se altera – aumenta'], ans:1,
   hint:'Primeira lacuna: lei de Boyle-Mariotte. Segunda lacuna: de que grandeza depende a energia interna de um gás ideal?',
@@ -916,10 +884,9 @@ const QL4 = [
   ],
   alt:'Pela 1ª Lei: ΔU = 0, então Q = τ. Como o gás é comprimido (τ &lt; 0), ele <b>cede</b> calor ao ambiente na mesma quantidade do trabalho recebido.',
   warn:'Achar que a energia interna aumenta porque “o gás recebeu trabalho” (alternativa a) esquece que, na isotérmica, essa energia sai como calor.',
-  mod:'Inédita, no formato de lacunas típico da UFRGS.'
 },
 {
-  src:'ENEM 2020 (adaptada)', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Peixes ornamentais tropicais precisam de água em temperatura estável. Num aquário de 40 L, um aquecedor de 50 W, controlado por termostato, repõe exatamente a energia que a água perde para o ambiente, que pode ser considerada constante.<p>Se o aquecedor ficar desligado por 1 hora, a redução da temperatura da água será de aproximadamente:</p><p>Dados: calor específico da água = 4,0 kJ/(kg·K); densidade da água = 1 kg/L.</p>`,
   opts:['0,02 °C','0,45 °C','1,1 °C','2,3 °C','4,5 °C'], ans:2,
   hint:'Se o aquecedor de 50 W repõe a perda, a água perde energia a 50 J por segundo. Quantos segundos tem 1 hora?',
@@ -930,10 +897,9 @@ const QL4 = [
   ],
   alt:'Variação de 1 K é igual a variação de 1 °C, por isso o calor específico em J/(kg·K) dá o resultado direto em °C.',
   warn:'Usar 60 (minutos) como se fosse segundos dá cerca de 0,02 °C (alternativa a). Potência em watts pede tempo em segundos.',
-  mod:'Original: ENEM 2020 (aquário de 50 L, aquecedor de 50 W, resposta 0,9 °C). Modificada: aquário de 40 L e novas alternativas.'
 },
 {
-  src:'ENEM 2019 (adaptada)', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Numa aula sobre calorimetria, uma professora queimou 5,0 g de amendoim para aquecer 400 g de água, inicialmente a 20 °C, num recipiente que reduz as perdas de calor. Pela tabela nutricional do amendoim e pela temperatura final da água, concluiu que 40% da energia disponível foi aproveitada.${TAB4_5}<p>Considerando o calor específico da água igual a 1 cal/(g·°C), a temperatura da água ao final do experimento foi de:</p>`,
   opts:['30 °C','32 °C','50 °C','80 °C','95 °C'], ans:2,
   hint:'Primeiro descubra a energia de 5,0 g de amendoim pela tabela. Depois pegue só 40% dela e lembre que 1 kcal = 1 000 cal.',
@@ -944,10 +910,9 @@ const QL4 = [
   ],
   alt:'É assim que se mede o valor energético dos alimentos: queimando uma amostra e medindo quanto ela aquece uma massa conhecida de água (um calorímetro).',
   warn:'A pergunta é a temperatura <b>final</b>, não a variação: 30 °C (alternativa a) é ΔT. Usar toda a energia, sem os 40%, dá 95 °C (alternativa e).',
-  mod:'Original: ENEM 2019 (2,5 g de castanha de caju, 350 g de água, 50% de aproveitamento, resposta 45 °C). Modificada: amendoim, nova tabela, 400 g de água e 40%.'
 },
 {
-  src:'UFRGS 2024 (adaptada)', nivel:'intermediário',
+  nivel:'intermediário',
   text:`O gráfico mostra o calor Q absorvido por dois corpos, X e Y, de <b>mesma massa</b>, em função da temperatura absoluta T.${FIG4_6}<p>Assinale a alternativa que preenche corretamente as lacunas, na ordem.</p><p>A capacidade térmica de X é ........ J/K, a de Y é ........ J/K, e a razão c<sub>X</sub>/c<sub>Y</sub> entre seus calores específicos é ........ .</p>`,
   opts:['60 – 20 – 3','20 – 60 – 1/3','60 – 20 – 1/3','1 200 – 400 – 3','3,75 – 1,25 – 3'], ans:0,
   hint:'Capacidade térmica é Q dividido pela variação de temperatura (a inclinação da reta). Com massas iguais, como se comparam os calores específicos?',
@@ -957,10 +922,9 @@ const QL4 = [
   ],
   alt:'No gráfico Q × T, a capacidade térmica é a inclinação da reta. A reta de X é três vezes mais inclinada que a de Y.',
   warn:'Dividir Q pela temperatura final (1 200 ÷ 320) dá 3,75 J/K (alternativa e). Capacidade térmica usa a <b>variação</b> de temperatura.',
-  mod:'Original: UFRGS 2024 (gráfico Q × T de dois corpos de mesma massa; capacidades térmicas e razão dos calores específicos). Modificada: gráfico e valores novos.'
 },
 {
-  src:'Estilo ENEM', nivel:'intermediário',
+  nivel:'intermediário',
   text:`Uma massa de ar úmido sobe pela encosta de uma montanha. À medida que sobe, a pressão do ar ao redor diminui e a massa de ar se expande tão rapidamente que praticamente não troca calor com a vizinhança. O resfriamento resultante faz o vapor de água condensar, formando nuvens.<p>Para essa massa de ar, durante a subida:</p>`,
   opts:['Q = 0, τ &gt; 0 e ΔU &lt; 0: a temperatura diminui','Q = 0, τ &lt; 0 e ΔU &gt; 0: a temperatura aumenta','Q &lt; 0, τ = 0 e ΔU &lt; 0: a temperatura diminui','Q &gt; 0, τ &gt; 0 e ΔU = 0: a temperatura fica','Q = 0, τ = 0 e ΔU = 0: a temperatura fica'], ans:0,
   hint:'“Não troca calor” define Q. “Se expande” define o sinal de τ. A 1ª Lei faz o resto.',
@@ -970,10 +934,9 @@ const QL4 = [
   ],
   alt:'É o inverso da bomba de encher pneu: lá o ar é comprimido e esquenta; aqui o ar se expande e esfria. Em ambos, sem troca de calor.',
   warn:'Achar que esfria porque “perdeu calor” (alternativa c) contradiz o enunciado: não há troca de calor. O resfriamento vem do trabalho que o próprio ar realiza.',
-  mod:'Inédita, no estilo ENEM (fenômeno natural explicado pela 1ª Lei).'
 },
 {
-  src:'Estilo ENEM', nivel:'avançado',
+  nivel:'avançado',
   text:`Mergulhadores aprendem que não devem subir prendendo a respiração, pois o ar dos pulmões se expande durante a subida. A tabela mostra a pressão total sobre um mergulhador em algumas profundidades e a temperatura da água no fundo e na superfície de um lago (a profundidade 0 é a superfície).${TAB4_8}<p>Uma bolha de ar de 1,4 cm³ se solta do fundo, a 30 m, e sobe até a superfície. Considerando o ar como gás ideal, sem variação na quantidade de gás e com a bolha sempre à temperatura da água, o volume da bolha na superfície é:</p>`,
   opts:['0,35 cm³','1,5 cm³','5,6 cm³','6,0 cm³','21,6 cm³'], ans:3,
   hint:'Mudam a pressão (de 4,0 atm para 1,0 atm) e a temperatura (de 7 °C para 27 °C). Use a lei geral, com T em kelvin.',
@@ -984,10 +947,9 @@ const QL4 = [
   ],
   alt:'Dois efeitos: a pressão cai a um quarto (o volume quadruplica: 5,6 cm³) e a temperatura absoluta sobe de 280 K para 300 K (mais 300/280). 5,6 · 300/280 = 6,0 cm³.',
   warn:'Considerar só a pressão dá 5,6 cm³ (alternativa c). Usar as temperaturas em °C dá 21,6 cm³ (alternativa e).',
-  mod:'Inédita, no estilo ENEM (texto de contexto e tabela de dados, com informação a selecionar).'
 },
 {
-  src:'UFRGS 2017 (adaptada)', nivel:'avançado',
+  nivel:'avançado',
   text:`No diagrama p × V, uma amostra de gás ideal vai do estado i ao estado f por dois processos diferentes, I e II.${FIG4_9}<p>Assinale a alternativa que preenche corretamente as lacunas, na ordem.</p><p>A variação da energia interna é ........ nos dois processos; o trabalho realizado pelo gás no processo I é ........ que no processo II; e o calor recebido no processo I é ........ que no processo II.</p>`,
   opts:['igual – maior – maior','igual – menor – menor','igual – maior – igual','diferente – maior – maior','diferente – igual – menor'], ans:0,
   hint:'A energia interna só depende dos estados i e f. O trabalho é a área sob cada caminho. O calor vem de Q = τ + ΔU.',
@@ -998,10 +960,9 @@ const QL4 = [
   ],
   alt:'Nem é preciso calcular as áreas: o caminho I passa sempre “por cima” do II, então a área sob ele é maior.',
   warn:'ΔU igual não quer dizer calor igual (alternativa c). O calor depende do caminho, como o trabalho.',
-  mod:'Original: UFRGS 2017 (dois processos entre os mesmos estados num diagrama p × V; lacunas sobre ΔU e trabalho). Modificada: gráfico novo e terceira lacuna sobre o calor.'
 },
 {
-  src:'Estilo UFRGS', nivel:'avançado',
+  nivel:'avançado',
   text:`Uma amostra de gás ideal monoatômico recebe 500 J de calor numa transformação a pressão constante.<p>Assinale a alternativa que preenche corretamente as lacunas, na ordem.</p><p>Nessa transformação, o trabalho realizado pelo gás é de ........ e a variação de sua energia interna é de ........ .</p>`,
   opts:['200 J – 300 J','300 J – 200 J','500 J – zero','zero – 500 J','250 J – 250 J'], ans:0,
   hint:'Para o gás monoatômico a pressão constante, τ = nRΔT e ΔU = (3/2) nRΔT. Que fração de Q vai para cada um?',
@@ -1011,7 +972,6 @@ const QL4 = [
   ],
   alt:'De cada 5 partes de calor que entram, 2 viram trabalho de expansão e 3 ficam no gás, aumentando sua temperatura. Confira: 200 + 300 = 500 J.',
   warn:'Trocar as frações dá 300 J – 200 J (alternativa b). E 500 J – zero (alternativa c) seria uma isotérmica, não uma isobárica.',
-  mod:'Inédita, no formato de lacunas típico da UFRGS.'
 },
 ];
 
@@ -1046,7 +1006,7 @@ const SITE = {
           tools: TOOLS3, Q: QL3 },
         { id: 'enem-ufrgs', key: 'ldv2-termo-enem-ufrgs-v1', num: 4,
           titulo: 'Revisão no estilo ENEM e UFRGS',
-          resumo: `${LIVRO} · Capítulos 20, 22 e 23. Questões de vestibular adaptadas e inéditas no formato do ENEM e da UFRGS.`,
+          resumo: `${LIVRO} · Capítulos 20, 22 e 23. Questões no formato do ENEM e da UFRGS, misturando os três capítulos.`,
           intro: `Mistura calorimetria, gases e 1ª Lei, com textos de contexto (ENEM) e lacunas (UFRGS).`,
           tools: TOOLS4, Q: QL4 }
       ]
@@ -1354,7 +1314,7 @@ function renderQuestion(i){
   <article class="card">
     <div class="qhead">
       <div class="qnum">Questão ${i+1} <span>/ ${Q.length}</span></div>
-      <span class="row" style="gap:6px">${q.nivel ? `<span class="lvl lvl-${lvKey(q.nivel)}">Nível ${q.nivel}</span>` : ''}<span class="src">${q.src}</span></span>
+      <span class="row" style="gap:6px">${q.nivel ? `<span class="lvl lvl-${lvKey(q.nivel)}">Nível ${q.nivel}</span>` : ''}</span>
     </div>
     <div class="stmt">${q.text}</div>
     <ul class="opts">${opts}</ul>
