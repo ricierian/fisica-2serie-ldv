@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Física 2ª Série LDV</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#23395B">
+<meta name="description" content="Listas interativas de Física da 2ª série do Colégio Leonardo da Vinci Alfa, com dica e resolução passo a passo.">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Física 2ª">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+--bg:#EDF0F3; --surface:#FFFFFF; --ink:#141B22; --muted:#55616D; --line:#D2D9E0;
+--sign:#1D4E89; --sign-ink:#FFFFFF; --lane:#F2B705; --road:#2A3037; --road-ink:#F3F5F7;
+--ok:#1B7A45; --ok-bg:#E2F2E8; --bad:#B23A25; --bad-bg:#FAE8E3;
+--tip-bg:#FFF5D6; --tip-ink:#5E4500; --mark-ok:#2FA463; --mark-bad:#D9553B;
+--eq-bg:#F3F5F8;
+--f-display:'Barlow Condensed','Arial Narrow',sans-serif;
+--f-body:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
+--f-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]){
+--bg:#0F141A; --surface:#17202A; --ink:#E6ECF2; --muted:#98A5B2; --line:#2A3542;
+--sign:#2C63A8; --sign-ink:#FFFFFF; --lane:#F2C230; --road:#0A0E12; --road-ink:#F3F5F7;
+--ok:#5CCB8D; --ok-bg:#15301F; --bad:#F28C74; --bad-bg:#3A1C16;
+--tip-bg:#2D2610; --tip-ink:#F2D27A; --mark-ok:#2FA463; --mark-bad:#D9553B;
+--eq-bg:#111922; color-scheme:dark;
+}
+}
+:root[data-theme="dark"]{
+--bg:#0F141A; --surface:#17202A; --ink:#E6ECF2; --muted:#98A5B2; --line:#2A3542;
+--sign:#2C63A8; --sign-ink:#FFFFFF; --lane:#F2C230; --road:#0A0E12; --road-ink:#F3F5F7;
+--ok:#5CCB8D; --ok-bg:#15301F; --bad:#F28C74; --bad-bg:#3A1C16;
+--tip-bg:#2D2610; --tip-ink:#F2D27A; --mark-ok:#2FA463; --mark-bad:#D9553B;
+--eq-bg:#111922; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:18px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible{outline:3px solid var(--lane);outline-offset:2px}
+.plate{background:var(--sign);color:var(--sign-ink);border-radius:12px;padding:6px}
+.plate-inner{border:2px solid var(--sign-ink);border-radius:8px;padding:14px 18px 16px;display:flex;flex-direction:column;gap:2px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.plate h1{font-family:var(--f-display);font-weight:700;font-size:clamp(38px,9vw,52px);line-height:1;margin:6px 0 0;letter-spacing:.01em;text-wrap:balance}
+.plate p{margin:4px 0 0;font-size:17px;opacity:.95}
+.road{background:var(--road);color:var(--road-ink);border-radius:10px;padding:10px 10px 12px;position:relative;overflow:hidden}
+.road-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.85;margin-bottom:6px}
+.lane{position:relative;height:26px}
+.lane::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,var(--lane) 0 14px,transparent 14px 26px);opacity:.9}
+.car{position:absolute;top:50%;transform:translate(-50%,-50%);transition:left .5s ease;width:34px;height:20px}
+.marks{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.mk{height:32px;border-radius:5px;border:1.5px solid rgba(243,245,247,.35);background:transparent;color:var(--road-ink);font-family:var(--f-mono);font-size:13px;font-weight:600;padding:0;min-width:0}
+.mk.ok{background:var(--mark-ok);border-color:var(--mark-ok)}
+.mk.bad{background:var(--mark-bad);border-color:var(--mark-bad)}
+.mk.cur{outline:2.5px solid var(--lane);outline-offset:1px}
+.tools{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.tools summary{padding:14px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tools summary::-webkit-details-marker{display:none}
+.tools summary .chev{font-family:var(--f-mono);color:var(--muted);transition:transform .2s}
+.tools[open] summary .chev{transform:rotate(90deg)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px;padding:0 18px 18px}
+.tool{background:var(--eq-bg);border-radius:8px;padding:12px 14px;min-width:0}
+.tool h4{margin:0 0 6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tool div{font-size:16px;line-height:1.9}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.qnum{font-family:var(--f-display);font-size:26px;font-weight:700;line-height:1}
+.qnum span{color:var(--muted);font-weight:600}
+.src{font-family:var(--f-mono);font-size:12.5px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.stmt{margin:0;font-size:18px;line-height:1.6}
+.opts{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--sign)}
+.opt:disabled{cursor:default}
+.letter{flex:none;width:30px;height:30px;border-radius:6px;display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:14px;background:var(--eq-bg);color:var(--ink)}
+.opt.is-correct{border-color:var(--ok);background:var(--ok-bg)}
+.opt.is-correct .letter{background:var(--ok);color:var(--surface)}
+.opt.is-wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt.is-wrong .letter{background:var(--bad);color:var(--surface)}
+.opt.is-dim{opacity:.55}
+.opt .tag{margin-left:auto;font-size:13px;font-weight:700;white-space:nowrap}
+.opt.is-correct .tag{color:var(--ok)}
+.opt.is-wrong .tag{color:var(--bad)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border-radius:9px;padding:11px 18px;font-weight:700;border:1.5px solid var(--line);background:var(--surface)}
+.btn:hover{border-color:var(--sign)}
+.btn.primary{background:var(--sign);color:var(--sign-ink);border-color:var(--sign)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--muted);padding-inline:8px;text-decoration:underline;text-underline-offset:3px}
+.spacer{flex:1}
+.tip{background:var(--tip-bg);color:var(--tip-ink);border-radius:10px;padding:12px 16px;font-size:16px}
+.tip b{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.feedback{border-radius:10px;padding:12px 16px;font-weight:700;display:flex;gap:10px;align-items:center}
+.feedback.good{background:var(--ok-bg);color:var(--ok)}
+.feedback.bad{background:var(--bad-bg);color:var(--bad)}
+.feedback .ico{font-family:var(--f-mono);font-size:18px}
+.sol{border-top:2px dashed var(--line);padding-top:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.sol h3{font-family:var(--f-display);font-size:28px;margin:0;line-height:1}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;counter-reset:st}
+.step{display:grid;grid-template-columns:30px 1fr;gap:12px;counter-increment:st;min-width:0}
+.step::before{content:counter(st);width:30px;height:30px;border-radius:50%;background:var(--sign);color:var(--sign-ink);display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:14px}
+.step-body{min-width:0}
+.step-label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:4px 0 4px}
+.step-body p{margin:0 0 8px}
+.step-body p:last-child{margin-bottom:0}
+.step-body ul{margin:0;padding-left:20px}
+.eq{background:var(--eq-bg);border-radius:8px;padding:10px 14px;margin:8px 0;overflow-x:auto;white-space:nowrap;font-size:17px;line-height:2.3;font-variant-numeric:tabular-nums}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.25;margin:0 .15em}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 .3em 1px}
+.frac>span:last-child{padding:2px .3em 0}
+.hl{background:var(--tip-bg);color:var(--tip-ink);padding:0 .25em;border-radius:3px;font-weight:700}
+.answer{display:flex;align-items:center;gap:12px;background:var(--ok-bg);color:var(--ok);border-radius:10px;padding:12px 16px;font-weight:700}
+.answer .letter{background:var(--ok);color:var(--surface)}
+.alt{border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;font-size:16px}
+.alt b.lbl,.warn b.lbl{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px}
+.alt b.lbl{color:var(--sign)}
+.warn{background:var(--bad-bg);border-radius:10px;padding:12px 16px;font-size:16px}
+.warn b.lbl{color:var(--bad)}
+.tblwrap{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:15px;min-width:100%}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:center;white-space:nowrap}
+th{background:var(--eq-bg);font-weight:700}
+td.meet{background:var(--ok-bg);color:var(--ok);font-weight:700}
+.intro p{margin:0}
+.intro ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.score{font-family:var(--f-display);font-size:72px;line-height:.9;font-weight:700}
+.score span{color:var(--muted);font-size:40px}
+.reslist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:8px}
+.res{display:flex;align-items:center;gap:8px;width:100%;border:1.5px solid var(--line);border-radius:9px;padding:9px 12px;background:var(--surface);text-align:left}
+.res:hover{border-color:var(--sign)}
+.res .st{margin-left:auto;font-family:var(--f-mono);font-weight:600;font-size:13px}
+.res.ok .st{color:var(--ok)} .res.bad .st{color:var(--bad)} .res.none .st{color:var(--muted)}
+.small{font-size:14px;color:var(--muted)}
+@media (max-width:480px){
+body{font-size:16px}
+.card{padding:18px 16px}
+.stmt{font-size:17px}
+.mk{font-size:11.5px;height:30px}
+.marks{gap:3px}
+}
+@media (prefers-reduced-motion: reduce){ .car,.tools summary .chev{transition:none} }
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.04em;color:var(--muted)}
+.crumbs button{background:none;border:0;padding:4px 2px;color:var(--sign);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.crumbs .sep{opacity:.6}
+.crumbs .here{color:var(--ink);font-weight:600}
+.sect-label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0}
+.cards{display:flex;flex-direction:column;gap:12px}
+.tile{display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;transition:border-color .15s,transform .15s}
+.tile:hover{border-color:var(--sign)}
+.tile:active{transform:scale(.99)}
+.tile .ico{width:52px;height:52px;border-radius:10px;background:var(--sign);color:var(--sign-ink);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:24px;border:2px solid var(--sign-ink);outline:3px solid var(--sign)}
+.tile .ico.lane{background:var(--road);color:var(--lane);outline-color:var(--road);border-color:var(--lane);font-family:var(--f-mono);font-size:16px}
+.tile .tt{display:block;margin:0;font-family:var(--f-display);font-size:24px;line-height:1.05}
+.tile .ds{display:block;margin:4px 0 0;font-size:15px;color:var(--muted);line-height:1.4}
+.tile .go{font-family:var(--f-mono);font-weight:600;color:var(--sign);font-size:20px}
+.tile .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-family:var(--f-mono);font-size:11.5px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.chip.ok{border-color:var(--ok);color:var(--ok)}
+.note{font-size:14.5px;color:var(--muted);margin:0}
+@media (max-width:480px){.tile{grid-template-columns:44px 1fr auto;padding:14px}.tile .ico{width:44px;height:44px;font-size:20px}.tile .tt{display:block;font-size:21px}}
+:root{--lvi-bg:#E1EAF6;--lvi-ink:#1D4E89;--lva-bg:#2A3037;--lva-ink:#F2B705;--plot2:#B4540A;--lvb-line:#F2B705;--lvi-line:#8DB6EA;--lva-line:#F3F5F7}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--lvi-bg:#1A2B44;--lvi-ink:#9CC0EE;--lva-bg:#0A0E12;--lva-ink:#F2C230;--plot2:#F2A65A}}
+:root[data-theme="dark"]{--lvi-bg:#1A2B44;--lvi-ink:#9CC0EE;--lva-bg:#0A0E12;--lva-ink:#F2C230;--plot2:#F2A65A}
+.lvl{font-family:var(--f-mono);font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;letter-spacing:.02em}
+.lvl-b{background:var(--tip-bg);color:var(--tip-ink)}
+.lvl-i{background:var(--lvi-bg);color:var(--lvi-ink)}
+.lvl-a{background:var(--lva-bg);color:var(--lva-ink);box-shadow:inset 0 0 0 1px var(--lva-ink)}
+.lvrow{display:grid;gap:4px;margin-top:6px}
+.lvrow span{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding-top:4px;border-top:2px solid;color:var(--road-ink);opacity:.85;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lv-b{border-color:var(--lvb-line)}.lv-i{border-color:var(--lvi-line)}.lv-a{border-color:var(--lva-line)}
+.stmt{display:flex;flex-direction:column;gap:12px}
+.fig{margin:4px 0 0;background:var(--eq-bg);border-radius:10px;padding:10px 8px 6px;max-width:400px;width:100%}
+.plot{display:block;width:100%;height:auto}
+.plot .pt{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.plot .pt-strong{fill:var(--ink);font-weight:600}
+.plot .pt-lab{font-size:14px;font-weight:600}
+.plot .pt-car{fill:#FFFFFF;font-size:12px;font-weight:600}
+.step-body .fig{margin:8px 0}
+.fld{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15px}
+.fld input,.fld select{font:inherit;font-weight:400;font-size:17px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.fld input:focus,.fld select:focus{outline:3px solid var(--lane);outline-offset:1px;border-color:var(--sign)}
+#loginErro{color:var(--bad);min-height:1em;margin:0}
+.fld-dica{font-weight:400;color:var(--muted);font-size:13.5px}
+.emailbox{display:flex;flex-direction:column;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.emailbox:focus-within{outline:3px solid var(--lane);outline-offset:1px;border-color:var(--sign)}
+.fld .emailbox input{border:0;border-radius:0;outline:none}
+.fld .emailbox input:focus{outline:none}
+.emailbox .dom{font-size:14px;font-weight:700;color:var(--muted);background:var(--eq-bg);padding:9px 14px;border-top:1px solid var(--line);overflow-wrap:anywhere}
+.note b{overflow-wrap:anywhere}
+/* ===== Identidade por tema (estilos herdados do app da 2ª série) ===== */
+:root{--sign:#23395B;--ray:#B85C00}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sign:#3A5A8C;--ray:#FFC24A}}
+:root[data-theme="dark"]{--sign:#3A5A8C;--ray:#FFC24A}
+.th-ondas, :root.th-ondas{--sign:#0B6477;--lane:#FF9466;--road:#0B2830;--road-ink:#EAF5F7;--lvb-line:#FF9466}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]).th-ondas, :root:not([data-theme="light"]) .th-ondas{--sign:#137C91;--lane:#FFA27A;--road:#06191E}}
+:root[data-theme="dark"].th-ondas, :root[data-theme="dark"] .th-ondas{--sign:#137C91;--lane:#FFA27A;--road:#06191E}
+.th-optica, :root.th-optica{--sign:#4A3A8C;--lane:#FFCF4D;--road:#171230;--road-ink:#F1EEFA;--lvb-line:#FFCF4D}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]).th-optica, :root:not([data-theme="light"]) .th-optica{--sign:#5D4BAE;--lane:#FFD666;--road:#0D0A1E}}
+:root[data-theme="dark"].th-optica, :root[data-theme="dark"] .th-optica{--sign:#5D4BAE;--lane:#FFD666;--road:#0D0A1E}
+.plate{position:relative;overflow:hidden}
+.plate-inner{position:relative;z-index:1}
+.plate-deco{position:absolute;right:10px;bottom:8px;width:min(44%,220px);color:var(--sign-ink);opacity:.32;pointer-events:none}
+.plate-deco svg{display:block;width:100%;height:auto}
+.th-optica .plate-deco{opacity:.55}
+/* Termologia: tons quentes */
+.th-termo, :root.th-termo{--sign:#A23B12;--lane:#FF8A3D;--road:#2A140C;--road-ink:#FFF1E8;--lvb-line:#FF8A3D}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]).th-termo, :root:not([data-theme="light"]) .th-termo{--sign:#B8461A;--lane:#FF9A55;--road:#170A05}}
+:root[data-theme="dark"].th-termo, :root[data-theme="dark"] .th-termo{--sign:#B8461A;--lane:#FF9A55;--road:#170A05}
+.th-termo .plate-deco{opacity:.5}
+/* Trilha termômetro: o mercúrio sobe a cada questão */
+.ln-termo .ln-tubo{position:absolute;left:0;right:0;top:50%;height:14px;transform:translateY(-50%);border:2px solid var(--road-ink);border-radius:8px;opacity:.35}
+.ln-termo .ln-fill{position:absolute;left:3px;right:3px;top:50%;height:8px;transform:translateY(-50%);border-radius:4px;background:linear-gradient(90deg,#FFC14D,var(--lane) 45%,#E5322D);box-shadow:0 0 6px var(--lane)}
+.ln-termo .ln-src{width:20px;height:20px;border-radius:50%;background:#FFC14D;left:-16px;box-shadow:0 0 6px #FFC14D}
+/* Trilhas de progresso: onda numa corda e raio de luz */
+.lane2{position:relative;height:30px;margin:0 6px 0 22px;--p:0}
+.lane2 svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.lane2 .ln-base line{stroke:var(--road-ink);stroke-width:2;opacity:.3;vector-effect:non-scaling-stroke}
+.ln-raio .ln-base line{stroke-dasharray:4 6}
+.lane2 .ln-fill{clip-path:inset(0 100% 0 0);transition:clip-path .6s ease}
+.ln-onda .ln-fill path{fill:none;stroke:var(--lane);stroke-width:3;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.ln-raio .ln-fill line{stroke:var(--lane);stroke-width:4;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 3px var(--lane))}
+.ln-head{position:absolute;top:50%;left:calc(var(--p) * 1%);transition:left .6s ease}
+.ln-onda .ln-head{width:12px;height:12px;border-radius:50%;background:var(--lane);transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(255,255,255,.12)}
+.ln-raio .ln-head{width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:12px solid var(--lane);transform:translate(-30%,-50%)}
+.ln-src{position:absolute;left:-18px;top:50%;transform:translateY(-50%)}
+.ln-onda .ln-src{width:4px;height:24px;border-radius:2px;background:var(--road-ink);opacity:.7}
+.ln-raio .ln-src{width:12px;height:12px;border-radius:50%;background:var(--lane);box-shadow:0 0 8px 2px var(--lane)}
+@media (prefers-reduced-motion: reduce){.lane2 .ln-fill,.ln-head{transition:none}}
+/* Revisão do professor */
+.mod{border:1.5px dashed var(--muted);border-radius:10px;padding:10px 14px;font-size:15px;color:var(--muted)}
+.mod b{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px;color:var(--ink)}
+.tbl-txt td,.tbl-txt th{white-space:normal}
+.tbl-txt table{min-width:0;width:100%}
+.tbl-esq td:last-child{text-align:left}
+.tbl-esq td{vertical-align:top}
+@media (max-width:480px){.tbl-txt table{font-size:13.5px}.tbl-txt td,.tbl-txt th{padding:6px 7px}}
+:root.th-ondas .plate-inner, :root.th-optica .plate-inner, :root.th-termo .plate-inner, .th-ondas .plate .plate-inner, .th-optica .plate .plate-inner, .th-termo .plate .plate-inner{padding-bottom:50px}
+.plate-deco{width:150px;bottom:12px;right:14px}
+/* Telas grandes (projetor): um pouco mais largo e maior */
+@media (min-width:1100px){.wrap{max-width:880px}body{font-size:19px}.stmt{font-size:20px}.fig{max-width:520px}}
+
+.install{border-color:var(--sign)}
+.install p{margin:0}
+@media (display-mode: standalone){.wrap{padding-top:max(20px,env(safe-area-inset-top,0px))}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="plate"><div class="plate-deco" id="deco" aria-hidden="true"></div><div class="plate-inner"><div class="eyebrow" id="eyebrow"></div><h1 id="ptitle"></h1><p id="psub"></p></div></header>
+<nav class="crumbs" id="crumbs" aria-label="Você está em" hidden></nav>
+<main id="view" style="display:flex;flex-direction:column;gap:18px"></main>
+</div>
+<script>
+/* ===== Ajudantes usados em todas as listas ===== */
+const f = (n, d) => `<span class="frac"><span>${n}</span><span>${d}</span></span>`;
+const L = ['A','B','C','D','E'];
+const nf = v => String(v).replace('.', ',');
+let _uid = 0;
+
+/* Figura SVG genérica (segue o tema claro/escuro). vb = "0 0 L A" */
+const fig = (vb, aria, inner, w) => `<figure class="fig"${w ? ` style="max-width:${w}px"` : ''}><svg viewBox="${vb}" class="plot" role="img" aria-label="${aria}">${inner}</svg></figure>`;
+/* Ponta de seta: devolve [defs, url] com id único */
+function seta(cor){ const id = 'sa' + (++_uid); return [`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="${cor}"/></marker></defs>`, `url(#${id})`]; }
+
+/* Pontos de uma senoide: y = A·sen(2π(x − x0)/λ + fase) */
+function sen(A, lam, xa, xb, fase, n){ n = n || 120; fase = fase || 0; const p = []; for (let k = 0; k <= n; k++){ const x = xa + (xb - xa) * k / n; p.push([+x.toFixed(4), +(A * Math.sin(2 * Math.PI * x / lam + fase)).toFixed(4)]); } return p; }
+
+/* Gráfico cartesiano. o = {aria, xmin, xmax, ymin, ymax, xt, yt, xl, yl, L:[{p, c, dash, w, lab, lp}], pts, ann:[[x,y,txt,anchor,cor]], dims:[[x1,y1,x2,y2,txt,dx,dy]], H, W} */
+function plot(o){
+  const W = o.W || 340, H = o.H || 236, l = o.l || 46, r = 18, t = 28, b = 40;
+  const x0 = o.xmin || 0, y0 = o.ymin || 0;
+  const sx = x => +(l + (x - x0) / (o.xmax - x0) * (W - l - r)).toFixed(1);
+  const sy = y => +(H - b - (y - y0) / (o.ymax - y0) * (H - t - b)).toFixed(1);
+  const [defs, mk] = seta('var(--ink)');
+  let s = `<svg viewBox="0 0 ${W} ${H}" class="plot" role="img" aria-label="${o.aria}">${defs}`;
+  (o.xt || []).forEach(x => { s += `<line x1="${sx(x)}" y1="${sy(y0)}" x2="${sx(x)}" y2="${sy(o.ymax)}" stroke="var(--line)"/>`; if (!o.noxl) s += `<text x="${sx(x)}" y="${sy(y0)+16}" text-anchor="middle" class="pt">${nf(x)}</text>`; });
+  (o.yt || []).forEach(y => { s += `<line x1="${sx(x0)}" y1="${sy(y)}" x2="${sx(o.xmax)}" y2="${sy(y)}" stroke="var(--line)"/><text x="${sx(x0)-7}" y="${sy(y)+4}" text-anchor="end" class="pt">${nf(y)}</text>`; });
+  const yax = (y0 < 0 && o.ymax > 0) ? 0 : y0;
+  s += `<line x1="${sx(x0)}" y1="${sy(yax)}" x2="${sx(o.xmax)}" y2="${sy(yax)}" stroke="var(--muted)" stroke-width="1.5"/><line x1="${sx(x0)}" y1="${sy(y0)}" x2="${sx(x0)}" y2="${sy(o.ymax)}" stroke="var(--muted)" stroke-width="1.5"/>`;
+  s += `<text x="${W-r}" y="${H-6}" text-anchor="end" class="pt">${o.xl}</text><text x="${sx(x0)}" y="16" text-anchor="middle" class="pt">${o.yl}</text>`;
+  o.L.forEach(ln => {
+    s += `<polyline points="${ln.p.map(([x,y]) => sx(x)+','+sy(y)).join(' ')}" fill="none" stroke="${ln.c}" stroke-width="${ln.w || 3}" stroke-linecap="round" stroke-linejoin="round"${ln.dash ? ` stroke-dasharray="${ln.dash}"` : ''}/>`;
+    if (ln.lab){ const [x, y] = ln.lp || ln.p[ln.p.length-1]; s += `<text x="${sx(x)}" y="${sy(y)}" class="pt pt-lab" fill="${ln.c}">${ln.lab}</text>`; }
+  });
+  (o.dims || []).forEach(([xa, ya, xb, yb, txt, dx, dy]) => {
+    s += `<line x1="${sx(xa)}" y1="${sy(ya)}" x2="${sx(xb)}" y2="${sy(yb)}" stroke="var(--ink)" stroke-width="1.4" marker-start="${mk}" marker-end="${mk}"/>`;
+    if (txt) s += `<text x="${(sx(xa)+sx(xb))/2 + (dx||0)}" y="${(sy(ya)+sy(yb))/2 + (dy||-6)}" text-anchor="middle" class="pt pt-strong">${txt}</text>`;
+  });
+  (o.pts || []).forEach(([x, y]) => { s += `<circle cx="${sx(x)}" cy="${sy(y)}" r="4.5" fill="var(--ink)" stroke="var(--surface)" stroke-width="2"/>`; });
+  (o.ann || []).forEach(([x, y, txt, a, c]) => { s += `<text x="${sx(x)}" y="${sy(y)}" text-anchor="${a || 'middle'}" class="pt pt-strong"${c ? ` fill="${c}"` : ''}>${txt}</text>`; });
+  return `<figure class="fig">${s}</svg></figure>`;
+}
+
+/* Tabela simples: cab = [..], linhas = [[..],[..]] */
+const tabela = (cab, linhas, esq) => `<div class="tblwrap tbl-txt${esq ? ' tbl-esq' : ''}"><table>${cab ? `<tr>${cab.map(c => `<th>${c}</th>`).join('')}</tr>` : ''}${linhas.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</table></div>`;
+
+/* ===== Lista 1 · Termologia: Calorimetria (Cap. 20) ===== */
+const TOOLS1 = [
+  ['Calor sensível', `Q = m · c · ΔT<br>(a temperatura muda, sem mudar de fase)`],
+  ['Calor latente', `Q = m · L<br>(muda de fase, a temperatura fica constante)`],
+  ['Capacidade térmica', `C = ${f('Q','ΔT')} &nbsp;&nbsp; C = m · c`],
+  ['Potência da fonte', `P = ${f('Q','Δt')} &nbsp;&nbsp; → &nbsp; Q = P · Δt`],
+  ['Trocas de calor (sistema isolado)', `ΣQ<sub>cedido</sub> + ΣQ<sub>recebido</sub> = 0<br>Quem esfria: Q &lt; 0 · Quem esquenta: Q &gt; 0`],
+  ['Água e gelo', `c<sub>água</sub> = 1 cal/(g·°C) · c<sub>gelo</sub> = 0,5 cal/(g·°C)<br>L<sub>fusão</sub> = 80 cal/g · L<sub>vaporização</sub> = 540 cal/g`],
+  ['Unidades', `1 cal ≈ 4,186 J · 1 kcal = 1 000 cal<br>1 kWh = 3,6 · 10<sup>6</sup> J`],
+];
+
+/* Q4: aquecimento com fonte de potência constante */
+const FIG1_4 = plot({ aria:'Gráfico da temperatura em função do tempo: uma reta que começa em 10 graus Celsius no instante zero e chega a 50 graus Celsius aos 20 minutos.',
+  xmax:25, ymax:60, xt:[5,10,15,20], yt:[10,20,30,40,50], xl:'t (min)', yl:'T (°C)',
+  L:[{ p:[[0,10],[20,50],[24,58]], c:'var(--sign)' }, { p:[[0,50],[20,50],[20,0]], c:'var(--muted)', w:1.4, dash:'5 4' }],
+  pts:[[0,10],[20,50]] });
+
+/* Q6: curva de aquecimento com intervalos iguais de calor */
+const FIG1_6 = plot({ aria:'Curva de aquecimento: temperatura em função do calor recebido. A temperatura sobe de 20 a 140 graus Celsius no primeiro intervalo, fica constante em 140 graus durante quatro intervalos iguais e depois volta a subir. As linhas verticais tracejadas estão igualmente espaçadas.',
+  xmax:6.6, ymax:200, yt:[20,140], xl:'Q (cal)', yl:'θ (°C)', noxl:true,
+  L:[{ p:[[0,20],[1,140],[5,140],[6,196]], c:'var(--sign)' },
+     ...[1,2,3,4,5].map(x => ({ p:[[x,0],[x,140]], c:'var(--muted)', w:1.2, dash:'4 4' })) ],
+  ann:[[0.5,10,'Q₁','middle'],[3,160,'mudança de fase','middle']] });
+
+/* Q10: piscina */
+const FIG1_10 = (() => {
+  return fig('-24 0 364 190', 'Piscina em forma de bloco retangular, completamente cheia: 10 metros de comprimento, 5 metros de largura e 1,6 metro de profundidade.',
+    `<polygon points="40,70 230,70 300,30 110,30" fill="var(--sign)" opacity=".18" stroke="var(--ink)" stroke-width="1.5"/>
+    <polygon points="40,70 230,70 230,140 40,140" fill="var(--sign)" opacity=".30" stroke="var(--ink)" stroke-width="1.5"/>
+    <polygon points="230,70 300,30 300,100 230,140" fill="var(--sign)" opacity=".42" stroke="var(--ink)" stroke-width="1.5"/>
+    <text x="135" y="162" text-anchor="middle" class="pt pt-strong">10 m</text>
+    <text x="282" y="132" text-anchor="middle" class="pt pt-strong">5 m</text>
+    <text x="30" y="110" text-anchor="end" class="pt pt-strong">1,6 m</text>
+    <text x="170" y="22" text-anchor="middle" class="pt">15 °C → 30 °C</text>`, 320);
+})();
+
+const QL1 = [
+{
+  src:'Inédita', nivel:'básico',
+  text:`Numa conversa, alguém diz: “Esse café está cheio de calor, por isso queima a língua”. Do ponto de vista da Física, a forma correta de descrever a situação é dizer que:`,
+  opts:['o café armazena calor e o libera aos poucos','o café tem temperatura alta e cede calor à língua','a língua cede frio para o café até os dois se igualarem','o café tem mais calor porque tem mais massa que a língua','calor e temperatura são a mesma grandeza, medida em °C'], ans:1,
+  hint:'Calor é algo que um corpo “tem” ou algo que passa de um corpo para outro?',
+  steps:[
+    ['O que é calor', `<p><b>Calor é energia térmica em trânsito</b>, que passa de um corpo para outro por causa da diferença de temperatura. Um corpo não “tem” calor; ele tem temperatura (e energia interna).</p>`],
+    ['No caso do café', `<p>O café está a uma temperatura maior que a da língua. Por isso, energia passa <b>do café para a língua</b> na forma de calor, e isso é o que queima.</p>`],
+  ],
+  alt:'Pense em dinheiro numa transferência bancária: “transferência” só existe enquanto o dinheiro está passando de uma conta para a outra. O calor é a “transferência” da energia térmica.',
+  warn:'A alternativa a parece certa porque é como falamos no dia a dia, mas o corpo não armazena calor. E não existe “frio” passando de um corpo para outro (alternativa c): só o calor, do mais quente para o mais frio.',
+  mod:'Inédita (conceito de calor do início do capítulo 20).'
+},
+{
+  src:'Inédita', nivel:'básico',
+  text:`Um corpo de massa 80 g recebe 480 cal e sua temperatura sobe de 10 °C para 40 °C, sem mudar de fase. A capacidade térmica do corpo e o calor específico da substância que o constitui valem, respectivamente:`,
+  opts:['12 cal/°C e 0,15 cal/(g·°C)','16 cal/°C e 0,20 cal/(g·°C)','48 cal/°C e 0,60 cal/(g·°C)','16 cal/°C e 1,28 cal/(g·°C)','6 cal/°C e 0,08 cal/(g·°C)'], ans:1,
+  hint:'Primeiro a variação de temperatura. A capacidade térmica é “calor por grau”; o calor específico é “calor por grau e por grama”.',
+  steps:[
+    ['Dados', `<p>m = 80 g · Q = 480 cal · ΔT = 40 − 10 = 30 °C</p>`],
+    ['Capacidade térmica', `<div class="eq">C = ${f('Q','ΔT')} = ${f('480','30')} = <span class="hl">16 cal/°C</span></div>`],
+    ['Calor específico', `<div class="eq">c = ${f('C','m')} = ${f('16','80')} = <span class="hl">0,20 cal/(g·°C)</span></div>`],
+  ],
+  alt:'Leia o resultado: o corpo inteiro precisa de 16 cal para subir 1 °C; cada grama dele precisa de 0,2 cal para subir 1 °C.',
+  warn:'Usar a temperatura final (40 °C) no lugar de ΔT dá 12 cal/°C (alternativa a). O que importa é quanto a temperatura variou.',
+  mod:'Baseada no Exemplo 1 dos slides do capítulo 20 (50 g, 300 cal, de −10 °C a 20 °C), com outros valores.'
+},
+{
+  src:'Inédita', nivel:'básico',
+  text:`Blocos de mesma massa, feitos dos materiais da tabela, estão inicialmente à mesma temperatura. Cada um recebe a mesma quantidade de calor, sem mudar de fase.${tabela(['Material','Calor específico (cal/(g·°C))'], [['Água','1,0'],['Alumínio','0,22'],['Ferro','0,11'],['Cobre','0,092'],['Chumbo','0,031']])}<p>Qual deles termina com a <b>maior</b> temperatura?</p>`,
+  opts:['Água','Alumínio','Ferro','Cobre','Chumbo'], ans:4,
+  hint:'Isole ΔT em Q = m · c · ΔT. Com Q e m iguais, o que decide é o c.',
+  steps:[
+    ['Isolando ΔT', `<div class="eq">ΔT = ${f('Q','m · c')}</div><p>Q e m são iguais para todos. Então ΔT é <b>inversamente proporcional</b> ao calor específico.</p>`],
+    ['Quem esquenta mais', `<p>O menor calor específico da tabela é o do <b>chumbo</b> (0,031). É ele que tem a maior variação de temperatura e, como todos partiram da mesma temperatura, termina mais quente.</p>`],
+  ],
+  alt:'O calor específico funciona como uma “inércia térmica”: quanto maior, mais difícil mudar a temperatura. A água, com c alto, é a que menos esquenta. Por isso a areia da praia queima o pé e a água do mar não.',
+  warn:'Escolher a água (alternativa a) é ler a tabela ao contrário: o maior c é o que <b>menos</b> esquenta.',
+  mod:'Inédita. Valores de calor específico aproximados, de tabelas usuais.'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`Um corpo de massa 250 g é aquecido por uma fonte de potência constante, igual a 300 cal/min. O gráfico mostra a temperatura do corpo em função do tempo.${FIG1_4}O calor específico da substância que constitui o corpo é:`,
+  opts:['0,03 cal/(g·°C)','0,48 cal/(g·°C)','0,60 cal/(g·°C)','1,20 cal/(g·°C)','2,50 cal/(g·°C)'], ans:2,
+  hint:'O gráfico dá duas informações: quanto tempo a fonte ficou ligada e quanto a temperatura variou. Com o tempo e a potência, você tem o calor.',
+  steps:[
+    ['Calor fornecido em 20 min', `<div class="eq">Q = P · Δt = 300 · 20 = 6 000 cal</div>`],
+    ['Variação de temperatura', `<p>Pelo gráfico, de 10 °C a 50 °C: ΔT = 40 °C.</p>`],
+    ['Calor específico', `<div class="eq">c = ${f('Q','m · ΔT')} = ${f('6 000','250 · 40')}</div><div class="eq">c = <span class="hl">0,60 cal/(g·°C)</span></div>`],
+  ],
+  alt:'Calcule antes a capacidade térmica: C = 6 000 ÷ 40 = 150 cal/°C. Depois divida pela massa: 150 ÷ 250 = 0,60.',
+  warn:'Ler só a temperatura final, 50 °C, como se fosse ΔT dá 0,48 (alternativa b). Usar 20 (o tempo) como ΔT dá 1,20 (alternativa d).',
+  mod:'Baseada no Exemplo 3 dos slides do capítulo 20 (200 g, 200 cal/min, de 20 °C a 60 °C em 30 min), com outros valores.'
+},
+{
+  src:'Livro, p. 8', nivel:'intermediário',
+  text:`Um fogão solar pode fornecer uma quantidade de calor de 62 000 kcal durante um intervalo de tempo de 10 minutos. Para esse intervalo de tempo, a massa de água que pode ser aquecida de 20 °C até 100 °C e, em seguida, transformada completamente em vapor é:<p>Dados: c<sub>água</sub> = 1 cal/(g·°C); L<sub>V</sub> = 540 cal/g.</p>`,
+  opts:['0,1 kg','100 kg','115 kg','620 kg','775 kg'], ans:1,
+  hint:'São duas etapas: esquentar a água até 100 °C (calor sensível) e depois vaporizá-la (calor latente). O calor total do fogão paga as duas.',
+  steps:[
+    ['Converter o calor', `<div class="eq">Q = 62 000 kcal = 62 000 000 cal</div>`],
+    ['Calor para cada grama', `<p>Esquentar 1 g de 20 °C a 100 °C: 1 · 1 · 80 = 80 cal.<br>Vaporizar 1 g: 540 cal.</p><div class="eq">Total por grama: 80 + 540 = 620 cal/g</div>`],
+    ['Massa', `<div class="eq">m = ${f('62 000 000','620')} = 100 000 g</div><div class="eq">m = <span class="hl">100 kg</span></div>`],
+  ],
+  alt:'Monte a equação direto: 62 · 10<sup>6</sup> = m · 1 · 80 + m · 540 = 620 · m.',
+  warn:'Esquecer a etapa de aquecimento e usar só o calor latente dá cerca de 115 kg (alternativa c). E não converter kcal para cal leva a 0,1 kg (alternativa a).',
+  mod:'Questão do livro (“Agora é com você”, p. 8), transformada em múltipla escolha.'
+},
+{
+  src:'Livro, p. 8', nivel:'intermediário',
+  text:`O gráfico representa a curva de aquecimento de um corpo de 100 g, inicialmente no estado líquido. As retas verticais tracejadas estão igualmente espaçadas, ou seja, cada intervalo entre elas representa a mesma quantidade de calor.${FIG1_6}Sabendo que o calor específico do corpo no estado líquido é 0,5 cal/(g·°C), o calor latente de vaporização dessa substância é:`,
+  opts:['60 cal/g','180 cal/g','240 cal/g','300 cal/g','480 cal/g'], ans:2,
+  hint:'Calcule quanto calor cabe no primeiro intervalo (o aquecimento do líquido). Depois conte quantos intervalos iguais dura o patamar.',
+  steps:[
+    ['Primeiro intervalo', `<p>O líquido vai de 20 °C a 140 °C:</p><div class="eq">Q₁ = 100 · 0,5 · 120 = 6 000 cal</div>`],
+    ['Patamar', `<p>A vaporização (temperatura constante em 140 °C) ocupa <b>4 intervalos</b>:</p><div class="eq">Q<sub>V</sub> = 4 · 6 000 = 24 000 cal</div>`],
+    ['Calor latente', `<div class="eq">L<sub>V</sub> = ${f('Q<sub>V</sub>','m')} = ${f('24 000','100')} = <span class="hl">240 cal/g</span></div>`],
+  ],
+  alt:'Use proporção: se 1 intervalo equivale a 60 cal por grama (6 000 ÷ 100), 4 intervalos equivalem a 4 · 60 = 240 cal/g.',
+  warn:'Contar 5 intervalos no patamar (incluindo o do aquecimento) dá 300 cal/g (alternativa d). O patamar começa só quando a temperatura para de subir.',
+  mod:'Questão do livro (“Agora é com você”, p. 8), transformada em múltipla escolha. Gráfico redesenhado.'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`Quanto calor é necessário para transformar 200 g de gelo a −10 °C em água a 30 °C?<p>Dados: c<sub>gelo</sub> = 0,5 cal/(g·°C); L<sub>fusão</sub> = 80 cal/g; c<sub>água</sub> = 1 cal/(g·°C).</p>`,
+  opts:['7 kcal','16 kcal','17 kcal','22 kcal','23 kcal'], ans:4,
+  hint:'O gelo passa por três etapas: esquenta até 0 °C, derrete a 0 °C e, já como água, esquenta até 30 °C.',
+  steps:[
+    ['1: gelo de −10 °C a 0 °C', `<div class="eq">Q₁ = 200 · 0,5 · 10 = 1 000 cal</div>`],
+    ['2: fusão a 0 °C', `<div class="eq">Q₂ = 200 · 80 = 16 000 cal</div>`],
+    ['3: água de 0 °C a 30 °C', `<div class="eq">Q₃ = 200 · 1 · 30 = 6 000 cal</div>`],
+    ['Total', `<div class="eq">Q = 1 000 + 16 000 + 6 000</div><div class="eq">Q = 23 000 cal = <span class="hl">23 kcal</span></div>`],
+  ],
+  alt:'Desenhe a curva de aquecimento: uma subida, um patamar (a fusão) e outra subida. Cada trecho é uma parcela da soma.',
+  warn:'Pular o aquecimento do gelo de −10 °C até 0 °C dá 22 kcal (alternativa d). O gelo só começa a derreter quando chega a 0 °C.',
+  mod:'Baseada no Exemplo 2 dos slides do capítulo 20 (100 g de gelo a −20 °C até água a 60 °C), com outros valores.'
+},
+{
+  src:'Inédita', nivel:'avançado',
+  text:`Um calorímetro de capacidade térmica 50 cal/°C contém 200 g de água, ambos a 20 °C. Um bloco metálico de 100 g, a 160 °C, é colocado dentro dele, e o equilíbrio térmico se estabelece a 35 °C. Desprezando as perdas de calor para o ambiente, o calor específico do metal é:<p>Dado: c<sub>água</sub> = 1 cal/(g·°C).</p>`,
+  opts:['0,15 cal/(g·°C)','0,24 cal/(g·°C)','0,30 cal/(g·°C)','0,70 cal/(g·°C)','1,20 cal/(g·°C)'], ans:2,
+  hint:'Quem esquenta? A água e o calorímetro. Quem esfria? O bloco. Tudo o que o bloco cede, os outros dois recebem.',
+  steps:[
+    ['Quem recebe calor', `<p>Água e calorímetro vão de 20 °C a 35 °C (ΔT = 15 °C):</p><div class="eq">Q<sub>água</sub> = 200 · 1 · 15 = 3 000 cal</div><div class="eq">Q<sub>cal</sub> = 50 · 15 = 750 cal</div>`],
+    ['Quem cede calor', `<p>O bloco vai de 160 °C a 35 °C (ΔT = −125 °C):</p><div class="eq">Q<sub>bloco</sub> = 100 · c · (−125) = −12 500 · c</div>`],
+    ['Soma igual a zero', `<div class="eq">3 000 + 750 − 12 500 · c = 0</div><div class="eq">c = ${f('3 750','12 500')} = <span class="hl">0,30 cal/(g·°C)</span></div>`],
+  ],
+  alt:'Pense em “calor cedido = calor recebido”, em módulo: 100 · c · 125 = 3 000 + 750.',
+  warn:'Esquecer o calorímetro dá 0,24 (alternativa b). Ele também esquenta e precisa entrar na conta com Q = C · ΔT.',
+  mod:'Baseada no Exemplo 2 (PUC) dos slides do capítulo 20, com outros valores e a pergunta mantida (calor específico do sólido).'
+},
+{
+  src:'Livro, p. 12', nivel:'avançado',
+  text:`Uma garrafa possui 1 000 g de água a 20 °C. Para resfriar essa água, colocam-se nela 200 g de gelo a −10 °C. Como a garrafa não é um sistema termicamente isolado, o meio externo fornece cerca de 600 cal ao sistema, contribuindo para que todo o gelo derreta. Após o equilíbrio térmico, a temperatura do sistema será:<p>Dados: despreze a capacidade térmica da garrafa; c<sub>água</sub> = 1,0 cal/(g·°C); c<sub>gelo</sub> = 0,5 cal/(g·°C); L<sub>fusão</sub> = 80 cal/g.</p>`,
+  opts:['0 °C','2,5 °C','3,0 °C','5,0 °C','10 °C'], ans:2,
+  hint:'Todo o gelo derrete, então a temperatura final T fica acima de 0 °C. Some todos os calores recebidos e iguale ao que a água quente cede mais as 600 cal do ambiente.',
+  steps:[
+    ['O que o gelo recebe', `<p>Esquentar até 0 °C: 200 · 0,5 · 10 = 1 000 cal<br>Derreter: 200 · 80 = 16 000 cal<br>Água do gelo, de 0 °C até T: 200 · 1 · T = 200T</p>`],
+    ['O que entra de fora', `<p>A água quente cede 1 000 · 1 · (20 − T) e o ambiente fornece 600 cal.</p>`],
+    ['Equilíbrio', `<div class="eq">1 000(20 − T) + 600 = 17 000 + 200T</div><div class="eq">20 600 − 1 000T = 17 000 + 200T</div><div class="eq">1 200T = 3 600 → T = <span class="hl">3,0 °C</span></div>`],
+  ],
+  alt:'Faça em duas partes. Para levar tudo a 0 °C com o gelo derretido, sobram 20 000 + 600 − 17 000 = 3 600 cal. Elas aquecem os 1 200 g de água: ΔT = 3 600 ÷ 1 200 = 3 °C.',
+  warn:'Esquecer as 600 cal do ambiente dá 2,5 °C (alternativa b). E 0 °C (alternativa a) só valeria se sobrasse gelo, o que não acontece aqui.',
+  mod:'Questão do livro (“Agora é com você”, p. 12), transformada em múltipla escolha.'
+},
+{
+  src:'Livro, p. 9', nivel:'avançado',
+  text:`Deseja-se aquecer a água de uma piscina completamente cheia, de dimensões 1,6 m × 5 m × 10 m, de 15 °C até 30 °C.${FIG1_10}Apenas 98% da energia fornecida pelo sistema de aquecimento é aproveitada para aumentar a temperatura da água. Se 1 kWh custa R$ 0,70, o custo desse aquecimento é:<p>Dados: c<sub>água</sub> = 4 200 J/(kg·°C); densidade da água = 1 000 kg/m³; 1 kWh = 3,6 · 10<sup>6</sup> J.</p>`,
+  opts:['R$ 960,40','R$ 980,00','R$ 1 000,00','R$ 1 400,00','R$ 2 000,00'], ans:2,
+  hint:'Volume → massa → calor que a água precisa. Depois pense: se só 98% é aproveitado, o sistema precisa fornecer mais ou menos que isso?',
+  steps:[
+    ['Massa de água', `<div class="eq">V = 1,6 · 5 · 10 = 80 m³ → m = 80 000 kg</div>`],
+    ['Calor que a água recebe', `<div class="eq">Q = 80 000 · 4 200 · 15</div><div class="eq">Q = 5,04 · 10<sup>9</sup> J</div>`],
+    ['Energia fornecida', `<p>Esse calor é 98% do que o sistema fornece:</p><div class="eq">E = ${f('5,04 · 10<sup>9</sup>','0,98')} ≈ 5,14 · 10<sup>9</sup> J</div>`],
+    ['Custo', `<div class="eq">E = ${f('5,14 · 10<sup>9</sup>','3,6 · 10<sup>6</sup>')} ≈ 1 429 kWh</div><div class="eq">1 429 · 0,70 ≈ <span class="hl">R$ 1 000,00</span></div>`],
+  ],
+  alt:'Sem a perda, seriam 1 400 kWh (R$ 980,00). Como só 98% é aproveitado, o sistema precisa fornecer um pouco <b>mais</b>: 1 400 ÷ 0,98 ≈ 1 429 kWh.',
+  warn:'Multiplicar por 0,98 em vez de dividir dá R$ 960,40 (alternativa a): você estaria pagando menos do que a água precisa. Ignorar a perda dá R$ 980,00 (alternativa b).',
+  mod:'Questão do livro (“Agora é com você”, p. 9), transformada em múltipla escolha. Figura da piscina criada para a lista.'
+},
+];
+
+/* ===== Lista 2 · Termologia: Gases ideais (Cap. 22) ===== */
+const TOOLS2 = [
+  ['Equação de Clapeyron', `p · V = n · R · T`],
+  ['Lei geral dos gases', `${f('p₀ · V₀','T₀')} = ${f('p · V','T')} &nbsp;(mesma amostra de gás)`],
+  ['Casos particulares', `Isotérmica (T constante): p₀V₀ = pV<br>Isobárica (p constante): ${f('V₀','T₀')} = ${f('V','T')}<br>Isocórica (V constante): ${f('p₀','T₀')} = ${f('p','T')}`],
+  ['Temperatura sempre em kelvin', `T (K) = θ (°C) + 273`],
+  ['Constante R', `0,082 atm·L/(mol·K)<br>8,31 J/(mol·K) = 8,31 Pa·m³/(mol·K)`],
+  ['Unidades', `1 atm ≈ 10<sup>5</sup> Pa · 1 L = 10<sup>−3</sup> m³<br>1 m³ = 1 000 L`],
+];
+
+/* Hipérbole p = k/V */
+const hip = (k, va, vb) => { const p = []; for (let v = va; v <= vb + 1e-9; v += (vb - va) / 60) p.push([+v.toFixed(3), +(k / v).toFixed(3)]); return p; };
+
+/* Q2: três isotermas com rótulos embaralhados */
+const FIG2_2 = plot({ aria:'Diagrama pressão em função do volume com três isotermas de uma mesma amostra de gás. A curva mais próxima dos eixos é T B, a do meio é T C e a mais afastada dos eixos é T A.',
+  xmax:10, ymax:10, xl:'V', yl:'p', noxl:true,
+  L:[{ p:hip(6, 0.65, 5.6), c:'var(--plot2)', lab:'T<tspan dy="5" font-size="75%">B</tspan>', lp:[5.75, 1.35] },
+     { p:hip(12, 1.25, 7.4), c:'var(--muted)', lab:'T<tspan dy="5" font-size="75%">C</tspan>', lp:[7.55, 1.95] },
+     { p:hip(20, 2.1, 9.2), c:'var(--sign)', lab:'T<tspan dy="5" font-size="75%">A</tspan>', lp:[9.0, 2.75] }] });
+
+/* Q5: Charles, V × T em kelvin */
+const FIG2_5 = plot({ aria:'Gráfico do volume, em litros, em função da temperatura absoluta, em kelvin, para pressão constante: uma reta que passa pela origem e pelo ponto 300 kelvin, 6 litros.',
+  xmax:420, ymax:9, xt:[100,200,300,400], yt:[2,4,6,8], xl:'T (K)', yl:'V (L)',
+  L:[{ p:[[0,0],[300,6]], c:'var(--sign)' }, { p:[[300,6],[400,8]], c:'var(--sign)', dash:'6 5' }, { p:[[0,6],[300,6],[300,0]], c:'var(--muted)', w:1.4, dash:'5 4' }],
+  pts:[[300,6]] });
+
+/* Q9: isoterma com pontos A, B, C, D */
+const FIG2_9 = plot({ aria:'Diagrama pressão, em 10 elevado a 5 pascal, em função do volume, em 10 elevado a menos 3 metros cúbicos. Uma curva passa pelos pontos A (1; 8), B (2; 4), C (3; cerca de 2,7) e D (4; 2), e continua até o volume 8 com pressão 1.',
+  xmax:8.6, ymax:9, xt:[1,2,3,4,5,6,7,8], yt:[1,2,3,4,5,6,7,8], xl:'V (10⁻³ m³)', yl:'p (10⁵ Pa)',
+  L:[{ p:hip(8, 1, 8), c:'var(--sign)' }],
+  pts:[[1,8],[2,4],[3,8/3],[4,2]],
+  ann:[[1.25,8.3,'A','start'],[2.25,4.3,'B','start'],[3.25,3.0,'C','start'],[4.25,2.3,'D','start']] });
+
+const QL2 = [
+{
+  src:'Inédita', nivel:'básico',
+  text:`No modelo de gás ideal (gás perfeito), qual das afirmações abaixo <b>não</b> faz parte das hipóteses do modelo?`,
+  opts:['As partículas se movem o tempo todo, em todas as direções','O volume das partículas é desprezível perto do volume do recipiente','As partículas se atraem fortemente, mesmo afastadas umas das outras','As colisões entre as partículas e com as paredes são elásticas','Só há interação entre as partículas quando elas colidem'], ans:2,
+  hint:'O gás ideal é o “gás mais simples possível”. Que tipo de força entre as partículas complicaria o modelo?',
+  steps:[
+    ['As hipóteses do modelo', `<p>No gás ideal: partículas de volume desprezível, em movimento constante e desordenado, colisões perfeitamente elásticas e <b>nenhuma força de atração ou repulsão</b> entre elas, a não ser durante as colisões.</p>`],
+    ['A afirmação errada', `<p>Dizer que as partículas se atraem fortemente, mesmo à distância, contraria o modelo. É justamente por desprezar essas forças que o gás ideal fica tão simples.</p>`],
+  ],
+  alt:'Gases reais se aproximam do ideal quando estão a baixa pressão e alta temperatura: as partículas ficam longe umas das outras e rápidas, e a atração entre elas quase não faz diferença.',
+  warn:'Não confunda “só interagem quando colidem” (alternativa e, que é hipótese do modelo) com “se atraem à distância” (alternativa c, que não é).',
+  mod:'Inédita (hipóteses do gás ideal e da teoria cinética, slides dos capítulos 22 e 23).'
+},
+{
+  src:'Inédita', nivel:'básico',
+  text:`O diagrama mostra três isotermas, T<sub>A</sub>, T<sub>B</sub> e T<sub>C</sub>, de uma mesma amostra de gás perfeito.${FIG2_2}Sobre as temperaturas absolutas, pode-se afirmar que:`,
+  opts:['T<sub>A</sub> = T<sub>B</sub> = T<sub>C</sub>','T<sub>B</sub> &gt; T<sub>C</sub> &gt; T<sub>A</sub>','T<sub>A</sub> &gt; T<sub>C</sub> &gt; T<sub>B</sub>','T<sub>C</sub> &gt; T<sub>A</sub> &gt; T<sub>B</sub>','T<sub>B</sub> = T<sub>C</sub> &lt; T<sub>A</sub>'], ans:2,
+  hint:'Escolha um mesmo volume e compare as pressões das três curvas. Pela equação de Clapeyron, com n e V fixos, quem tem maior pressão tem maior temperatura.',
+  steps:[
+    ['Mesmo volume', `<p>Trace uma linha vertical (mesmo V). Ela corta primeiro T<sub>B</sub> (pressão menor), depois T<sub>C</sub> e por último T<sub>A</sub> (pressão maior).</p>`],
+    ['Clapeyron', `<div class="eq">p = ${f('n · R · T','V')}</div><p>Com n e V iguais, a pressão é proporcional a T. Quanto mais afastada dos eixos a isoterma, maior a temperatura:</p><div class="eq"><span class="hl">T<sub>A</sub> &gt; T<sub>C</sub> &gt; T<sub>B</sub></span></div>`],
+  ],
+  alt:'Cada isoterma tem p · V = n · R · T constante. A curva mais afastada da origem tem o maior produto p · V e, portanto, a maior temperatura.',
+  warn:'Os índices não estão em ordem na figura de propósito. Não basta decorar “T₃ é a maior”: olhe qual curva está mais longe dos eixos.',
+  mod:'Inédita, inspirada no Exemplo 1 dos slides do capítulo 22, com as curvas fora de ordem.'
+},
+{
+  src:'Livro, p. 37', nivel:'básico',
+  text:`O pneu de uma moto é calibrado com pressão de 35 psi num dia frio, a 7 °C. Após uma longa viagem, a temperatura do ar no interior do pneu chega a 37 °C. Considerando desprezível a variação do volume do pneu, a pressão final, em psi, é:`,
+  opts:['31,61','35,00','38,75','45,50','185,00'], ans:2,
+  hint:'Volume constante: é uma transformação isocórica. E as temperaturas precisam estar em kelvin.',
+  steps:[
+    ['Tipo de transformação', `<p>O volume não muda: transformação <b>isocórica</b>. Vale ${f('p₀','T₀')} = ${f('p','T')}.</p>`],
+    ['Kelvin', `<p>T₀ = 7 + 273 = 280 K · T = 37 + 273 = 310 K</p>`],
+    ['Pressão final', `<div class="eq">p = 35 · ${f('310','280')} = <span class="hl">38,75 psi</span></div>`],
+  ],
+  alt:'A temperatura absoluta aumentou na razão 310/280 ≈ 1,11, cerca de 11%. A pressão aumenta na mesma proporção: 35 · 1,11 ≈ 38,75 psi.',
+  warn:'Usar as temperaturas em °C dá 35 · 37/7 = 185 psi (alternativa e), um absurdo: o pneu estouraria. Nas leis dos gases, a temperatura é sempre em kelvin.',
+  mod:'Questão do livro (“Agora é com você”, p. 37), item b, transformada em múltipla escolha.'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`Um gás perfeito está num cilindro fechado por um pistão. No estado A: p<sub>A</sub> = 3,0 atm, V<sub>A</sub> = 2,0 L e T<sub>A</sub> = 27 °C. No estado B, a temperatura é 127 °C e a pressão é 2,0 atm. O volume V<sub>B</sub> é:`,
+  opts:['2,25 L','3,0 L','4,0 L','4,5 L','14 L'], ans:2,
+  hint:'Mudaram pressão, volume e temperatura ao mesmo tempo: use a lei geral dos gases, com T em kelvin.',
+  steps:[
+    ['Kelvin', `<p>T<sub>A</sub> = 27 + 273 = 300 K · T<sub>B</sub> = 127 + 273 = 400 K</p>`],
+    ['Lei geral', `<div class="eq">${f('3,0 · 2,0','300')} = ${f('2,0 · V<sub>B</sub>','400')}</div>`],
+    ['Resolvendo', `<div class="eq">V<sub>B</sub> = ${f('3,0 · 2,0 · 400','300 · 2,0')} = <span class="hl">4,0 L</span></div>`],
+  ],
+  alt:'Pense em dois efeitos: a pressão caiu de 3 para 2 atm (o volume aumenta 3/2 vezes) e a temperatura subiu de 300 para 400 K (o volume aumenta 4/3 vezes). 2,0 · 3/2 · 4/3 = 4,0 L.',
+  warn:'Com as temperaturas em °C, a conta dá cerca de 14 L (alternativa e). E inverter a razão das temperaturas dá 2,25 L (alternativa a).',
+  mod:'Inédita, inspirada no Exemplo 2 (PUCCAMP) dos slides do capítulo 22, com outros valores.'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`O gráfico mostra o volume de uma amostra de gás ideal em função da temperatura absoluta, numa transformação a pressão constante.${FIG2_5}Mantida a pressão, qual será o volume do gás a 87 °C?`,
+  opts:['1,7 L','5,0 L','6,0 L','7,2 L','8,7 L'], ans:3,
+  hint:'O eixo do gráfico está em kelvin, mas a temperatura pedida está em °C. Converta antes de usar a proporção.',
+  steps:[
+    ['Leitura do gráfico', `<p>A reta passa pela origem e pelo ponto (300 K; 6,0 L). Pressão constante: V é proporcional a T (lei de Charles).</p>`],
+    ['Kelvin', `<div class="eq">T = 87 + 273 = 360 K</div>`],
+    ['Volume', `<div class="eq">${f('6,0','300')} = ${f('V','360')} → V = <span class="hl">7,2 L</span></div>`],
+  ],
+  alt:'A temperatura absoluta passou de 300 K para 360 K: aumentou 20%. O volume aumenta os mesmos 20%: 6,0 · 1,2 = 7,2 L.',
+  warn:'Usar 87 direto na proporção dá cerca de 1,7 L (alternativa a): o gás “encolheria” ao ser aquecido, o que não faz sentido.',
+  mod:'Inédita (lei de Charles e o zero absoluto, slides do capítulo 22).'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`Que volume devem ocupar 4,0 mols de um gás perfeito, a 27 °C, para exercer uma pressão de 12 atm nas paredes do recipiente?<p>Dado: R = 0,082 atm·L/(mol·K).</p>`,
+  opts:['0,74 L','8,2 L','16,4 L','82 L','831 L'], ans:1,
+  hint:'Equação de Clapeyron. Repare nas unidades de R: pressão em atm, volume em L e temperatura em K.',
+  steps:[
+    ['Dados', `<p>n = 4,0 mol · p = 12 atm · T = 27 + 273 = 300 K</p>`],
+    ['Clapeyron', `<div class="eq">V = ${f('n · R · T','p')} = ${f('4,0 · 0,082 · 300','12')}</div><div class="eq">V = ${f('98,4','12')} = <span class="hl">8,2 L</span></div>`],
+  ],
+  alt:'Como R está em atm·L/(mol·K), a pressão entra em atm e o volume já sai em litros. Não é preciso converter nada além da temperatura.',
+  warn:'Usar 27 (°C) no lugar de 300 K dá 0,74 L (alternativa a). Usar R = 8,31 com a pressão em atm mistura unidades e dá 831 (alternativa e).',
+  mod:'Baseada no Exemplo 4 dos slides do capítulo 22 (6,0 mol, 227 °C, 12 atm), com outros valores.'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`Um cilindro rígido de 20 L contém oxigênio a 150 atm. O gás é usado para encher balões à pressão de 1,0 atm, na mesma temperatura do cilindro. Que volume esse gás ocuparia a 1,0 atm?`,
+  opts:['7,5 L','150 L','300 L','1 500 L','3 000 L'], ans:4,
+  hint:'A temperatura não muda: é uma transformação isotérmica. O produto p · V fica constante.',
+  steps:[
+    ['Tipo de transformação', `<p>Temperatura constante: <b>isotérmica</b> (lei de Boyle-Mariotte).</p>`],
+    ['Boyle-Mariotte', `<div class="eq">p₀ · V₀ = p · V</div><div class="eq">150 · 20 = 1,0 · V</div><div class="eq">V = <span class="hl">3 000 L</span></div>`],
+  ],
+  alt:'A pressão ficou 150 vezes menor. Na isotérmica, o volume fica 150 vezes maior: 20 · 150 = 3 000 L.',
+  warn:'Dividir em vez de multiplicar (20 ÷ 150 ≈ 0,13 ou 150 ÷ 20 = 7,5, alternativa a) faria o gás ocupar menos espaço a uma pressão menor. Pressão e volume variam em sentidos opostos.',
+  mod:'Inédita (lei de Boyle-Mariotte, slides do capítulo 22).'
+},
+{
+  src:'Inédita', nivel:'avançado',
+  text:`Uma amostra de gás ideal passa do estado 1 para o 2 e depois do 2 para o 3. Alguns valores estão na tabela.${tabela(['Estado','p (atm)','V (L)','T (K)'], [['1','2,0','6,0','300'],['2','3,0','6,0','T₂'],['3','3,0','V₃','600']])}<p>Os valores de T₂ e V₃ são, respectivamente:</p>`,
+  opts:['200 K e 8,0 L','450 K e 4,5 L','450 K e 8,0 L','450 K e 12 L','900 K e 4,0 L'], ans:2,
+  hint:'Olhe qual grandeza fica igual em cada etapa. De 1 para 2, o volume não muda; de 2 para 3, a pressão não muda.',
+  steps:[
+    ['De 1 para 2: isocórica', `<div class="eq">${f('2,0','300')} = ${f('3,0','T₂')} → T₂ = 450 K</div>`],
+    ['De 2 para 3: isobárica', `<div class="eq">${f('6,0','450')} = ${f('V₃','600')} → V₃ = 8,0 L</div>`],
+    ['Resposta', `<div class="eq"><span class="hl">T₂ = 450 K e V₃ = 8,0 L</span></div>`],
+  ],
+  alt:`Confira com a lei geral entre os estados 1 e 3: ${f('2,0 · 6,0','300')} = 0,04 e ${f('3,0 · 8,0','600')} = 0,04. Mesma amostra, mesmo valor de pV/T.`,
+  warn:'Inverter a proporção na isobárica dá V₃ = 4,5 L (alternativa b): o gás seria aquecido e diminuiria de volume, o que não acontece a pressão constante.',
+  mod:'Inédita (transformações isocórica e isobárica, slides do capítulo 22).'
+},
+{
+  src:'Livro, p. 37', nivel:'avançado',
+  text:`Um mol de um gás sofre a transformação representada no diagrama p × V.${FIG2_9}A temperatura do gás no estado A e a pressão no estado C são, respectivamente:<p>Dado: R = 8,0 J/(mol·K).</p>`,
+  opts:['100 K e 2,7 · 10⁵ Pa','100 K e 3,0 · 10⁵ Pa','300 K e 2,7 · 10⁵ Pa','800 K e 2,7 · 10⁵ Pa','1 K e 2,7 · 10⁵ Pa'], ans:0,
+  hint:'Calcule p · V em A, B e D. Se der sempre o mesmo valor, que tipo de transformação é essa?',
+  steps:[
+    ['Que transformação é essa', `<p>A: 8,0 · 10⁵ · 1,0 · 10⁻³ = 800 J<br>B: 4,0 · 10⁵ · 2,0 · 10⁻³ = 800 J<br>D: 2,0 · 10⁵ · 4,0 · 10⁻³ = 800 J</p><p>p · V é constante: <b>isotérmica</b>.</p>`],
+    ['Temperatura em A', `<div class="eq">T = ${f('p · V','n · R')} = ${f('800','1 · 8,0')} = <span class="hl">100 K</span></div>`],
+    ['Pressão em C', `<div class="eq">p<sub>C</sub> = ${f('800','3,0 · 10⁻³')} ≈ <span class="hl">2,7 · 10⁵ Pa</span></div>`],
+  ],
+  alt:'Como a curva é uma isoterma, a temperatura é a mesma (100 K) em todos os pontos, inclusive em C.',
+  warn:'Ler p<sub>C</sub> “no olho” pela malha leva a 3,0 · 10⁵ Pa (alternativa b), mas C está abaixo da linha de 3,0. E esquecer as potências de 10 (usar 8 · 1 = 8) dá T = 1 K (alternativa e).',
+  mod:'Questão do livro (“Agora é com você”, p. 37, n.º 3), itens b e c, transformada em múltipla escolha. Gráfico redesenhado.'
+},
+{
+  src:'Inédita', nivel:'avançado',
+  text:`Um balão meteorológico é liberado na superfície com 6,0 m³ de gás, a 1,0 atm e 27 °C. Ao atingir certa altitude, a pressão do gás é 0,40 atm e a temperatura, −33 °C. Considerando o gás ideal e a quantidade de gás constante, o volume do balão nessa altitude é:`,
+  opts:['1,9 m³','4,8 m³','12 m³','15 m³','18,75 m³'], ans:2,
+  hint:'Pressão e temperatura mudam juntas. Use a lei geral com T em kelvin; cuidado com a temperatura negativa em °C.',
+  steps:[
+    ['Kelvin', `<p>T₀ = 27 + 273 = 300 K · T = −33 + 273 = 240 K</p>`],
+    ['Lei geral', `<div class="eq">${f('1,0 · 6,0','300')} = ${f('0,40 · V','240')}</div>`],
+    ['Volume', `<div class="eq">V = ${f('1,0 · 6,0 · 240','300 · 0,40')} = <span class="hl">12 m³</span></div>`],
+  ],
+  alt:'Dois efeitos opostos. A pressão caiu para 0,40 da inicial: o volume multiplica por 2,5 (6 → 15 m³). O resfriamento de 300 K para 240 K multiplica por 0,8: 15 · 0,8 = 12 m³.',
+  warn:'Considerar só a queda de pressão dá 15 m³ (alternativa d); considerar só o resfriamento dá 4,8 m³ (alternativa b). Os dois efeitos acontecem juntos.',
+  mod:'Inédita (lei geral dos gases perfeitos, slides do capítulo 22).'
+},
+];
+
+/* ===== Lista 3 · Termologia: Primeira Lei da Termodinâmica (Cap. 23) ===== */
+const TOOLS3 = [
+  ['1ª Lei da Termodinâmica', `Q = τ + ΔU &nbsp;(tudo na mesma unidade de energia)`],
+  ['Sinais', `Q &gt; 0: recebe calor · Q &lt; 0: cede calor<br>τ &gt; 0: expansão (o gás realiza trabalho)<br>τ &lt; 0: compressão (trabalho sobre o gás)<br>ΔU &gt; 0: a temperatura sobe`],
+  ['Trabalho', `Pressão constante: τ = p · ΔV<br>Em qualquer caso: τ = área sob a curva no gráfico p × V<br>Volume constante: τ = 0`],
+  ['Energia interna (gás monoatômico)', `U = ${f('3','2')} n · R · T &nbsp;&nbsp; ΔU = ${f('3','2')} n · R · ΔT`],
+  ['Casos especiais', `Isotérmica: ΔU = 0 → Q = τ<br>Adiabática: Q = 0 → ΔU = −τ<br>Ciclo: ΔU = 0 → Q = τ = área do ciclo`],
+  ['Unidades', `1 L = 10<sup>−3</sup> m³ · 1 N/m² = 1 Pa<br>Pa · m³ = J`],
+];
+
+/* Q3: bomba de encher pneu */
+const FIG3_3 = (() => {
+  const [d, mk] = seta('var(--ink)');
+  return fig('0 0 340 190', 'Bomba de encher pneu em corte: um cilindro com ar, um êmbolo empurrado rapidamente para baixo por uma força F. As paredes não dão tempo para o ar trocar calor com o ambiente.',
+    `${d}<rect x="120" y="30" width="100" height="140" rx="6" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+    <rect x="124" y="98" width="92" height="68" fill="var(--sign)" opacity=".22"/>
+    ${[[140,112],[170,130],[200,118],[150,150],[188,154],[132,136],[205,142],[165,108]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="3" fill="var(--sign)"/>`).join('')}
+    <rect x="122" y="86" width="96" height="12" fill="var(--muted)"/>
+    <rect x="164" y="14" width="12" height="72" fill="var(--muted)"/>
+    <line x1="250" y1="22" x2="250" y2="72" stroke="var(--ink)" stroke-width="2.5" marker-end="${mk}"/>
+    <text x="262" y="50" class="pt pt-strong">F</text>
+    <text x="104" y="134" text-anchor="end" class="pt">ar</text>
+    <text x="236" y="150" class="pt">compressão</text><text x="236" y="166" class="pt">rápida</text>`, 320);
+})();
+
+/* Q5: A → B → C */
+const FIG3_5 = plot({ aria:'Gráfico pressão, em newtons por metro quadrado, em função do volume, em metros cúbicos. O gás vai do ponto A (1; 20) ao ponto B (3; 40) em linha reta e depois do ponto B ao ponto C (5; 40) a pressão constante.',
+  xmax:6, ymax:50, xt:[1,2,3,4,5], yt:[10,20,30,40], xl:'V (m³)', yl:'p (N/m²)',
+  L:[{ p:[[1,20],[3,40],[5,40]], c:'var(--sign)' }, { p:[[1,0],[1,20]], c:'var(--muted)', w:1.2, dash:'4 4' }, { p:[[3,0],[3,40]], c:'var(--muted)', w:1.2, dash:'4 4' }, { p:[[5,0],[5,40]], c:'var(--muted)', w:1.2, dash:'4 4' }],
+  pts:[[1,20],[3,40],[5,40]],
+  ann:[[0.8,24,'A','end'],[3,45,'B'],[5,45,'C'],[2,33,'<tspan font-size="20" fill="var(--sign)">↗</tspan>'],[4,43,'<tspan font-size="20" fill="var(--sign)">→</tspan>']] });
+
+/* Q6: ciclo retangular no sentido horário */
+const FIG3_6 = plot({ aria:'Ciclo retangular no diagrama pressão em função do volume. A (2; 100) sobe até B (2; 300), vai a pressão constante até C (5; 300), desce até D (5; 100) e volta a A: sentido horário.',
+  xmax:6, ymax:380, xt:[1,2,3,4,5], yt:[100,200,300], xl:'V (m³)', yl:'p (N/m²)',
+  L:[{ p:[[2,100],[2,300],[5,300],[5,100],[2,100]], c:'var(--sign)' }],
+  pts:[[2,100],[2,300],[5,300],[5,100]],
+  ann:[[1.8,90,'A','end'],[1.8,320,'B','end'],[5.2,320,'C','start'],[5.2,90,'D','start'],[1.75,210,'<tspan font-size="20" fill="var(--sign)">↑</tspan>'],[3.5,318,'<tspan font-size="20" fill="var(--sign)">→</tspan>'],[5.25,210,'<tspan font-size="20" fill="var(--sign)">↓</tspan>','start'],[3.5,82,'<tspan font-size="20" fill="var(--sign)">←</tspan>']] });
+
+/* Q9: ciclo triangular no sentido anti-horário */
+const FIG3_9 = plot({ aria:'Ciclo triangular no diagrama pressão em função do volume. A (0,1; 200) vai a pressão constante até B (0,5; 200), depois em linha reta até C (0,1; 600) e desce a volume constante de volta a A: sentido anti-horário.',
+  xmax:0.6, ymax:700, xt:[0.1,0.2,0.3,0.4,0.5], yt:[200,400,600], xl:'V (m³)', yl:'p (N/m²)',
+  L:[{ p:[[0.1,200],[0.5,200],[0.1,600],[0.1,200]], c:'var(--sign)' }],
+  pts:[[0.1,200],[0.5,200],[0.1,600]],
+  ann:[[0.09,175,'A','end'],[0.51,175,'B','start'],[0.09,625,'C','end'],[0.3,250,'<tspan font-size="20" fill="var(--sign)">→</tspan>'],[0.32,435,'<tspan font-size="20" fill="var(--sign)">↖</tspan>'],[0.075,400,'<tspan font-size="20" fill="var(--sign)">↓</tspan>','end']] });
+
+/* Q10: dois caminhos de A até C */
+const FIG3_10 = plot({ aria:'Diagrama pressão em função do volume com dois caminhos entre os mesmos estados A e C. Caminho 1: de A (1; 4) a B (3; 4) a pressão constante e depois de B a C (3; 2) a volume constante. Caminho 2: de A a D (1; 2) a volume constante e depois de D a C a pressão constante.',
+  xmax:4, ymax:5, xt:[1,2,3], yt:[1,2,3,4], xl:'V (m³)', yl:'p (10² Pa)',
+  L:[{ p:[[1,4],[3,4],[3,2]], c:'var(--sign)', lab:'caminho 1', lp:[1.6,4.3] }, { p:[[1,4],[1,2],[3,2]], c:'var(--plot2)', dash:'7 5', lab:'caminho 2', lp:[1.6,1.55] }],
+  pts:[[1,4],[3,4],[3,2],[1,2]],
+  ann:[[0.85,4.1,'A','end'],[3.15,4.1,'B','start'],[3.15,1.8,'C','start'],[0.85,1.8,'D','end']] });
+
+const QL3 = [
+{
+  src:'Inédita', nivel:'básico',
+  text:`Um gás recebe 500 J de calor e, ao mesmo tempo, realiza 200 J de trabalho sobre o meio externo. A variação da energia interna do gás é:`,
+  opts:['−700 J','−300 J','200 J','300 J','700 J'], ans:3,
+  hint:'Escreva a 1ª Lei e coloque os sinais: o gás recebe calor (Q positivo) e realiza trabalho (τ positivo).',
+  steps:[
+    ['Sinais', `<p>Recebe calor: Q = +500 J. Realiza trabalho (expande): τ = +200 J.</p>`],
+    ['1ª Lei', `<div class="eq">Q = τ + ΔU → 500 = 200 + ΔU</div><div class="eq">ΔU = <span class="hl">300 J</span></div>`],
+  ],
+  alt:'Pense numa conta bancária: entram 500 (calor), saem 200 (trabalho que o gás “gasta” empurrando o meio). Ficam 300 guardados como energia interna.',
+  warn:'Somar tudo (500 + 200 = 700 J, alternativa e) esquece que o trabalho realizado pelo gás é energia que <b>sai</b> dele.',
+  mod:'Inédita, inspirada nos Exemplos 1 (ENEM) e 2 (UERN) dos slides do capítulo 23.'
+},
+{
+  src:'Inédita', nivel:'básico',
+  text:`Um gás sofre uma transformação isocórica (volume constante) e recebe 360 J de calor do meio. O trabalho realizado pelo gás e a variação de sua energia interna são, respectivamente:`,
+  opts:['360 J e zero','zero e 360 J','180 J e 180 J','zero e −360 J','−360 J e 360 J'], ans:1,
+  hint:'Se o volume não muda, o gás empurra alguma coisa? Há trabalho?',
+  steps:[
+    ['Trabalho', `<p>Sem variação de volume, não há deslocamento do êmbolo: <b>τ = 0</b>.</p>`],
+    ['Energia interna', `<div class="eq">Q = τ + ΔU → 360 = 0 + ΔU</div><div class="eq">ΔU = <span class="hl">360 J</span></div>`],
+  ],
+  alt:'Na isocórica, todo o calor recebido vira energia interna: a temperatura do gás sobe. É o que acontece num recipiente rígido aquecido.',
+  warn:'A alternativa a troca as posições: não há trabalho porque o volume é constante, e é a energia interna que recebe os 360 J.',
+  mod:'Baseada no Exemplo 3 dos slides do capítulo 23 (isocórica com 240 J), com outro valor.'
+},
+{
+  src:'Inédita', nivel:'básico',
+  text:`Ao encher um pneu de bicicleta, a bomba esquenta. Suponha que o ar dentro dela seja comprimido tão rápido que não dá tempo de trocar calor com o ambiente (transformação adiabática).${FIG3_3}Para o ar dentro da bomba, nessa compressão:`,
+  opts:['Q = 0 e τ &lt; 0, então ΔU &gt; 0 e a temperatura sobe','Q = 0 e τ &gt; 0, então ΔU &lt; 0 e a temperatura cai','Q &gt; 0 e τ = 0, então ΔU &gt; 0 e a temperatura sobe','Q &lt; 0 e τ &lt; 0, então ΔU = 0 e a temperatura fica','Q = 0 e τ = 0, então ΔU = 0 e a temperatura fica'], ans:0,
+  hint:'Adiabática diz algo sobre Q. Compressão diz algo sobre o sinal de τ. Depois é só aplicar a 1ª Lei.',
+  steps:[
+    ['Calor', `<p>Adiabática: não há troca de calor, <b>Q = 0</b>.</p>`],
+    ['Trabalho', `<p>O volume diminui: o trabalho é feito <b>sobre</b> o gás, <b>τ &lt; 0</b>.</p>`],
+    ['Energia interna', `<div class="eq">0 = τ + ΔU → ΔU = −τ &gt; 0</div><p>A energia interna aumenta, e a <span class="hl">temperatura do ar sobe</span>. Por isso a bomba esquenta.</p>`],
+  ],
+  alt:'A energia que você gasta empurrando o êmbolo não tem para onde ir (não sai como calor) e fica no ar, aumentando sua energia interna.',
+  warn:'Dizer que τ &gt; 0 (alternativa b) seria uma expansão. Na compressão o trabalho é negativo, e é por isso que ΔU fica positivo.',
+  mod:'Inédita (convenção de sinais da 1ª Lei, slides do capítulo 23).'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`Em uma transformação isobárica, um gás perfeito, mantido a 3,0 · 10<sup>5</sup> N/m², recebe 2 000 J de calor, e seu volume aumenta de 2,0 L para 6,0 L. A variação da energia interna do gás é:<p>Dado: 1 L = 10<sup>−3</sup> m³.</p>`,
+  opts:['800 J','1 200 J','2 000 J','3 200 J','−1,2 · 10⁶ J'], ans:0,
+  hint:'Pressão constante: τ = p · ΔV, com o volume em m³. Depois use a 1ª Lei.',
+  steps:[
+    ['Variação de volume', `<div class="eq">ΔV = 6,0 − 2,0 = 4,0 L = 4,0 · 10<sup>−3</sup> m³</div>`],
+    ['Trabalho', `<div class="eq">τ = p · ΔV = 3,0 · 10<sup>5</sup> · 4,0 · 10<sup>−3</sup></div><div class="eq">τ = 1 200 J</div>`],
+    ['1ª Lei', `<div class="eq">2 000 = 1 200 + ΔU → ΔU = <span class="hl">800 J</span></div>`],
+  ],
+  alt:'Dos 2 000 J que entraram, 1 200 J saíram como trabalho (o gás empurrou o êmbolo) e 800 J ficaram no gás, aumentando sua temperatura.',
+  warn:'Deixar o volume em litros dá τ = 1,2 · 10⁶ J e uma energia interna negativa absurda (alternativa e). Pa · m³ é que dá joule.',
+  mod:'Baseada no Exemplo 4 dos slides do capítulo 23 (2,0 · 10⁵ N/m², 1 500 J, 3,0 L), com outros valores.'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`O gráfico mostra as transformações AB e BC sofridas por um gás ideal.${FIG3_5}O trabalho realizado pelo gás de A até C é:`,
+  opts:['80 J','100 J','140 J','160 J','200 J'], ans:2,
+  hint:'O trabalho é a área sob a curva, até o eixo V. Divida em duas figuras: um trapézio (AB) e um retângulo (BC).',
+  steps:[
+    ['Trecho AB (trapézio)', `<div class="eq">τ<sub>AB</sub> = ${f('(20 + 40) · 2','2')} = 60 J</div>`],
+    ['Trecho BC (retângulo)', `<div class="eq">τ<sub>BC</sub> = 40 · (5 − 3) = 80 J</div>`],
+    ['Total', `<div class="eq">τ<sub>AC</sub> = 60 + 80 = <span class="hl">140 J</span></div>`],
+  ],
+  alt:'Divida o trecho AB num retângulo (20 · 2 = 40 J) e num triângulo (2 · 20 ÷ 2 = 20 J). Os 60 J do trapézio aparecem do mesmo jeito.',
+  warn:'Calcular só o trecho a pressão constante dá 80 J (alternativa a). A área sob a reta inclinada também é trabalho.',
+  mod:'Baseada no Exemplo 1 (PUC-SP) da parte de trabalho dos slides do capítulo 23, com outros valores.'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`Um gás perfeito percorre o ciclo ABCDA representado no diagrama.${FIG3_6}Em cada ciclo, o gás:`,
+  opts:['não troca calor, pois ΔU = 0','recebe 300 J de calor','recebe 600 J de calor','cede 600 J de calor','recebe 1 500 J de calor'], ans:2,
+  hint:'Num ciclo, o gás volta ao estado inicial. O que isso diz sobre ΔU? E o trabalho é a área de dentro do ciclo.',
+  steps:[
+    ['Energia interna', `<p>O gás volta ao estado A: mesma temperatura, então <b>ΔU = 0</b>.</p>`],
+    ['Trabalho no ciclo', `<p>Área do retângulo: (5 − 2) · (300 − 100) = 600 J. O ciclo é <b>horário</b>, então o trabalho é positivo: τ = +600 J.</p>`],
+    ['Calor', `<div class="eq">Q = τ + ΔU = 600 + 0</div><p>O gás <span class="hl">recebe 600 J de calor</span> por ciclo.</p>`],
+  ],
+  alt:'É o funcionamento de uma máquina térmica: em cada volta, o calor que entra (em saldo) sai como trabalho.',
+  warn:'ΔU = 0 não significa Q = 0 (alternativa a). Significa que todo o calor trocado em saldo vira trabalho: Q = τ.',
+  mod:'Baseada no Exemplo 1 da parte de transformações cíclicas dos slides do capítulo 23, com outros valores e perguntando o calor.'
+},
+{
+  src:'Inédita', nivel:'intermediário',
+  text:`Uma amostra de 2,0 mols de hélio (gás monoatômico ideal) é aquecida de 300 K para 500 K. A variação de sua energia interna é:<p>Dado: R = 8,0 J/(mol·K).</p>`,
+  opts:['2 400 J','3 200 J','4 800 J','8 000 J','12 000 J'], ans:2,
+  hint:'Para gás monoatômico, ΔU = (3/2) · n · R · ΔT. Use a variação de temperatura, não a temperatura final.',
+  steps:[
+    ['Variação de temperatura', `<div class="eq">ΔT = 500 − 300 = 200 K</div>`],
+    ['Energia interna', `<div class="eq">ΔU = ${f('3','2')} · 2,0 · 8,0 · 200</div><div class="eq">ΔU = <span class="hl">4 800 J</span></div>`],
+  ],
+  alt:'Calcule U antes e depois: U₁ = 1,5 · 2 · 8 · 300 = 7 200 J e U₂ = 1,5 · 2 · 8 · 500 = 12 000 J. A diferença é 4 800 J.',
+  warn:'Usar a temperatura final dá 12 000 J (alternativa e), que é a energia interna em 500 K, não a variação. Esquecer o fator 3/2 dá 3 200 J (alternativa b).',
+  mod:'Inédita (energia interna do gás monoatômico, slides do capítulo 23).'
+},
+{
+  src:'Inédita', nivel:'avançado',
+  text:`Dois mols de um gás monoatômico ideal são aquecidos a pressão constante, de 300 K para 400 K. A quantidade de calor recebida pelo gás é:<p>Dado: R = 8,0 J/(mol·K).</p>`,
+  opts:['800 J','1 600 J','2 400 J','4 000 J','5 600 J'], ans:3,
+  hint:'Você não tem p nem V, mas tem n e ΔT. A pressão constante, p · ΔV = n · R · ΔT. Depois some a energia interna.',
+  steps:[
+    ['Trabalho', `<p>Pela equação de Clapeyron, a pressão constante:</p><div class="eq">τ = p · ΔV = n · R · ΔT</div><div class="eq">τ = 2 · 8,0 · 100 = 1 600 J</div>`],
+    ['Energia interna', `<div class="eq">ΔU = ${f('3','2')} · 2 · 8,0 · 100 = 2 400 J</div>`],
+    ['Calor', `<div class="eq">Q = τ + ΔU = 1 600 + 2 400 = <span class="hl">4 000 J</span></div>`],
+  ],
+  alt:'Para o gás monoatômico a pressão constante, Q = (5/2) · n · R · ΔT: uma parte (3/2) aquece o gás e outra (1) vira trabalho.',
+  warn:'Calcular só a energia interna dá 2 400 J (alternativa c). A pressão constante o gás também se expande, e parte do calor sai como trabalho.',
+  mod:'Inédita (1ª Lei com Clapeyron e energia interna, slides dos capítulos 22 e 23).'
+},
+{
+  src:'Inédita', nivel:'avançado',
+  text:`Um gás sofre a transformação cíclica ABCA indicada no diagrama.${FIG3_9}Em cada ciclo, o trabalho do gás e o calor trocado são:`,
+  opts:['τ = +80 J; recebe 80 J de calor','τ = −80 J; cede 80 J de calor','τ = −160 J; cede 160 J de calor','τ = 0; não troca calor','τ = +160 J; recebe 160 J de calor'], ans:1,
+  hint:'O trabalho é a área do triângulo. O sinal depende do sentido em que o ciclo é percorrido.',
+  steps:[
+    ['Área do ciclo', `<div class="eq">área = ${f('(0,5 − 0,1) · (600 − 200)','2')} = 80 J</div>`],
+    ['Sinal', `<p>O ciclo vai de A para B (direita), sobe até C e desce até A: sentido <b>anti-horário</b>. O trabalho no ciclo é negativo: τ = −80 J.</p>`],
+    ['Calor', `<p>Ciclo: ΔU = 0, então Q = τ = −80 J. O gás <span class="hl">cede 80 J de calor</span>.</p>`],
+  ],
+  alt:'Compare a expansão AB (o gás realiza 200 · 0,4 = 80 J) com a compressão BC (o meio realiza sobre o gás a área do trapézio, 160 J). Saldo: 80 − 160 = −80 J.',
+  warn:'Esquecer o sentido do ciclo leva à alternativa a. E usar o retângulo inteiro (0,4 · 400 = 160 J) em vez do triângulo leva à alternativa c ou e.',
+  mod:'Inédita, inspirada no Exemplo 2 (UFG) dos slides do capítulo 23, com o ciclo em sentido anti-horário.'
+},
+{
+  src:'Inédita', nivel:'avançado',
+  text:`Um gás ideal pode ir do estado A ao estado C por dois caminhos diferentes, mostrados no diagrama.${FIG3_10}<p>Considere as afirmações:</p><p>I. A variação da energia interna é a mesma nos dois caminhos.<br>II. O trabalho realizado pelo gás é o mesmo nos dois caminhos.<br>III. O gás recebe mais calor no caminho 1 do que no caminho 2.</p><p>Está correto o que se afirma em:</p>`,
+  opts:['I, apenas','II, apenas','I e III, apenas','II e III, apenas','I, II e III'], ans:2,
+  hint:'A energia interna depende só do estado (início e fim). O trabalho depende da área sob o caminho. E o calor sai da 1ª Lei.',
+  steps:[
+    ['Afirmação I', `<p>Os dois caminhos começam em A e terminam em C. A energia interna depende só do estado do gás, então ΔU é igual: <b>verdadeira</b>.</p>`],
+    ['Afirmação II', `<p>Caminho 1: a expansão acontece a 4 · 10² Pa, área = 4 · 10² · 2 = 800 J.<br>Caminho 2: a expansão acontece a 2 · 10² Pa, área = 2 · 10² · 2 = 400 J.<br>Os trabalhos são diferentes: <b>falsa</b>.</p>`],
+    ['Afirmação III', `<p>Q = τ + ΔU. O ΔU é igual e o τ é maior no caminho 1, então o calor recebido também é maior: <b>verdadeira</b>.</p><div class="eq"><span class="hl">I e III</span></div>`],
+  ],
+  alt:'ΔU é como a diferença de altitude entre duas cidades: não depende da estrada. Trabalho e calor são como a distância percorrida: dependem do caminho.',
+  warn:'É comum achar que, se o começo e o fim são iguais, tudo é igual (alternativa e). Só ΔU depende apenas do início e do fim; trabalho e calor dependem do caminho.',
+  mod:'Inédita (trabalho como área no gráfico p × V e 1ª Lei, slides do capítulo 23).'
+},
+];
+
+/* ===== Estrutura do site: temas e listas. Para adicionar material, inclua um item em "listas" ou um novo tema. ===== */
+/* Identificação do material dos capítulos (trocar aqui se mudar) */
+const LIVRO = 'Livro 1 · 1ª série';
+
+const SITE = {
+  escola: 'Colégio Leonardo da Vinci Alfa',
+  turma: '2ª série',
+  turmas: 'Turmas 201 e 202',
+  prof: 'Prof. Ricieri',
+  temas: [
+    {
+      id: 'termologia', ico: 'ΔT', nome: 'Termologia', cls: 'th-termo', estilo: 'termo',
+      resumo: `Calorimetria, gases ideais e 1ª Lei da Termodinâmica · ${LIVRO}, capítulos 20, 22 e 23.`,
+      listas: [
+        { id: 'calorimetria', key: 'ldv2-termo-calorimetria-v1', num: 1,
+          titulo: 'Calorimetria',
+          resumo: `${LIVRO} · Capítulo 20. Calor sensível e latente, capacidade térmica, curvas de aquecimento e trocas de calor.`,
+          intro: `Material do ${LIVRO}, capítulo 20.`,
+          tools: TOOLS1, Q: QL1 },
+        { id: 'gases', key: 'ldv2-termo-gases-v1', num: 2,
+          titulo: 'Gases ideais',
+          resumo: `${LIVRO} · Capítulo 22. Modelo de gás ideal, equação de Clapeyron, lei geral e transformações gasosas.`,
+          intro: `Material do ${LIVRO}, capítulo 22.`,
+          tools: TOOLS2, Q: QL2 },
+        { id: 'primeira-lei', key: 'ldv2-termo-primeira-lei-v1', num: 3,
+          titulo: 'Primeira Lei da Termodinâmica',
+          resumo: `${LIVRO} · Capítulo 23. Calor, trabalho e energia interna, trabalho no gráfico p × V e ciclos.`,
+          intro: `Material do ${LIVRO}, capítulo 23.`,
+          tools: TOOLS3, Q: QL3 }
+      ]
+    }
+  ]
+};
+
+/* ===== Configuração do registro (preencher ao publicar) ===== */
+const CONFIG = {
+  dominio: 'alunos.colegioleonardodavinci.com.br',      // domínio do e-mail dos alunos do LDV. Vazio = não pede identificação
+  registro: '',     // URL do App da Web do Google Apps Script. Vazio = não envia resultados (preencher quando a planilha existir)
+  turmas: ['201', '202']
+};
+const $ = id => document.getElementById(id);
+const ID_KEY = 'fis2ldv-aluno', FILA_KEY = 'fis2ldv-fila', DIA_KEY = 'fis2ldv-ultimo-acesso';
+const getAluno = () => { try { const a = JSON.parse(localStorage.getItem(ID_KEY) || 'null'); return a && a.email ? a : null; } catch(e){ return null; } };
+const setAluno = a => { try { if (a) localStorage.setItem(ID_KEY, JSON.stringify(a)); else localStorage.removeItem(ID_KEY); } catch(e){} };
+const precisaLogin = () => !!CONFIG.dominio && !getAluno();
+function emailValido(e){ const d = CONFIG.dominio.toLowerCase().replace(/^@/, ''); return new RegExp('^[a-z0-9._%+-]+@' + d.replace(/[.]/g, '\\.') + '$').test(e); }
+function enviar(ev){
+  const a = getAluno(); if (!CONFIG.registro || !a) return;
+  const item = Object.assign({ email: a.email, turma: a.turma, quando: new Date().toISOString(), dispositivo: /mobi|android|iphone|ipad/i.test(navigator.userAgent) ? 'celular/tablet' : 'computador' }, ev);
+  let fila = []; try { fila = JSON.parse(localStorage.getItem(FILA_KEY) || '[]'); } catch(e){}
+  fila.push(item); try { localStorage.setItem(FILA_KEY, JSON.stringify(fila.slice(-60))); } catch(e){}
+  enviarFila();
+}
+let enviando = false;
+async function enviarFila(){
+  if (!CONFIG.registro || enviando || navigator.onLine === false) return;
+  enviando = true;
+  try {
+    let fila = []; try { fila = JSON.parse(localStorage.getItem(FILA_KEY) || '[]'); } catch(e){}
+    while (fila.length){
+      await fetch(CONFIG.registro, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(fila[0]) });
+      fila.shift(); try { localStorage.setItem(FILA_KEY, JSON.stringify(fila)); } catch(e){}
+    }
+  } catch(e){} finally { enviando = false; }
+}
+window.addEventListener('online', enviarFila);
+function registrarAcessoDoDia(){
+  const a = getAluno(); if (!CONFIG.registro || !a) return;
+  const marca = a.email + '|' + new Date().toLocaleDateString('sv-SE');
+  let ult = null; try { ult = localStorage.getItem(DIA_KEY); } catch(e){}
+  if (ult !== marca){ enviar({ evento: 'acesso' }); try { localStorage.setItem(DIA_KEY, marca); } catch(e){} }
+}
+/* Tempo ativo: conta só com a lista aberta, a tela visível e o aluno interagindo (pausa após 3 min parado) */
+let tMarca = null, tInter = Date.now();
+['click','keydown','scroll','touchstart'].forEach(ev => window.addEventListener(ev, () => { if (LI && tMarca === null && document.visibilityState === 'visible') tMarca = Date.now(); tInter = Date.now(); }, { passive: true }));
+function contarTempo(){
+  if (!LI || !st || tMarca === null) return;
+  const fim = Math.min(Date.now(), tInter + 180000);
+  if (fim > tMarca) st.tempo = (st.tempo || 0) + (fim - tMarca) / 1000;
+  tMarca = Date.now() <= tInter + 180000 ? Date.now() : null;
+  store(LI.key, st);
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden'){ contarTempo(); tMarca = null; } else if (LI){ tMarca = Date.now(); tInter = Date.now(); } });
+const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const toTop = () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+const load = k => { try { const s = JSON.parse(localStorage.getItem(k) || 'null'); if (s && typeof s === 'object') return Object.assign({ answers:{}, hints:{}, cur:-1 }, s); } catch(e){} return { answers:{}, hints:{}, cur:-1 }; };
+const store = (k, s) => { try { localStorage.setItem(k, JSON.stringify(s)); } catch(e){} };
+
+let T = null, LI = null, st = null; // tema, lista e progresso atuais
+
+function stats(l){ const s = load(l.key); let n = 0, c = 0; l.Q.forEach((q,i)=>{ const a = s.answers[i]; if (a !== undefined){ n++; if (a === q.ans) c++; } }); return { n, c, total: l.Q.length }; }
+
+function plate(eyebrow, title, sub){
+  $('eyebrow').textContent = eyebrow; $('ptitle').textContent = title; $('psub').textContent = sub;
+  const r = document.documentElement;
+  SITE.temas.forEach(t => t.cls && r.classList.remove(t.cls));
+  if (T && T.cls) r.classList.add(T.cls);
+  $('deco').innerHTML = T ? decoTema(T.estilo) : '';
+}
+/* Enfeite do cabeçalho de cada tema */
+function decoTema(e){
+  if (e === 'onda'){
+    let d = 'M0 40'; for (let x = 0; x <= 220; x += 4) d += ` L${x} ${(40 - 14 * Math.sin(2 * Math.PI * x / 55)).toFixed(1)}`;
+    return `<svg viewBox="0 0 220 80" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="3"/><path d="${d}" transform="translate(0 22)" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/></svg>`;
+  }
+  if (e === 'raio'){
+    const cores = ['#FF5A4F','#FF9F40','#FFE24D','#55D17A','#4FA3FF','#8B6CFF'];
+    return `<svg viewBox="0 0 220 80" aria-hidden="true"><line x1="0" y1="52" x2="104" y2="40" stroke="#FFFFFF" stroke-width="3"/><polygon points="96,70 128,14 160,70" fill="none" stroke="currentColor" stroke-width="2.5"/>${cores.map((c, i) => `<line x1="140" y1="44" x2="220" y2="${30 + i * 8}" stroke="${c}" stroke-width="2.5"/>`).join('')}</svg>`;
+  }
+  if (e === 'termo'){
+    let w = ''; [0, 1, 2].forEach(k => { let d = `M${150 + k * 22} 70`; for (let y = 70; y >= 10; y -= 3) d += ` L${(150 + k * 22 + 5 * Math.sin(y / 6)).toFixed(1)} ${y}`; w += `<path d="${d}" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>`; });
+    return `<svg viewBox="0 0 220 80" aria-hidden="true"><rect x="40" y="12" width="74" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="30" cy="20" r="13" fill="currentColor"/><rect x="34" y="16" width="52" height="8" rx="4" fill="currentColor"/>${[54, 66, 78, 90, 102].map(x => `<line x1="${x}" y1="32" x2="${x}" y2="38" stroke="currentColor" stroke-width="2"/>`).join('')}${w}</svg>`;
+  }
+  return '';
+}
+/* Trilha de progresso: estrada (carro), onda (corda), raio de luz ou termômetro */
+function trilha(n){
+  const e = (T && T.estilo) || 'estrada';
+  if (e === 'onda'){
+    let d = 'M0 15'; for (let x = 0; x <= 1000; x += 4) d += ` L${x} ${(15 - 10 * Math.sin(2 * Math.PI * x * n / 1000)).toFixed(2)}`;
+    return `<div class="lane2 ln-onda" id="lane" data-estilo="onda">
+      <svg class="ln-base" viewBox="0 0 1000 30" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="15" x2="1000" y2="15"/></svg>
+      <svg class="ln-fill" viewBox="0 0 1000 30" preserveAspectRatio="none" aria-hidden="true"><path d="${d}"/></svg>
+      <span class="ln-src" aria-hidden="true"></span><span class="ln-head" aria-hidden="true"></span></div>`;
+  }
+  if (e === 'termo'){
+    return `<div class="lane2 ln-termo" id="lane" data-estilo="termo">
+      <span class="ln-tubo" aria-hidden="true"></span>
+      <span class="ln-fill" aria-hidden="true"></span>
+      <span class="ln-src" aria-hidden="true"></span></div>`;
+  }
+  if (e === 'raio'){
+    return `<div class="lane2 ln-raio" id="lane" data-estilo="raio">
+      <svg class="ln-base" viewBox="0 0 1000 30" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="15" x2="1000" y2="15"/></svg>
+      <svg class="ln-fill" viewBox="0 0 1000 30" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="15" x2="1000" y2="15"/></svg>
+      <span class="ln-src" aria-hidden="true"></span><span class="ln-head" aria-hidden="true"></span></div>`;
+  }
+  return `<div class="lane" id="lane" data-estilo="estrada">
+        <svg class="car" id="car" viewBox="0 0 34 20" aria-hidden="true">
+          <path d="M3 13 L5 8 Q6 6 9 6 L21 6 Q23 6 25 8 L29 11 Q32 11.5 32 14 L32 15 L2 15 L2 14 Q2 13 3 13 Z" fill="var(--lane)"/>
+          <path d="M8 8 L12 8 L12 11 L6.5 11 Z M14 8 L20 8 Q21.5 8 23 9.5 L24.5 11 L14 11 Z" fill="var(--road)"/>
+          <circle cx="9" cy="15.5" r="3" fill="var(--road-ink)"/><circle cx="25" cy="15.5" r="3" fill="var(--road-ink)"/>
+        </svg>
+      </div>`;
+}
+function crumbs(items){
+  const c = $('crumbs');
+  if (!items){ c.hidden = true; c.innerHTML = ''; return; }
+  c.hidden = false;
+  c.innerHTML = items.map((it, i) => {
+    const last = i === items.length - 1;
+    return (i ? '<span class="sep">›</span>' : '') + (last ? `<span class="here">${it.label}</span>` : `<button data-nav="${it.nav}">${it.label}</button>`);
+  }).join('');
+}
+
+/* ===== Nível 1: início da turma ===== */
+function openHome(){
+  contarTempo(); tMarca = null;
+  T = LI = null;
+  plate(`Física · ${SITE.escola}`, SITE.turma, `${SITE.turmas} · ${SITE.prof}`);
+  crumbs(null);
+  $('view').innerHTML = `
+    <section class="card intro">
+      <p class="sect-label">Como usar</p>
+      <p>Aqui ficam as listas e práticas de Física da turma. Escolha um tema e depois a lista. Cada lista mostra uma questão por vez, com dica e resolução detalhada logo depois de responder.</p>
+    </section>
+    <p class="sect-label">Temas</p>
+    ${SITE.temas.length ? '' : '<section class="card"><p>As primeiras listas estão sendo preparadas e aparecem aqui em breve.</p></section>'}
+    <div class="cards">
+      ${SITE.temas.map((t, i) => {
+        const nl = t.listas.length;
+        return `<button class="tile ${t.cls || ''}" data-tema="${i}">
+          <span class="ico">${t.ico}</span>
+          <span><span class="tt">${t.nome}</span><span class="ds">${t.resumo}</span>
+            <span class="meta"><span class="chip">${nl} ${nl === 1 ? 'lista' : 'listas'}</span></span></span>
+          <span class="go">→</span></button>`;
+      }).join('')}
+    </div>
+    <p class="note">Novos temas e listas entram aqui ao longo do trimestre.</p>
+    <section class="card install" id="installCard" hidden></section>
+    ${getAluno() ? `<p class="note">Entrou como <b>${getAluno().email}</b>${getAluno().turma ? ' · Turma ' + getAluno().turma : ''}. <button class="btn ghost" data-act="sair" style="padding:0">Não é você? Trocar</button></p>` : ''}`;
+  showInstall();
+  toTop();
+}
+
+/* ===== Nível 2: tema ===== */
+function openTema(ti){
+  contarTempo(); tMarca = null;
+  T = SITE.temas[ti]; LI = null;
+  plate(`Física · ${SITE.turma}`, T.nome, T.resumo);
+  crumbs([{ label:'Início', nav:'home' }, { label:T.nome }]);
+  $('view').innerHTML = `
+    <p class="sect-label">Listas e práticas</p>
+    <div class="cards">
+      ${T.listas.map((l, i) => {
+        const s = stats(l);
+        const prog = s.n ? `<span class="chip ${s.n === s.total ? 'ok' : ''}">${s.n === s.total ? `Feita · ${s.c}/${s.total} certas` : `${s.n}/${s.total} respondidas`}</span>` : '';
+        return `<button class="tile" data-lista="${i}">
+          <span class="ico lane">L${l.num}</span>
+          <span><span class="tt">Lista ${l.num} · ${l.titulo}</span><span class="ds">${l.resumo}</span>
+            <span class="meta"><span class="chip">${s.total} questões</span><span class="chip">com resolução</span>${prog}</span></span>
+          <span class="go">→</span></button>`;
+      }).join('')}
+    </div>`;
+  toTop();
+}
+
+/* ===== Nível 3: lista interativa ===== */
+function openLista(li){
+  contarTempo();
+  LI = T.listas[li]; st = load(LI.key); st.cur = -1; tMarca = Date.now(); tInter = Date.now();
+  plate(`Física · ${SITE.turma} · ${T.nome}`, `Lista ${LI.num}`, LI.titulo);
+  crumbs([{ label:'Início', nav:'home' }, { label:T.nome, nav:'tema' }, { label:`Lista ${LI.num}` }]);
+  $('view').innerHTML = `
+    <nav class="road" aria-label="Progresso nas questões">
+      <div class="road-top"><span id="roadLabel"></span><span id="roadScore"></span></div>
+      ${trilha(LI.Q.length)}
+      <div class="marks" id="marks" style="grid-template-columns:repeat(${LI.Q.length},1fr)"></div>${levelRow()}
+    </nav>
+    <details class="tools">
+      <summary><span>Caixa de ferramentas: fórmulas e conversões</span><span class="chev">›</span></summary>
+      <div class="tools-grid">${LI.tools.map(([t,h])=>`<div class="tool"><h4>${t}</h4><div>${h}</div></div>`).join('')}</div>
+    </details>
+    <div id="qa"></div>`;
+  renderRoad(); renderIntro(); toTop();
+}
+
+
+const lvKey = n => ({'básico':'b','intermediário':'i','avançado':'a'})[n] || 'b';
+function levelGroups(){
+  const g = [];
+  LI.Q.forEach((q, i) => { if (!q.nivel) return; const last = g[g.length-1]; if (last && last.n === q.nivel && last.end === i) last.end = i + 1; else g.push({ n: q.nivel, start: i, end: i + 1 }); });
+  return g;
+}
+function levelRow(){
+  const g = levelGroups(); if (!g.length) return '';
+  return `<div class="lvrow" style="grid-template-columns:repeat(${LI.Q.length},1fr)">${g.map(x => `<span class="lv-${lvKey(x.n)}" style="grid-column:${x.start+1} / ${x.end+1}">${x.n}</span>`).join('')}</div>`;
+}
+function levelSummary(){
+  const g = levelGroups(); if (!g.length) return '';
+  const c = {}; g.forEach(x => c[x.n] = (c[x.n] || 0) + (x.end - x.start));
+  return `<div class="row" style="gap:6px">${Object.keys(c).map(n => `<span class="lvl lvl-${lvKey(n)}">${c[n]} ${n === 'básico' ? (c[n]>1?'básicas':'básica') : n === 'intermediário' ? (c[n]>1?'intermediárias':'intermediária') : (c[n]>1?'avançadas':'avançada')}</span>`).join('')}</div>`;
+}
+const save = () => store(LI.key, st);
+function resumoLista(){
+  const porNivel = n => { const idx = LI.Q.map((q,i) => i).filter(i => LI.Q[i].nivel === n); return idx.length ? idx.filter(i => status(i) === 'ok').length + '/' + idx.length : ''; };
+  return {
+    evento: 'lista concluída', tema: T.nome, lista: 'Lista ' + LI.num,
+    acertos: correctCount(), total: LI.Q.length,
+    basico: porNivel('básico'), intermediario: porNivel('intermediário'), avancado: porNivel('avançado'),
+    erradas: LI.Q.map((q,i) => i).filter(i => status(i) !== 'ok').map(i => i + 1).join(', '),
+    dicas: Object.keys(st.hints || {}).filter(k => st.hints[k]).length,
+    tempoMin: Math.round((st.tempo || 0) / 6) / 10
+  };
+}
+function status(i){ const a = st.answers[i]; if (a === undefined) return 'none'; return a === LI.Q[i].ans ? 'ok' : 'bad'; }
+function correctCount(){ return LI.Q.reduce((n,_,i)=> n + (status(i)==='ok'?1:0), 0); }
+function answeredCount(){ return LI.Q.reduce((n,_,i)=> n + (status(i)!=='none'?1:0), 0); }
+
+function renderRoad(){
+  const Q = LI.Q;
+  $('marks').innerHTML = Q.map((_,i)=>{
+    const s = status(i);
+    const cls = ['mk', s==='ok'?'ok':s==='bad'?'bad':'', st.cur===i?'cur':''].join(' ');
+    const lab = s==='ok'?'certa':s==='bad'?'errada':'não respondida';
+    return `<button class="${cls}" data-go="${i}" aria-label="Questão ${i+1}, ${lab}">${i+1}</button>`;
+  }).join('');
+  const pos = st.cur < 0 ? 0 : st.cur >= Q.length ? Q.length - 0.5 : st.cur + 0.5;
+  const lane = $('lane'), pct = (pos/Q.length)*100;
+  if (lane.dataset.estilo === 'estrada') $('car').style.left = `calc(${pct}% + ${st.cur<0?17:0}px)`;
+  else { lane.style.setProperty('--p', pct.toFixed(2)); lane.querySelector('.ln-fill').style.clipPath = `inset(0 ${(100 - pct).toFixed(2)}% 0 0)`; }
+  const n = answeredCount();
+  $('roadLabel').textContent = st.cur>=0 && st.cur<Q.length ? `Questão ${st.cur+1} de ${Q.length}` : `Percurso: ${Q.length} questões`;
+  $('roadScore').textContent = n ? `${correctCount()} de ${n} certas` : '';
+}
+
+function renderIntro(){
+  const Q = LI.Q, n = answeredCount();
+  $('qa').innerHTML = `
+  <section class="card intro">
+    <div class="qnum">Antes de começar</div>
+    <p>São <b>${Q.length} questões</b> sobre ${LI.titulo.toLowerCase()}. ${LI.intro || ''}</p>${levelSummary()}
+    <ul>
+      <li>Responda uma questão por vez. Logo depois, aparece a <b>resolução detalhada</b>, passo a passo.</li>
+      <li>Travou? Use o botão <b>Ver dica</b> antes de responder.</li>
+      <li>A <b>caixa de ferramentas</b> acima tem as fórmulas e conversões que você vai usar.</li>
+      <li>Tenha papel e lápis à mão e tente resolver antes de clicar na alternativa.</li>
+    </ul>
+    <div class="row">
+      <button class="btn primary" id="startBtn">${n && n < Q.length ? 'Continuar de onde parei' : n === Q.length ? 'Ver meu resultado' : 'Começar a questão 1'}</button>
+      ${n ? `<span class="small">${n} de ${Q.length} questões respondidas neste aparelho.</span>` : ''}
+    </div>
+  </section>`;
+  $('startBtn').onclick = () => {
+    if (n === Q.length) goQ(Q.length);
+    else { const next = Q.findIndex((_,i)=>status(i)==='none'); goQ(next < 0 ? 0 : next); }
+  };
+}
+
+function renderQuestion(i){
+  const Q = LI.Q, q = Q[i], a = st.answers[i], done = a !== undefined, skipped = a === -1;
+  const opts = q.opts.map((o,k)=>{
+    let cls = 'opt', tag = '';
+    if (done){
+      if (k === q.ans){ cls += ' is-correct'; tag = '<span class="tag">✓ correta</span>'; }
+      else if (k === a){ cls += ' is-wrong'; tag = '<span class="tag">✗ sua resposta</span>'; }
+      else cls += ' is-dim';
+    }
+    return `<li><button class="${cls}" data-pick="${k}" ${done?'disabled':''}><span class="letter">${L[k]}</span><span>${o}</span>${tag}</button></li>`;
+  }).join('');
+  let fb = '';
+  if (done){
+    fb = a === q.ans
+      ? `<div class="feedback good" role="status"><span class="ico">✓</span>Correto! Confira a resolução para ver se o seu raciocínio bate.</div>`
+      : skipped
+        ? `<div class="feedback bad" role="status"><span class="ico">→</span>Sem problema. Acompanhe a resolução com calma e tente refazer no papel.</div>`
+        : `<div class="feedback bad" role="status"><span class="ico">✗</span>Não foi dessa vez. A resposta certa é a ${L[q.ans]}. Veja onde o raciocínio muda.</div>`;
+  }
+  const sol = done ? `
+    <section class="sol" aria-label="Resolução detalhada">
+      <h3>Resolução detalhada</h3>
+      <ol class="steps">
+        ${q.steps.map(([lab,html])=>`<li class="step"><div class="step-body"><div class="step-label">${lab}</div>${html}</div></li>`).join('')}
+      </ol>
+      <div class="answer"><span class="letter">${L[q.ans]}</span><span>Resposta: alternativa ${L[q.ans]} (${q.opts[q.ans]})</span></div>
+      ${q.alt ? `<div class="alt"><b class="lbl">Outro jeito de pensar</b>${q.alt}</div>` : ''}
+      ${q.warn ? `<div class="warn"><b class="lbl">Cuidado com a pegadinha</b>${q.warn}</div>` : ''}
+    </section>` : '';
+  const showHint = st.hints[i] && !done;
+  const last = i === Q.length - 1;
+  $('qa').innerHTML = `
+  <article class="card">
+    <div class="qhead">
+      <div class="qnum">Questão ${i+1} <span>/ ${Q.length}</span></div>
+      <span class="row" style="gap:6px">${q.nivel ? `<span class="lvl lvl-${lvKey(q.nivel)}">Nível ${q.nivel}</span>` : ''}<span class="src">${q.src}</span></span>
+    </div>
+    <div class="stmt">${q.text}</div>
+    <ul class="opts">${opts}</ul>
+    ${!done ? `<div class="row">
+        ${showHint ? '' : `<button class="btn" id="hintBtn">Ver dica</button>`}
+        <span class="spacer"></span>
+        <button class="btn ghost" id="skipBtn">Não sei, mostrar a resolução</button>
+      </div>` : ''}
+    ${showHint ? `<div class="tip"><b>Dica</b>${q.hint}</div>` : ''}
+    ${fb}
+    ${sol}
+    <div class="row">
+      ${i > 0 ? `<button class="btn" id="prevBtn">← Anterior</button>` : ''}
+      <span class="spacer"></span>
+      ${done ? `<button class="btn primary" id="nextBtn">${last ? 'Ver meu resultado' : 'Próxima questão →'}</button>`
+             : (!last ? `<button class="btn ghost" id="jumpBtn">Pular por enquanto</button>` : '')}
+    </div>
+  </article>`;
+  $('qa').querySelectorAll('[data-pick]').forEach(b => b.onclick = () => answer(i, +b.dataset.pick));
+  const h = $('hintBtn'); if (h) h.onclick = () => { st.hints[i] = true; save(); renderQuestion(i); };
+  const s = $('skipBtn'); if (s) s.onclick = () => answer(i, -1);
+  const p = $('prevBtn'); if (p) p.onclick = () => goQ(i - 1);
+  const n = $('nextBtn'); if (n) n.onclick = () => goQ(i + 1);
+  const j = $('jumpBtn'); if (j) j.onclick = () => goQ(i + 1);
+}
+
+function answer(i, k){
+  if (st.answers[i] !== undefined) return;
+  st.answers[i] = k; save();
+  if (answeredCount() === LI.Q.length && !st.enviado){ contarTempo(); st.enviado = true; save(); enviar(resumoLista()); }
+  renderRoad(); renderQuestion(i);
+  const fb = $('qa').querySelector('.feedback');
+  if (fb) fb.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+}
+
+function renderEnd(){
+  const Q = LI.Q, c = correctCount(), n = answeredCount();
+  const msg = n < Q.length
+    ? `Você ainda tem ${Q.length - n} questão(ões) sem responder. Toque nelas abaixo para terminar.`
+    : c >= Math.ceil(Q.length * 0.9) ? 'Excelente! Você domina este conteúdo. Releia as pegadinhas para chegar à somativa ainda mais seguro.'
+    : c >= Math.ceil(Q.length * 0.6) ? 'Bom trabalho. Revise as questões que errou e leia com atenção as pegadinhas: é onde mais se perde ponto.'
+    : 'Vale revisar a caixa de ferramentas e refazer as questões com calma, acompanhando cada passo da resolução, antes da somativa.';
+  $('qa').innerHTML = `
+  <section class="card">
+    <div class="qnum">Resultado</div>
+    <div class="score">${c}<span> / ${Q.length}</span></div>
+    <p style="margin:0">${msg}</p>
+    <ul class="reslist">
+      ${Q.map((q,i)=>{ const s = status(i); const t = s==='ok'?'✓ certa':s==='bad'?(st.answers[i]===-1?'→ vista':'✗ errada'):'— pendente';
+        return `<li><button class="res ${s}" data-go="${i}"><b>Questão ${i+1}</b><span class="st">${t}</span></button></li>`; }).join('')}
+    </ul>
+    <div class="row">
+      <button class="btn" id="resetBtn">Refazer a lista do zero</button>
+      <button class="btn primary" data-nav="tema">Voltar para ${T.nome}</button>
+      <span class="small" id="resetNote"></span>
+    </div>
+  </section>`;
+  const r = $('resetBtn'); let armed = false;
+  r.onclick = () => {
+    if (!armed){ armed = true; r.textContent = 'Confirmar: apagar minhas respostas'; $('resetNote').textContent = 'Toque de novo para confirmar.'; return; }
+    st = { answers:{}, hints:{}, cur:-1, tempo:0 }; save(); goQ(-1);
+  };
+}
+
+function goQ(i){
+  st.cur = i; save();
+  renderRoad();
+  if (i < 0) renderIntro();
+  else if (i >= LI.Q.length) renderEnd();
+  else renderQuestion(i);
+  toTop();
+}
+
+/* ===== Navegação com endereço próprio (#/tema/lista) e botão Voltar do celular ===== */
+function go(h){ if (location.hash === h) route(); else location.hash = h; }
+function openLogin(){
+  contarTempo(); tMarca = null; T = LI = null;
+  plate(`Física · ${SITE.escola}`, SITE.turma, `${SITE.turmas} · ${SITE.prof}`);
+  crumbs(null);
+  $('view').innerHTML = `
+    <form class="card intro" id="loginForm" novalidate>
+      <p class="sect-label">Identificação</p>
+      <p>Para usar as listas, informe o seu <b>e-mail do colégio</b> e a sua turma. Você só faz isso uma vez neste aparelho.</p>
+      <label class="fld"><span>E-mail do colégio <small class="fld-dica">(só a parte antes do @)</small></span>
+        <span class="emailbox">
+          <input id="loginEmail" type="text" inputmode="email" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="nome.sobrenome" required>
+          <span class="dom" aria-hidden="true">@${CONFIG.dominio.replace('.', '.<wbr>')}</span>
+        </span></label>
+      <label class="fld"><span>Turma</span>
+        <select id="loginTurma" required><option value="">Escolha</option>${CONFIG.turmas.map(t => `<option value="${t}">${t}</option>`).join('')}</select></label>
+      <p class="small" id="loginErro" role="alert"></p>
+      <div class="row"><button class="btn primary" type="submit">Entrar</button></div>
+      <p class="note">O professor recebe o seu e-mail, a turma, a data de acesso e os resultados das listas (acertos, tempo e dicas usadas), só para acompanhar os estudos da turma.</p>
+    </form>`;
+  $('loginForm').onsubmit = e => {
+    e.preventDefault();
+    let usuario = $('loginEmail').value.trim().toLowerCase().replace(/\s+/g, '');
+    const dom = '@' + CONFIG.dominio.toLowerCase().replace(/^@/, '');
+    if (usuario.endsWith(dom)) usuario = usuario.slice(0, -dom.length);   // se digitou o e-mail inteiro, aproveita
+    const email = usuario + dom, turma = $('loginTurma').value;
+    if (!usuario){ $('loginErro').textContent = 'Escreva a parte do seu e-mail antes do @.'; $('loginEmail').focus(); return; }
+    if (usuario.includes('@') || !emailValido(email)){ $('loginErro').textContent = `Escreva só a parte antes do @. O resto (${dom}) já está preenchido.`; $('loginEmail').focus(); return; }
+    if (!turma){ $('loginErro').textContent = 'Escolha a sua turma.'; $('loginTurma').focus(); return; }
+    setAluno({ email, turma }); registrarAcessoDoDia(); route();
+  };
+  toTop();
+}
+function route(){
+  if (precisaLogin()){ openLogin(); return; }
+  registrarAcessoDoDia(); enviarFila();
+  const p = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
+  const ti = SITE.temas.findIndex(t => t.id === p[0]);
+  if (ti < 0){ openHome(); return; }
+  if (!p[1]){ openTema(ti); return; }
+  const li = SITE.temas[ti].listas.findIndex(l => l.id === p[1]);
+  if (li < 0){ openTema(ti); return; }
+  T = SITE.temas[ti]; openLista(li);
+}
+window.addEventListener('hashchange', route);
+document.addEventListener('click', e => {
+  const act = e.target.closest('[data-act="sair"]'); if (act){ setAluno(null); try { localStorage.removeItem(DIA_KEY); } catch(err){} go('#/'); route(); return; }
+  const nav = e.target.closest('[data-nav]');
+  if (nav){ go(nav.dataset.nav === 'tema' && T ? '#/' + T.id : '#/'); return; }
+  const t = e.target.closest('[data-tema]'); if (t){ go('#/' + SITE.temas[+t.dataset.tema].id); return; }
+  const l = e.target.closest('[data-lista]'); if (l){ go('#/' + T.id + '/' + T.listas[+l.dataset.lista].id); return; }
+  const g = e.target.closest('[data-go]'); if (g && LI){ goQ(+g.dataset.go); }
+});
+
+/* ===== Instalação como aplicativo ===== */
+let installEvt = null;
+const standalone = () => (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; showInstall(); });
+window.addEventListener('appinstalled', () => { installEvt = null; const c = $('installCard'); if (c) c.hidden = true; });
+function showInstall(){
+  const c = $('installCard'); if (!c || standalone()) return;
+  if (installEvt){
+    c.hidden = false;
+    c.innerHTML = `<p class="sect-label">Instale no celular</p><p>Tenha as listas como um aplicativo: ícone na tela inicial e funcionando mesmo sem internet.</p><div class="row"><button class="btn primary" id="instBtn">Instalar o app</button></div>`;
+    $('instBtn').onclick = async () => { installEvt.prompt(); try { await installEvt.userChoice; } catch(e){} installEvt = null; c.hidden = true; };
+  } else if (isIOS){
+    c.hidden = false;
+    c.innerHTML = `<p class="sect-label">Instale no iPhone</p><p>No Safari, toque em <b>Compartilhar</b> (o quadrado com a seta para cima) e depois em <b>Adicionar à Tela de Início</b>.</p>`;
+  }
+}
+
+if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('sw.js').catch(() => {});
+route();
+</script>
+</body>
+</html>
