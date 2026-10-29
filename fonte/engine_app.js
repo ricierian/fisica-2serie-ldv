@@ -35,7 +35,7 @@ const SITE = {
 /* ===== Configuração do registro (preencher ao publicar) ===== */
 const CONFIG = {
   dominio: 'alunos.colegioleonardodavinci.com.br',      // domínio do e-mail dos alunos do LDV. Vazio = não pede identificação
-  registro: '',     // URL do App da Web do Google Apps Script. Vazio = não envia resultados (preencher quando a planilha existir)
+  registro: 'https://script.google.com/macros/s/AKfycbxGz9y7mz6Qc0jXxXalMipLMTy8pArwalT7fIeP8t5nR4SP0ZVsRDgAjBT4qaVYbosKxg/exec',     // URL do App da Web do Google Apps Script
   turmas: ['201', '202']
 };
 const $ = id => document.getElementById(id);
