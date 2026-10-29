@@ -3,7 +3,7 @@
  *
  * Como usar (uma única vez):
  *  1. Cole este código no editor do Apps Script da planilha e salve.
- *  2. Preencha DOMINIO abaixo (a parte depois do @ do e-mail dos alunos).
+ *  2. DOMINIO, TURMAS e LISTAS abaixo já estão preenchidos para a 2ª série do LDV.
  *  3. No menu de funções, escolha "configurar" e clique em Executar (autorize quando pedir).
  *  4. Implantar → Nova implantação → Tipo: App da Web
  *       Executar como: Eu  ·  Quem pode acessar: Qualquer pessoa
@@ -11,7 +11,7 @@
  *
  * Abas criadas (o professor NÃO precisa digitar nada):
  *  - Resumo: por turma, quantos entraram no app, quantos concluíram cada lista e a média.
- *  - Turma 201, Turma 202, Turma 203: se preenchem sozinhas com os alunos que entraram no app
+ *  - Turma 201 e Turma 202: se preenchem sozinhas com os alunos que entraram no app
  *    escolhendo aquela turma (último acesso, dias de acesso, melhor resultado, tempo).
  *  - Chamada (opcional): se colar a lista de e-mails de cada turma, mostra quem ainda NÃO entrou.
  *  - Registros: uma linha por acesso diário e por lista concluída (preenchida pelo app).
