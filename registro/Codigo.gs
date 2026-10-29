@@ -24,7 +24,8 @@ const TURMAS = ['201', '202'];
 const LISTAS = [
   ['Termologia', 'Lista 1'],
   ['Termologia', 'Lista 2'],
-  ['Termologia', 'Lista 3']
+  ['Termologia', 'Lista 3'],
+  ['Termologia', 'Lista 4']
 ];
 const LINHAS = 80; // linhas preparadas por turma
 

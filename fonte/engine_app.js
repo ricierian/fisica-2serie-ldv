@@ -26,7 +26,12 @@ const SITE = {
           titulo: 'Primeira Lei da Termodinâmica',
           resumo: `${LIVRO} · Capítulo 23. Calor, trabalho e energia interna, trabalho no gráfico p × V e ciclos.`,
           intro: `Material do ${LIVRO}, capítulo 23.`,
-          tools: TOOLS3, Q: QL3 }
+          tools: TOOLS3, Q: QL3 },
+        { id: 'enem-ufrgs', key: 'ldv2-termo-enem-ufrgs-v1', num: 4,
+          titulo: 'Revisão no estilo ENEM e UFRGS',
+          resumo: `${LIVRO} · Capítulos 20, 22 e 23. Questões de vestibular adaptadas e inéditas no formato do ENEM e da UFRGS.`,
+          intro: `Mistura calorimetria, gases e 1ª Lei, com textos de contexto (ENEM) e lacunas (UFRGS).`,
+          tools: TOOLS4, Q: QL4 }
       ]
     }
   ]
