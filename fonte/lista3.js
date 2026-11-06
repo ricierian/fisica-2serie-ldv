@@ -11,7 +11,7 @@ const TOOLS3 = [
 /* Q3: bomba de encher pneu */
 const FIG3_3 = (() => {
   const [d, mk] = seta('var(--ink)');
-  return fig('0 0 340 190', 'Bomba de encher pneu em corte: um cilindro com ar, um êmbolo empurrado rapidamente para baixo por uma força F. As paredes não dão tempo para o ar trocar calor com o ambiente.',
+  return fig('0 0 340 190', 'Modelo simplificado da bomba de encher pneu, fora de escala: um cilindro com ar, fechado por um êmbolo empurrado rapidamente para baixo por uma força F.',
     `${d}<rect x="120" y="30" width="100" height="140" rx="6" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
     <rect x="124" y="98" width="92" height="68" fill="var(--sign)" opacity=".22"/>
     ${[[140,112],[170,130],[200,118],[150,150],[188,154],[132,136],[205,142],[165,108]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="3" fill="var(--sign)"/>`).join('')}
@@ -20,7 +20,8 @@ const FIG3_3 = (() => {
     <line x1="250" y1="22" x2="250" y2="72" stroke="var(--ink)" stroke-width="2.5" marker-end="${mk}"/>
     <text x="262" y="50" class="pt pt-strong">F</text>
     <text x="104" y="134" text-anchor="end" class="pt">ar</text>
-    <text x="236" y="150" class="pt">compressão</text><text x="236" y="166" class="pt">rápida</text>`, 320);
+    <text x="236" y="150" class="pt">compressão</text><text x="236" y="166" class="pt">rápida</text>`, 320)
+    .replace('</figure>', '<figcaption>Modelo simplificado da bomba (fora de escala): o ar de dentro dela é representado como um gás num cilindro fechado por um êmbolo.</figcaption></figure>');
 })();
 
 /* Q5: A → B → C */
@@ -78,7 +79,7 @@ const QL3 = [
 },
 {
   nivel:'básico',
-  text:`Ao encher um pneu de bicicleta, a bomba esquenta. Suponha que o ar dentro dela seja comprimido tão rápido que não dá tempo de trocar calor com o ambiente (transformação adiabática).${FIG3_3}Para o ar dentro da bomba, nessa compressão:`,
+  text:`Ao encher um pneu de bicicleta, a bomba esquenta. Suponha que o ar dentro dela seja comprimido tão rápido que não dá tempo de trocar calor com o ambiente (transformação adiabática). A figura representa essa situação por meio de um modelo.${FIG3_3}Para o ar dentro da bomba, nessa compressão:`,
   opts:['Q = 0 e τ &lt; 0, então ΔU &gt; 0 e a temperatura sobe','Q = 0 e τ &gt; 0, então ΔU &lt; 0 e a temperatura cai','Q &gt; 0 e τ = 0, então ΔU &gt; 0 e a temperatura sobe','Q &lt; 0 e τ &lt; 0, então ΔU = 0 e a temperatura fica','Q = 0 e τ = 0, então ΔU = 0 e a temperatura fica'], ans:0,
   hint:'Adiabática diz algo sobre Q. Compressão diz algo sobre o sinal de τ. Depois é só aplicar a 1ª Lei.',
   steps:[
