@@ -1,6 +1,7 @@
 /* ===== Estrutura do site: temas e listas. Para adicionar material, inclua um item em "listas" ou um novo tema. ===== */
 /* Identificação do material dos capítulos (trocar aqui se mudar) */
 const LIVRO = 'Livro 6 · 1ª série';
+const LIVRO_2S = 'Livro 6 · 2ª série';
 
 const SITE = {
   escola: 'Colégio Leonardo da Vinci Alfa',
@@ -32,6 +33,17 @@ const SITE = {
           resumo: `${LIVRO} · Capítulos 20, 22 e 23. Questões no formato do ENEM e da UFRGS, misturando os três capítulos.`,
           intro: `Mistura calorimetria, gases e 1ª Lei, com textos de contexto (ENEM) e lacunas (UFRGS).`,
           tools: TOOLS4, Q: QL4 }
+      ]
+    },
+    {
+      id: 'ondulatoria', ico: 'λ', nome: 'Ondulatória', cls: 'th-ondas', estilo: 'onda',
+      resumo: `Fenômenos ondulatórios · ${LIVRO_2S}, capítulo 18.`,
+      listas: [
+        { id: 'fenomenos', key: 'ldv2-ondas-fenomenos-v1', num: 1,
+          titulo: 'Fenômenos ondulatórios',
+          resumo: `${LIVRO_2S} · Capítulo 18. Reflexão, refração, difração, interferência, polarização, ressonância e efeito Doppler.`,
+          intro: `Material do ${LIVRO_2S}, capítulo 18.`,
+          tools: TOOLS5, Q: QL5 }
       ]
     }
   ]
