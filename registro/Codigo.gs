@@ -26,7 +26,8 @@ const LISTAS = [
   ['Termologia', 'Lista 2'],
   ['Termologia', 'Lista 3'],
   ['Termologia', 'Lista 4'],
-  ['Ondulatória', 'Lista 1']
+  ['Ondulatória', 'Lista 1'],
+  ['Ondulatória', 'Lista 2']
 ];
 const LINHAS = 80; // linhas preparadas por turma
 
@@ -90,7 +91,7 @@ function criarAbaTurma(ss, t, pos) {
   tur.clear();
   tur.clearConditionalFormatRules();
   const titulos = ['E-mail do aluno (preenche sozinho)', 'Último acesso', 'Dias de acesso']
-    .concat(LISTAS.map(l => l[1] + ' (melhor resultado)'), ['Tempo ativo total (min)']);
+    .concat(LISTAS.map(l => l[0] + ' · ' + l[1] + ' (melhor resultado)'), ['Tempo ativo total (min)']);
   cabecalho(tur, titulos);
 
   tur.getRange('A2').setFormula(F(
@@ -154,7 +155,7 @@ function criarResumo(ss) {
   const res = ss.getSheetByName('Resumo') || ss.insertSheet('Resumo', 0);
   res.clear();
   const cab = ['Turma', 'Entraram no app', 'Na chamada', 'Ainda não entraram'];
-  LISTAS.forEach(l => cab.push(l[1] + ' · concluíram', l[1] + ' · média'));
+  LISTAS.forEach(l => cab.push(l[0] + ' · ' + l[1] + ' · concluíram', l[0] + ' · ' + l[1] + ' · média'));
   cabecalho(res, cab);
 
   const linhas = TURMAS.map((t, i) => {

@@ -2,6 +2,7 @@
 /* Identificação do material dos capítulos (trocar aqui se mudar) */
 const LIVRO = 'Livro 6 · 1ª série';
 const LIVRO_2S = 'Livro 6 · 2ª série';
+const LIVRO_C17 = 'Livro 5 · 2ª série';
 
 const SITE = {
   escola: 'Colégio Leonardo da Vinci Alfa',
@@ -37,9 +38,14 @@ const SITE = {
     },
     {
       id: 'ondulatoria', ico: 'λ', nome: 'Ondulatória', cls: 'th-ondas', estilo: 'onda',
-      resumo: `Fenômenos ondulatórios · ${LIVRO_2S}, capítulo 18.`,
+      resumo: `Características das ondas e fenômenos ondulatórios · 2ª série, capítulos 17 e 18.`,
       listas: [
-        { id: 'fenomenos', key: 'ldv2-ondas-fenomenos-v1', num: 1,
+        { id: 'caracteristicas', key: 'ldv2-ondas-caracteristicas-v1', num: 1,
+          titulo: 'Características das ondas',
+          resumo: `${LIVRO_C17} · Capítulo 17. Elementos da onda, período e frequência, classificação, espectro eletromagnético, v&nbsp;=&nbsp;λ&nbsp;·&nbsp;f e ondas em cordas.`,
+          intro: `Material do ${LIVRO_C17}, capítulo 17.`,
+          tools: TOOLS6, Q: QL6 },
+        { id: 'fenomenos', key: 'ldv2-ondas-fenomenos-v1', num: 2,
           titulo: 'Fenômenos ondulatórios',
           resumo: `${LIVRO_2S} · Capítulo 18. Reflexão, refração, difração, interferência, polarização, ressonância e efeito Doppler.`,
           intro: `Material do ${LIVRO_2S}, capítulo 18.`,
