@@ -44,8 +44,9 @@ const FORMULARIO = [
     ess: [
       ['Lei da refração', `${f('sen î','sen r̂')} = ${f('v₁','v₂')} = ${f('λ₁','λ₂')}<br><small>a frequência não muda</small>`],
       ['Polarização', `luz não polarizada: I = ${f('I₀','2')}<br>Lei de Malus: I = I₀ · cos²θ`],
-      ['Efeito Doppler (fonte em movimento)', `aproximando: f = f<sub>F</sub> · ${f('v<sub>som</sub>','v<sub>som</sub> − v<sub>F</sub>')}<br>afastando: f = f<sub>F</sub> · ${f('v<sub>som</sub>','v<sub>som</sub> + v<sub>F</sub>')}`]],
-    ext: [] }
+      ['Efeito Doppler', `fonte se aproximando: f percebida maior<br>fonte se afastando: f percebida menor`]],
+    ext: [
+      ['Efeito Doppler (fonte em movimento)', `aproximando: f = f<sub>F</sub> · ${f('v<sub>som</sub>','v<sub>som</sub> − v<sub>F</sub>')}<br>afastando: f = f<sub>F</sub> · ${f('v<sub>som</sub>','v<sub>som</sub> + v<sub>F</sub>')}`]] }
 ];
 
 /* Resumo de símbolos e unidades (SI) ao fim de cada assunto: símbolo | significado | unidade */

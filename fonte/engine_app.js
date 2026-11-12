@@ -45,7 +45,7 @@ const SITE = {
           resumo: `${LIVRO_C17} · Capítulo 17. Elementos da onda, período e frequência, classificação, espectro eletromagnético, v&nbsp;=&nbsp;λ&nbsp;·&nbsp;f e ondas em cordas.`,
           intro: `Material do ${LIVRO_C17}, capítulo 17.`,
           tools: TOOLS6, Q: QL6 },
-        { id: 'fenomenos', key: 'ldv2-ondas-fenomenos-v1', num: 2,
+        { id: 'fenomenos', key: 'ldv2-ondas-fenomenos-v2', num: 2,
           titulo: 'Fenômenos ondulatórios',
           resumo: `${LIVRO_2S} · Capítulo 18. Reflexão, refração, difração, interferência, polarização, ressonância e efeito Doppler.`,
           intro: `Material do ${LIVRO_2S}, capítulo 18.`,

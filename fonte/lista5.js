@@ -7,7 +7,7 @@ const TOOLS5 = [
   ['Interferência', `Quando ondas se encontram, os deslocamentos se somam (com sinal). Depois do encontro, cada onda segue como era antes.`],
   ['Polarização', `Só acontece com ondas transversais.<br>Luz não polarizada num polarizador: I = ${f('I₀','2')}<br>Luz polarizada num analisador: I = I₀ · cos²θ`],
   ['Ressonância', `Um sistema recebe energia com frequência igual à sua frequência natural, e a amplitude cresce.`],
-  ['Efeito Doppler (fonte em movimento)', `Aproximando: f = f<sub>F</sub> · ${f('v<sub>som</sub>','v<sub>som</sub> − v<sub>F</sub>')}<br>Afastando: f = f<sub>F</sub> · ${f('v<sub>som</sub>','v<sub>som</sub> + v<sub>F</sub>')}`],
+  ['Efeito Doppler', `Fonte se aproximando: frequência percebida <b>maior</b> (som mais agudo).<br>Fonte se afastando: frequência percebida <b>menor</b> (som mais grave).<br>A fonte continua emitindo a mesma frequência.`],
 ];
 
 /* Caminho SVG a partir de pontos [x, y] */
@@ -70,7 +70,7 @@ const FIG5_6 = (() => {
     <text x="284" y="114" class="pt">2 cm</text>`, 330);
 })();
 
-/* Q7: efeito Doppler, fonte em movimento */
+/* Q8: efeito Doppler, fonte em movimento */
 const FIG5_7 = (() => {
   const [d, mk] = seta('var(--ink)');
   let c = '';
@@ -218,17 +218,18 @@ const QL5 = [
   warn:'A separação das cores no prisma não é difração nem interferência: ela acontece porque cada cor tem uma velocidade diferente no vidro, isto é, uma refração diferente.'
 },
 {
-  nivel:'avançado',
-  text:`Uma ambulância se move em linha reta a 20 m/s, com a sirene emitindo som de frequência 720 Hz. Uma pessoa parada na calçada ouve a sirene enquanto a ambulância se aproxima e, depois, enquanto ela se afasta.${FIG5_7}As frequências percebidas pela pessoa na aproximação e no afastamento são, respectivamente:<p>Dado: velocidade do som no ar = 340 m/s.</p>`,
-  opts:['720 Hz e 720 Hz','740 Hz e 700 Hz','765 Hz e 680 Hz','680 Hz e 765 Hz','765 Hz e 720 Hz'], ans:2,
-  hint:'Na aproximação, as frentes chegam mais juntas: a frequência percebida é maior. Use a fórmula com v<sub>som</sub> − v<sub>F</sub> no denominador; no afastamento, v<sub>som</sub> + v<sub>F</sub>.',
+  nivel:'intermediário',
+  text:`Uma ambulância passa em linha reta por uma pessoa parada na calçada, com a sirene emitindo som de frequência 720 Hz. A figura mostra as frentes de onda do som da sirene.${FIG5_7}Enquanto a ambulância se aproxima e, depois, enquanto se afasta, a pessoa ouve sons cujas frequências podem ser, respectivamente:`,
+  opts:['720 Hz e 720 Hz','680 Hz e 765 Hz','765 Hz e 680 Hz','765 Hz e 765 Hz','680 Hz e 680 Hz'], ans:2,
+  hint:'Olhe a figura: onde as frentes de onda estão mais juntas, quantas frentes chegam por segundo ao ouvido de quem está ali?',
   steps:[
-    ['Aproximação', `<div class="eq">f = 720 · ${f('340','340 − 20')} = 720 · ${f('340','320')}</div><div class="eq">f = 765 Hz</div>`],
-    ['Afastamento', `<div class="eq">f = 720 · ${f('340','340 + 20')} = 720 · ${f('340','360')}</div><div class="eq">f = 680 Hz</div>`],
-    ['Resposta', `<div class="eq"><span class="hl">765 Hz e 680 Hz</span></div>`],
+    ['Aproximação', `<p>Quem está à frente da ambulância recebe frentes de onda mais juntas (comprimento de onda menor). A velocidade do som no ar é a mesma, então chegam <b>mais</b> frentes por segundo: a frequência percebida é <b>maior</b> que 720 Hz.</p>`],
+    ['Afastamento', `<p>Quando a ambulância já passou, a pessoa fica atrás dela e recebe frentes mais afastadas: chegam <b>menos</b> frentes por segundo, e a frequência percebida é <b>menor</b> que 720 Hz.</p>`],
+    ['Resposta', `<p>O único par com a primeira frequência maior que 720 Hz e a segunda menor é:</p><div class="eq"><span class="hl">765 Hz e 680 Hz</span></div>`],
   ],
-  alt:'Antes de calcular, dá para eliminar alternativas: a frequência percebida tem de ser maior que 720 Hz na aproximação e menor no afastamento. Só sobram as alternativas b e c, e a conta decide.',
-  warn:'A sirene continua emitindo 720 Hz o tempo todo; o que muda é a frequência <b>percebida</b>. Somar e subtrair 20 diretamente da frequência dá 740 e 700 Hz (alternativa b), o que não tem sentido físico.'
+  alt:'É o “nhéééeuum” de um carro de corrida passando: o som fica agudo enquanto ele vem e cai de repente para grave quando ele passa. Agudo é frequência alta; grave, frequência baixa.',
+  deep:['Como calcular as frequências exatas', `<p>Neste exemplo, a ambulância anda a v<sub>F</sub> = 20 m/s e o som se propaga a v<sub>som</sub> = 340 m/s. Durante um período T da sirene, o som anda v<sub>som</sub> · T, mas a ambulância também anda v<sub>F</sub> · T para a frente. À frente dela, a distância entre duas frentes encolhe:</p><div class="eq">λ′ = (v<sub>som</sub> − v<sub>F</sub>) · T</div><p>Como T = ${f('1','f<sub>F</sub>')} e a frequência percebida é f = ${f('v<sub>som</sub>','λ′')}:</p><div class="eq">f = f<sub>F</sub> · ${f('v<sub>som</sub>','v<sub>som</sub> − v<sub>F</sub>')}</div><p>Atrás da ambulância, as frentes se afastam, e o sinal troca para +.</p><p><b>Aproximação:</b></p><div class="eq">f = 720 · ${f('340','320')}</div><div class="eq">f = 765 Hz</div><p><b>Afastamento:</b></p><div class="eq">f = 720 · ${f('340','360')}</div><div class="eq">f = 680 Hz</div><p>Repare que a variação não é simétrica: na aproximação a frequência sobe 45 Hz, e no afastamento cai 40 Hz.</p>`],
+  warn:'A sirene continua emitindo 720 Hz o tempo todo; o que muda é a frequência <b>percebida</b>, então 720 Hz e 720 Hz (alternativa a) não serve. Inverter os efeitos leva à alternativa b. E o movimento da fonte não aumenta (alternativa d) nem diminui (alternativa e) a frequência nos dois casos: depende de ela vir ou ir.'
 },
 {
   nivel:'avançado',
