@@ -191,7 +191,7 @@ function openHome(){
     <div class="cards">
       <button class="tile th-form" data-consulta="">
         <span class="ico">ƒ</span>
-        <span><span class="tt">Consulta rápida</span><span class="ds">Formulário, prefixos, grandezas e unidades, constantes, pistas do enunciado e pegadinhas: tudo o que vale ter à mão enquanto resolve.</span>
+        <span><span class="tt">Consulta rápida</span><span class="ds">Formulário, prefixos, grandezas e unidades, constantes e pegadinhas: tudo o que vale ter à mão enquanto resolve.</span>
           <span class="meta"><span class="chip">${CONSULTA.length} páginas</span></span></span>
         <span class="go">→</span></button>
     </div>
@@ -530,16 +530,6 @@ function openConstantes(){
   toTop();
 }
 
-function openPistas(){
-  abrirConsulta('Pistas do enunciado', 'O que o texto diz e o conceito que ele está cobrando.', migConsulta('Pistas do enunciado'));
-  $('view').innerHTML = `
-    <section class="card intro"><p>Questões de vestibular costumam esconder o conceito numa situação do cotidiano. Quando uma destas palavras ou situações aparecer, comece pensando no conceito ao lado.</p>
-      <div class="row" style="gap:6px">${PISTAS.map((s, i) => `<a class="chip chip-link" href="#/consulta/pistas" data-sec="${i}">${s.nome}</a>`).join('')}</div></section>
-    ${PISTAS.map((s, i) => `<section class="card formsec" id="sec${i}"><h2 class="formh">${s.nome}</h2>
-      ${tabelaHTML(['Se o enunciado fala em…','Pense em…'], s.itens, 'tbl-pistas')}</section>`).join('')}
-    ${outrasConsultas('pistas')}`;
-  toTop();
-}
 function openPegadinhas(){
   abrirConsulta('Pegadinhas clássicas', 'Os erros que mais derrubam e como evitar cada um.', migConsulta('Pegadinhas clássicas'));
   $('view').innerHTML = `
@@ -591,7 +581,7 @@ function route(){
   const p = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   document.documentElement.classList.remove('th-form');
   if (p[0] === 'consulta'){
-    const pg = { formulario: openFormulario, prefixos: openPrefixos, grandezas: openGrandezas, constantes: openConstantes, pistas: openPistas, pegadinhas: openPegadinhas }[p[1]];
+    const pg = { formulario: openFormulario, prefixos: openPrefixos, grandezas: openGrandezas, constantes: openConstantes, pegadinhas: openPegadinhas }[p[1]];
     (pg || openConsultaHub)(); return;
   }
   const ti = SITE.temas.findIndex(t => t.id === p[0]);

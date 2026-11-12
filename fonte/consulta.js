@@ -1,4 +1,4 @@
-/* ===== Consulta rápida (2ª série LDV): formulário, prefixos, grandezas, constantes, pistas e pegadinhas =====
+/* ===== Consulta rápida (2ª série LDV): formulário, prefixos, grandezas, constantes e pegadinhas =====
    Trazida do app modelo (3ª série CIB) e adaptada aos capítulos estudados pela turma.
    Formulário: "Essenciais" = fórmulas usadas nas listas do app; "Para ir além" = complementares dos mesmos capítulos. */
 const FORMULARIO = [
@@ -152,38 +152,7 @@ const CONSULTA = [
   { id: 'prefixos', ico: 'µ', nome: 'Prefixos e potências de 10', resumo: 'De tera a pico, com exemplos e as armadilhas das conversões de área e volume.' },
   { id: 'grandezas', ico: 'SI', nome: 'Grandezas e unidades', resumo: 'As grandezas fundamentais do SI e as derivadas que aparecem nas listas.' },
   { id: 'constantes', ico: 'c', nome: 'Constantes e conversões', resumo: 'Valores para usar nos cálculos e as conversões de unidades mais cobradas.' },
-  { id: 'pistas', ico: '→', nome: 'Pistas do enunciado', resumo: 'Palavras e situações do texto que indicam o conceito cobrado, em calor, gases e ondas.' },
   { id: 'pegadinhas', ico: '!', nome: 'Pegadinhas clássicas', resumo: 'Os erros que mais derrubam em calor, gases e ondas, e como evitar cada um.' }
-];
-
-/* Pistas do enunciado: [o que aparece no texto, o que pensar] */
-const PISTAS = [
-  { nome: 'Calor e gases', itens: [
-    ['litoral × interior, areia quente e água fria, “demora para esquentar”', '<b>Calor específico</b>. c alto → ΔT pequeno (Q = m · c · ΔT).'],
-    ['ferver, derreter, vaporizar, patamar no gráfico', '<b>Calor latente</b>. Q = m · L, com temperatura constante.'],
-    ['calorímetro, “misturam-se”, “até o equilíbrio”', '<b>Trocas de calor</b>. ΣQ = 0; o recipiente também troca calor.'],
-    ['“X% da energia é aproveitada”, perdas, rendimento', '<b>Rendimento</b>. Só essa parte aquece; a fonte fornece mais do que a água recebe.'],
-    ['lata, recipiente rígido, botijão, “volume constante”', '<b>Isocórica</b>. τ = 0; p/T constante.'],
-    ['“lentamente”, “temperatura constante”, banho térmico', '<b>Isotérmica</b>. p · V constante; ΔU = 0 → Q = τ.'],
-    ['êmbolo livre, “pressão constante”', '<b>Isobárica</b>. V/T constante; τ = p · ΔV.'],
-    ['“rapidamente”, “sem trocar calor”, “isolado termicamente”', '<b>Adiabática</b>. Q = 0 → ΔU = −τ.'],
-    ['“ciclo”, “volta ao estado inicial”', '<b>Transformação cíclica</b>. ΔU = 0; τ = área dentro do ciclo.'],
-    ['pneu, aerossol, balão, temperatura em °C nas leis dos gases', '<b>Kelvin</b>. T (K) = θ (°C) + 273 antes de qualquer proporção.']] },
-  { nome: 'Ondas', itens: [
-    ['“sobe e desce no lugar”, boia, ola, corda balançada', '<b>Onda transversal</b>. O meio vibra perpendicular à propagação; não há transporte de matéria.'],
-    ['som, mola comprimida e esticada, compressões', '<b>Onda longitudinal</b>. O meio vibra na direção da propagação.'],
-    ['“foto” da onda, gráfico y × x', 'Lê-se <b>λ</b> (de crista a crista) e a <b>amplitude</b> (do eixo à crista).'],
-    ['oscilação de um ponto, gráfico y × t', 'Lê-se o <b>período T</b>; f = 1/T.'],
-    ['“mesma corda”, “mesmo meio”, “mesma tensão”', '<b>Mesma velocidade</b>. λ e f inversamente proporcionais.'],
-    ['tensão na corda, corda mais grossa, afinar o violão', '<b>Taylor</b>. v = √(F/μ).'],
-    ['raios X, ultravioleta, micro-ondas, Wi-Fi, rádio', '<b>Espectro eletromagnético</b>. Mesma velocidade no vácuo; maior frequência → menor λ e mais energia.'],
-    ['eco, sonar, extremidade fixa ou livre', '<b>Reflexão</b>. Extremidade fixa inverte o pulso; livre não inverte.'],
-    ['“ouve atrás do muro”, “contorna”, fenda, rádio AM atrás do morro', '<b>Difração</b>. Forte quando λ é parecido com o obstáculo.'],
-    ['muda de meio, águas fundas → rasas, prisma', '<b>Refração</b>. A frequência não muda; v e λ mudam juntos.'],
-    ['pulsos que se cruzam, cancelamento de ruído', '<b>Interferência</b>. Os deslocamentos se somam com sinal.'],
-    ['óculos polarizados, óculos 3D, filtro', '<b>Polarização</b>. Só ondas transversais.'],
-    ['taça que quebra, balanço, frequência natural', '<b>Ressonância</b>. Frequência recebida = frequência natural.'],
-    ['ambulância, sirene, “se aproxima”, “se afasta”', '<b>Efeito Doppler</b>. Aproximação → f maior; afastamento → f menor.']] }
 ];
 
 /* Pegadinhas clássicas: [erro, como evitar] */
