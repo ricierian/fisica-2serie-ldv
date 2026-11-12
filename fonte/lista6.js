@@ -154,6 +154,11 @@ const QL6 = [
     ['Faixa de 5,0 GHz', `<div class="eq">λ = ${f('3,0 · 10<sup>8</sup>','5,0 · 10<sup>9</sup>')}</div><div class="eq">λ = 0,060 m = 6,0 cm</div><div class="eq"><span class="hl">12,5 cm e 6,0 cm</span></div>`],
   ],
   alt:'Com a velocidade igual, λ é inversamente proporcional a f. A frequência passou de 2,4 para 5,0 GHz (cerca do dobro), então λ cai para cerca da metade: de 12,5 cm para 6,0 cm.',
+  deep: ['Por que as antenas têm tamanho parecido com λ', `<p><b>1. A antena “combina” com a onda.</b> Uma antena funciona melhor quando seu tamanho é uma fração simples do comprimento de onda que ela emite ou recebe. Muitas têm cerca de meio ou um quarto de λ.</p>
+<div class="eq">${f('λ','4')} = ${f('12,5 cm','4')} ≈ 3 cm</div>
+<p>Por isso a antena de Wi-Fi de 2,4&nbsp;GHz cabe dentro de um roteador ou de um celular.</p>
+<p><b>2. Comparação com o rádio FM.</b> Para 100 MHz, λ = 3,0 · 10<sup>8</sup> / 10<sup>8</sup> = 3 m, e um quarto disso dá cerca de 75 cm, o tamanho das antenas de rádio que os carros usavam.</p>
+<p><b>3. Ligação com a Lista 2.</b> Na questão sobre rádios AM e FM, o comprimento de onda também decide tudo, mas lá o que importa é o tamanho dos morros, e não o da antena.</p>`],
   warn:'Inverter a ordem dá a alternativa a: a faixa de frequência maior é a de λ <b>menor</b>. Errar a potência de 10 leva a valores 10 ou 100 vezes maiores (alternativas b e e).'
 },
 {
@@ -179,6 +184,12 @@ const QL6 = [
     ['Bloco 4 vezes mais pesado', `<p>F fica 4 vezes maior; como v = √(F/μ), a velocidade fica √4 = 2 vezes maior:</p><div class="eq"><span class="hl">100 m/s; dobra</span></div>`],
   ],
   alt:'É o que acontece ao afinar um violão: apertar a tarraxa aumenta a tensão da corda e a velocidade das ondas nela, e o som fica mais agudo.',
+  deep: ['De onde vem v = √(F / μ)', `<p><b>1. As unidades conferem.</b> A força é medida em N = kg · m/s², e a densidade linear em kg/m:</p>
+<div class="eq">${f('F','μ')} → ${f('kg · m/s²','kg/m')}</div>
+<div class="eq">= ${f('m²','s²')}</div>
+<p>A raiz de m²/s² é m/s, uma velocidade. As unidades mostram que v tem de ser proporcional a √(F/μ); a dedução completa mostra que não sobra nenhum número multiplicando.</p>
+<p><b>2. O sentido físico.</b> A tensão é o que puxa cada pedaço da corda de volta para o lugar: quanto maior, mais rápido o pulso passa adiante. A densidade linear mede a inércia da corda: quanto mais “pesada”, mais devagar ela responde. A dedução completa aplica a 2ª Lei de Newton a um pedacinho da corda.</p>
+<p><b>3. Ligação com a música.</b> Para dobrar a velocidade da onda numa corda de violão, é preciso quadruplicar a tensão. Com o mesmo comprimento de corda, a nota sobe uma oitava. A questão 10 mostra o outro lado: com a densidade 4 vezes maior, a velocidade cai pela metade.</p>`],
   warn:'Esquecer a raiz quadrada dá 10 000 m/s (alternativa e) ou a ideia de que a velocidade quadruplica (alternativa b). Deixar a massa em gramas dá 3,2 m/s (alternativa c), e usar a massa sem dividir pelo comprimento dá 71 m/s (alternativa d).'
 },
 {
@@ -205,6 +216,12 @@ const QL6 = [
     ['Tipo da onda P', `<p>A rocha vibra na mesma direção da propagação: onda <b>longitudinal</b>.</p><div class="eq"><span class="hl">480 km; longitudinal</span></div>`],
   ],
   alt:'A cada quilômetro, a onda S “perde” 1/4 − 1/8 = 1/8 de segundo para a P. Para acumular 60 s de atraso, são 60 · 8 = 480 km. As estações sismológicas usam essa diferença para localizar o foco.',
+  deep: ['Uma fórmula para qualquer estação', `<p><b>1. A fórmula geral.</b> As duas ondas percorrem a mesma distância d. A diferença entre os tempos de viagem é o Δt lido no sismograma:</p>
+<div class="eq">${f('d','v<sub>S</sub>')} − ${f('d','v<sub>P</sub>')} = Δt</div>
+<div class="eq">d = Δt · ${f('v<sub>P</sub> · v<sub>S</sub>','v<sub>P</sub> − v<sub>S</sub>')}</div>
+<p>Com 8 e 4 km/s: d = 60 · 32/4 = 480 km, o mesmo resultado da resolução.</p>
+<p><b>2. Com valores mais realistas.</b> Na crosta, valores típicos são perto de 6 km/s para a onda P e 3,5 km/s para a S. Aí cada segundo de atraso vale cerca de 8 km: d ≈ 8 · Δt.</p>
+<p><b>3. Como se acha o foco.</b> Uma estação só diz a distância, não a direção: o foco está em algum ponto de um círculo em volta dela. Com três estações, os três círculos se cruzam num único ponto.</p>`],
   warn:'Multiplicar Δt pela diferença das velocidades dá 240 km (alternativa a), e pela soma dá 720 km (alternativa c). Usar o instante de chegada da P (40 s) como tempo de viagem dá 320 km (alternativa d), mas t = 0 não é o momento do terremoto.'
 },
 {
