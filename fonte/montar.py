@@ -23,6 +23,7 @@ extras=sorted(glob.glob(B+'lista*.js'), key=lambda p:int(re.findall(r'\d+',os.pa
 l2='\n'.join(open(p,encoding='utf-8').read() for p in extras)
 if os.path.exists(B+'consulta.js'): l2+='\n'+open(B+'consulta.js',encoding='utf-8').read()
 eng=open(B+'engine_app.js',encoding='utf-8').read()
+if os.path.exists(B+'calc.js'): eng+='\n'+open(B+'calc.js',encoding='utf-8').read()
 body='''<div class="wrap">
 <header class="plate"><div class="plate-deco" id="deco" aria-hidden="true"></div><div class="plate-inner"><div class="eyebrow" id="eyebrow"></div><h1 id="ptitle"></h1><p id="psub"></p></div></header>
 <nav class="crumbs" id="crumbs" aria-label="Você está em" hidden></nav>
