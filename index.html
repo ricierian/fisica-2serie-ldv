@@ -2051,16 +2051,56 @@ function renderIntro(){
   };
 }
 
+/* Ordem das alternativas por turma (contra cola entre turmas). A 1ª turma vê a ordem original; as outras veem
+   uma ordem embaralhada fixa (sempre a mesma para a turma), com a correta em outra letra.
+   As respostas continuam guardadas pelo índice original, então nada do que já foi feito se perde. */
+function semente(txt){ let h = 2166136261; for (const ch of txt) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
+  return () => { h = (h + 0x6D2B79F5) | 0; let x = h; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+function embaralha(a, rnd){ for (let k = a.length - 1; k > 0; k--){ const j = Math.floor(rnd() * (k + 1)); [a[k], a[j]] = [a[j], a[k]]; } return a; }
+const ORDENS = {};
+function ordemAlt(i){
+  const q = LI.Q[i], id = q.opts.map((_, k) => k);
+  const al = getAluno(), t = al && al.turma, ti = CONFIG.turmas.indexOf(t);
+  if (ti <= 0) return id;
+  const chave = t + '|' + LI.id;
+  if (!ORDENS[chave]){
+    // letra da correta em cada questão: gabarito espalhado (cada letra 2 vezes em 10) e nunca a letra original
+    const rnd = semente(chave), Q = LI.Q, n = Q.length;
+    const alvo = embaralha(Array.from({ length: n }, (_, k) => k % 5), rnd);
+    for (let tent = 0; tent < 200 && alvo.some((v, k) => v === Q[k].ans); tent++){
+      const k = alvo.findIndex((v, m) => v === Q[m].ans);
+      const m = alvo.findIndex((v, mm) => mm !== k && v !== Q[k].ans && alvo[k] !== Q[mm].ans);
+      if (m < 0){ embaralha(alvo, rnd); continue; }
+      [alvo[k], alvo[m]] = [alvo[m], alvo[k]];
+    }
+    ORDENS[chave] = Q.map((qq, k) => {
+      const resto = embaralha(qq.opts.map((_, x) => x).filter(x => x !== qq.ans), rnd);
+      resto.splice(alvo[k], 0, qq.ans); return resto;
+    });
+  }
+  return ORDENS[chave][i];
+}
+/* Reescreve "alternativa b", "alternativas a e d" etc. nos textos para as letras da ordem que o aluno vê */
+function trocaLetras(h, ord){
+  if (!h || ord.every((v, k) => v === k)) return h;
+  const nova = x => 'abcde'[ord.indexOf(x.charCodeAt(0) - 97)];
+  return h.replace(/\b(alternativas?)(\s+)([a-e](?![A-Za-zÀ-ÿ])(?:(?:\s*,\s*|\s+e\s+)[a-e](?![A-Za-zÀ-ÿ]))*)/g, (m, w, sp, grupo) => {
+    const ls = grupo.split(/\s*,\s*|\s+e\s+/).map(nova).sort();
+    return w + sp + (ls.length > 1 ? ls.slice(0, -1).join(', ') + ' e ' + ls[ls.length - 1] : ls[0]);
+  });
+}
+
 function renderQuestion(i){
   const Q = LI.Q, q = Q[i], a = st.answers[i], done = a !== undefined, skipped = a === -1;
-  const opts = q.opts.map((o,k)=>{
+  const ord = ordemAlt(i), Lt = k => L[ord.indexOf(k)], tx = h => trocaLetras(h, ord);
+  const opts = ord.map(k => [q.opts[k], k]).map(([o,k])=>{
     let cls = 'opt', tag = '';
     if (done){
       if (k === q.ans){ cls += ' is-correct'; tag = '<span class="tag">✓ correta</span>'; }
       else if (k === a){ cls += ' is-wrong'; tag = '<span class="tag">✗ sua resposta</span>'; }
       else cls += ' is-dim';
     }
-    return `<li><button class="${cls}" data-pick="${k}" ${done?'disabled':''}><span class="letter">${L[k]}</span><span>${o}</span>${tag}</button></li>`;
+    return `<li><button class="${cls}" data-pick="${k}" ${done?'disabled':''}><span class="letter">${L[ord.indexOf(k)]}</span><span>${o}</span>${tag}</button></li>`;
   }).join('');
   let fb = '';
   if (done){
@@ -2068,18 +2108,18 @@ function renderQuestion(i){
       ? `<div class="feedback good" role="status"><span class="ico">✓</span>Correto! Confira a resolução para ver se o seu raciocínio bate.</div>`
       : skipped
         ? `<div class="feedback bad" role="status"><span class="ico">→</span>Sem problema. Acompanhe a resolução com calma e tente refazer no papel.</div>`
-        : `<div class="feedback bad" role="status"><span class="ico">✗</span>Não foi dessa vez. A resposta certa é a ${L[q.ans]}. Veja onde o raciocínio muda.</div>`;
+        : `<div class="feedback bad" role="status"><span class="ico">✗</span>Não foi dessa vez. A resposta certa é a ${Lt(q.ans)}. Veja onde o raciocínio muda.</div>`;
   }
   const sol = done ? `
     <section class="sol" aria-label="Resolução detalhada">
       <h3>Resolução detalhada</h3>
       <ol class="steps">
-        ${q.steps.map(([lab,html])=>`<li class="step"><div class="step-body"><div class="step-label">${lab}</div>${html}</div></li>`).join('')}
+        ${q.steps.map(([lab,html])=>`<li class="step"><div class="step-body"><div class="step-label">${lab}</div>${tx(html)}</div></li>`).join('')}
       </ol>
-      <div class="answer"><span class="letter">${L[q.ans]}</span><span>Resposta: alternativa ${L[q.ans]} (${q.opts[q.ans]})</span></div>
-      ${q.alt ? `<div class="alt"><b class="lbl">Outro jeito de pensar</b>${q.alt}</div>` : ''}
-      ${q.deep ? `<details class="deep"><summary><span><b class="lbl">Para aprofundar</b>${q.deep[0]}</span><span class="chev">›</span></summary><div class="deep-body">${q.deep[1]}</div></details>` : ''}
-      ${q.warn ? `<div class="warn"><b class="lbl">Cuidado com a pegadinha</b>${q.warn}</div>` : ''}
+      <div class="answer"><span class="letter">${Lt(q.ans)}</span><span>Resposta: alternativa ${Lt(q.ans)} (${q.opts[q.ans]})</span></div>
+      ${q.alt ? `<div class="alt"><b class="lbl">Outro jeito de pensar</b>${tx(q.alt)}</div>` : ''}
+      ${q.deep ? `<details class="deep"><summary><span><b class="lbl">Para aprofundar</b>${q.deep[0]}</span><span class="chev">›</span></summary><div class="deep-body">${tx(q.deep[1])}</div></details>` : ''}
+      ${q.warn ? `<div class="warn"><b class="lbl">Cuidado com a pegadinha</b>${tx(q.warn)}</div>` : ''}
     </section>` : '';
   const showHint = st.hints[i] && !done;
   const last = i === Q.length - 1;
@@ -2096,7 +2136,7 @@ function renderQuestion(i){
         <span class="spacer"></span>
         <button class="btn ghost" id="skipBtn">Não sei, mostrar a resolução</button>
       </div>` : ''}
-    ${showHint ? `<div class="tip"><b>Dica</b>${q.hint}</div>` : ''}
+    ${showHint ? `<div class="tip"><b>Dica</b>${tx(q.hint)}</div>` : ''}
     ${fb}
     ${sol}
     <div class="row">
