@@ -1378,10 +1378,11 @@ const FIG6_7 = (() => {
 })();
 
 /* Q8: duas ondas na mesma corda (fotos sobrepostas) */
-const FIG6_8 = plot({ aria:'Gráfico da posição vertical y em função da posição x, em metros, com duas ondas desenhadas na mesma corda em momentos diferentes. A onda A, linha contínua, tem cristas a cada 0,4 metro. A onda B, linha tracejada, tem cristas a cada 0,2 metro. As duas ocupam de x igual a 0 até 0,8 metro.',
+const FIG6_8 = plot({ aria:'Gráfico da posição vertical y em função da posição x, em metros, com duas ondas desenhadas na mesma corda em momentos diferentes. A onda A, linha azul contínua, tem cristas a cada 0,4 metro. A onda B, linha laranja tracejada, tem cristas a cada 0,2 metro. As duas ocupam de x igual a 0 até 0,8 metro.',
   xmin:0, xmax:0.88, ymin:-4, ymax:4, xt:[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8], xl:'x (m)', yl:'y',
   L:[{ p: sen(3, 0.4, 0, 0.8), c:'var(--sign)', lab:'A', lp:[0.09, 3.3] },
-     { p: sen(1.6, 0.2, 0, 0.8), c:'var(--plot2)', dash:'6 4', w:2.4, lab:'B', lp:[0.26, -2.4] }] });
+     { p: sen(1.6, 0.2, 0, 0.8), c:'var(--plot2)', dash:'6 4', w:2.4, lab:'B', lp:[0.135, -2.9] }] })
+  .replace(/class="pt pt-lab" fill="([^"]+)"/g, 'class="pt pt-lab" style="fill:$1;font-weight:700"');
 
 /* Q9: sismograma (registro de uma estação) */
 const FIG6_9 = (() => {
@@ -1492,7 +1493,7 @@ const QL6 = [
 },
 {
   nivel:'avançado',
-  text:`Duas ondas, A e B, são produzidas uma de cada vez na mesma corda, mantida sempre com a mesma tensão. O gráfico mostra uma “foto” de cada onda, desenhadas juntas para comparação. A onda A tem frequência 5,0 Hz.${FIG6_8}A velocidade e a frequência da onda B são, respectivamente:`,
+  text:`Duas ondas, A e B, são produzidas uma de cada vez na mesma corda, mantida sempre com a mesma tensão. O gráfico mostra uma “foto” de cada onda, desenhadas juntas para comparação: a onda A é a linha <b>azul contínua</b>, e a onda B é a linha <b>laranja tracejada</b>. A onda A tem frequência 5,0 Hz.${FIG6_8}A velocidade e a frequência da onda B são, respectivamente:`,
   opts:['1,0 m/s e 5,0 Hz','2,0 m/s e 2,5 Hz','2,0 m/s e 10 Hz','4,0 m/s e 10 Hz','2,0 m/s e 5,0 Hz'], ans:2,
   hint:'Leia o comprimento de onda de cada onda no gráfico. Mesma corda e mesma tensão: o que é igual para as duas ondas?',
   steps:[
