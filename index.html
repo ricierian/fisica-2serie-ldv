@@ -1781,7 +1781,8 @@ const SITE = {
 const CONFIG = {
   dominio: 'alunos.colegioleonardodavinci.com.br',      // domínio do e-mail dos alunos do LDV. Vazio = não pede identificação
   registro: 'https://script.google.com/macros/s/AKfycbxGz9y7mz6Qc0jXxXalMipLMTy8pArwalT7fIeP8t5nR4SP0ZVsRDgAjBT4qaVYbosKxg/exec',     // URL do App da Web do Google Apps Script
-  turmas: ['201', '202']
+  turmas: ['201', '202'],
+  ordemOriginal: '202'   // turma que vê as alternativas na ordem original; as outras veem outra ordem (contra cola)
 };
 const $ = id => document.getElementById(id);
 const ID_KEY = 'fis2ldv-aluno', FILA_KEY = 'fis2ldv-fila', DIA_KEY = 'fis2ldv-ultimo-acesso';
@@ -2051,7 +2052,7 @@ function renderIntro(){
   };
 }
 
-/* Ordem das alternativas por turma (contra cola entre turmas). A 1ª turma vê a ordem original; as outras veem
+/* Ordem das alternativas por turma (contra cola entre turmas). A turma de CONFIG.ordemOriginal vê a ordem original; as outras veem
    uma ordem embaralhada fixa (sempre a mesma para a turma), com a correta em outra letra.
    As respostas continuam guardadas pelo índice original, então nada do que já foi feito se perde. */
 function semente(txt){ let h = 2166136261; for (const ch of txt) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
@@ -2060,8 +2061,8 @@ function embaralha(a, rnd){ for (let k = a.length - 1; k > 0; k--){ const j = Ma
 const ORDENS = {};
 function ordemAlt(i){
   const q = LI.Q[i], id = q.opts.map((_, k) => k);
-  const al = getAluno(), t = al && al.turma, ti = CONFIG.turmas.indexOf(t);
-  if (ti <= 0) return id;
+  const al = getAluno(), t = al && al.turma;
+  if (!t || t === CONFIG.ordemOriginal) return id;
   const chave = t + '|' + LI.id;
   if (!ORDENS[chave]){
     // letra da correta em cada questão: gabarito espalhado (cada letra 2 vezes em 10) e nunca a letra original
