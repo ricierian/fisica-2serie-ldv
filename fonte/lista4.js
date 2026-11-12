@@ -82,7 +82,7 @@ const QL4 = [
   nivel:'intermediário',
   text:`Numa aula sobre calorimetria, uma professora queimou 5,0 g de amendoim para aquecer 400 g de água, inicialmente a 20 °C, num recipiente que reduz as perdas de calor. Pela tabela nutricional do amendoim e pela temperatura final da água, concluiu que 40% da energia disponível foi aproveitada.${TAB4_5}<p>Considerando o calor específico da água igual a 1 cal/(g·°C), a temperatura da água ao final do experimento foi de:</p>`,
   opts:['30 °C','32 °C','50 °C','80 °C','95 °C'], ans:2,
-  hint:'Primeiro descubra a energia de 5,0 g de amendoim pela tabela. Depois pegue só 40% dela e lembre que 1 kcal = 1 000 cal.',
+  hint:'Primeiro descubra a energia de 5,0 g de amendoim pela tabela. Depois pegue só 40% dela e confira as unidades: a tabela está em kcal, e o calor específico da água, em cal.',
   steps:[
     ['Energia em 5,0 g', `<p>20 g → 120 kcal. Então 5,0 g (um quarto da porção) → 30 kcal.</p>`],
     ['Energia aproveitada', `<div class="eq">40% de 30 kcal = 12 kcal = 12 000 cal</div>`],

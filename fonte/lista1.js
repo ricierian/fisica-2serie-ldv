@@ -6,7 +6,7 @@ const TOOLS1 = [
   ['Potência da fonte', `P = ${f('Q','Δt')} &nbsp;&nbsp; → &nbsp; Q = P · Δt`],
   ['Trocas de calor (sistema isolado)', `ΣQ<sub>cedido</sub> + ΣQ<sub>recebido</sub> = 0<br>Quem esfria: Q &lt; 0 · Quem esquenta: Q &gt; 0`],
   ['Água e gelo', `c<sub>água</sub> = 1 cal/(g·°C) · c<sub>gelo</sub> = 0,5 cal/(g·°C)<br>L<sub>fusão</sub> = 80 cal/g · L<sub>vaporização</sub> = 540 cal/g`],
-  ['Unidades', `1 cal ≈ 4,186 J · 1 kcal = 1 000 cal<br>1 kWh = 3,6 · 10<sup>6</sup> J`],
+  ['Unidades', `1 cal ≈ 4,186 J<br>1 kWh = 3,6 · 10<sup>6</sup> J`],
 ];
 
 /* Q4: aquecimento com fonte de potência constante */

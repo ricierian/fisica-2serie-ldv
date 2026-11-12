@@ -6,7 +6,6 @@ const TOOLS6 = [
   ['Ondas em cordas (Taylor)', `μ = ${f('m','ℓ')} (kg/m) &nbsp;·&nbsp; v = √(F / μ)`],
   ['Classificação', `Natureza: mecânica (precisa de meio) ou eletromagnética (propaga-se também no vácuo)<br>Vibração: transversal (perpendicular à propagação) ou longitudinal (na mesma direção)<br>Dimensões: uni, bi ou tridimensional`],
   ['Ondas eletromagnéticas', `No vácuo, todas têm a mesma velocidade: c = 3 · 10<sup>8</sup> m/s<br>Maior frequência → menor λ e mais energia`],
-  ['Prefixos', `k = 10<sup>3</sup> · M = 10<sup>6</sup> · G = 10<sup>9</sup><br>1 cm = 10<sup>−2</sup> m · 1 g = 10<sup>−3</sup> kg`],
 ];
 
 /* Q1: a "ola" na arquibancada */
@@ -142,7 +141,7 @@ const QL6 = [
 },
 {
   nivel:'intermediário',
-  text:`Roteadores de Wi-Fi costumam operar em duas faixas, de frequências próximas de 2,4 GHz e 5,0 GHz. Os comprimentos de onda dessas ondas eletromagnéticas no ar são, respectivamente, cerca de:<p>Dados: velocidade das ondas eletromagnéticas no ar ≈ 3,0 · 10<sup>8</sup> m/s; 1 GHz = 10<sup>9</sup> Hz.</p>`,
+  text:`Roteadores de Wi-Fi costumam operar em duas faixas, de frequências próximas de 2,4 GHz e 5,0 GHz. Os comprimentos de onda dessas ondas eletromagnéticas no ar são, respectivamente, cerca de:<p>Dado: velocidade das ondas eletromagnéticas no ar ≈ 3,0 · 10<sup>8</sup> m/s.</p>`,
   opts:['6,0 cm e 12,5 cm','1,25 m e 0,60 m','12,5 cm e 6,0 cm','12,5 cm e 12,5 cm','12,5 m e 6,0 m'], ans:2,
   hint:'Use v = λ · f para cada faixa, com a frequência em hertz. Antes de calcular: a frequência maior terá λ maior ou menor?',
   steps:[
@@ -150,11 +149,6 @@ const QL6 = [
     ['Faixa de 5,0 GHz', `<div class="eq">λ = ${f('3,0 · 10<sup>8</sup>','5,0 · 10<sup>9</sup>')}</div><div class="eq">λ = 0,060 m = 6,0 cm</div><div class="eq"><span class="hl">12,5 cm e 6,0 cm</span></div>`],
   ],
   alt:'Com a velocidade igual, λ é inversamente proporcional a f. A frequência passou de 2,4 para 5,0 GHz (cerca do dobro), então λ cai para cerca da metade: de 12,5 cm para 6,0 cm.',
-  deep: ['Por que as antenas têm tamanho parecido com λ', `<p><b>1. A antena “combina” com a onda.</b> Uma antena funciona melhor quando seu tamanho é uma fração simples do comprimento de onda que ela emite ou recebe. Muitas têm cerca de meio ou um quarto de λ.</p>
-<div class="eq">${f('λ','4')} = ${f('12,5 cm','4')} ≈ 3 cm</div>
-<p>Por isso a antena de Wi-Fi de 2,4&nbsp;GHz cabe dentro de um roteador ou de um celular.</p>
-<p><b>2. Comparação com o rádio FM.</b> Para 100 MHz, λ = 3,0 · 10<sup>8</sup> / 10<sup>8</sup> = 3 m, e um quarto disso dá cerca de 75 cm, o tamanho das antenas de rádio que os carros usavam.</p>
-<p><b>3. Ligação com a Lista 2.</b> Na questão sobre rádios AM e FM, o comprimento de onda também decide tudo, mas lá o que importa é o tamanho dos morros, e não o da antena.</p>`],
   warn:'Inverter a ordem dá a alternativa a: a faixa de frequência maior é a de λ <b>menor</b>. Errar a potência de 10 leva a valores 10 ou 100 vezes maiores (alternativas b e e).'
 },
 {
