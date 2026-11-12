@@ -32,23 +32,19 @@ const FIG6_2 = plot({ aria:'Gráfico da posição vertical y, em centímetros, e
   xmin:0, xmax:170, ymin:-20, ymax:20, xt:[20,40,60,80,100,120,140,160], yt:[-15,-10,-5,5,10,15], xl:'x (cm)', yl:'y (cm)',
   L:[{ p: sen(15, 80, 0, 160), c:'var(--sign)' }] });
 
-/* Q4: espectro eletromagnético */
+/* Q4: faixas do espectro eletromagnético, em ordem alfabética (sem dar a ordem do espectro) */
 const FIG6_4 = (() => {
-  const [d, mk] = seta('var(--ink)');
-  const faixas = ['rádio', 'micro-ondas', 'infravermelho', 'visível', 'ultravioleta', 'raios X', 'raios gama'];
-  const w = 44, x0 = 16, y0 = 44, h = 104;
+  const faixas = ['infravermelho', 'luz visível', 'micro-ondas', 'ondas de rádio', 'raios gama', 'raios X', 'ultravioleta'];
+  const pos = [[10, 30, 122], [140, 30, 94], [242, 30, 90], [10, 76, 132], [150, 76, 94], [252, 76, 80], [102, 122, 136]];
   let s = '';
   faixas.forEach((a, k) => {
-    const vis = a === 'visível', x = x0 + k * w;
-    s += `<rect x="${x}" y="${y0}" width="${w}" height="${h}" fill="${vis ? 'url(#arco6)' : 'var(--sign)'}" opacity="${vis ? 1 : 0.16 + k * 0.08}" stroke="var(--surface)" stroke-width="2"/>`;
-    s += `<text transform="translate(${x + w / 2 + 4} ${y0 + h / 2}) rotate(-90)" text-anchor="middle" class="pt"${vis ? ' style="fill:#111"' : ''}>${a}</text>`;
+    const [x, y, w] = pos[k], dest = a === 'micro-ondas' || a === 'raios X';
+    s += `<rect x="${x}" y="${y}" width="${w}" height="32" rx="16" fill="var(--sign)" opacity="${dest ? 0.32 : 0.12}" stroke="var(--sign)" stroke-width="${dest ? 2 : 1}"/>`;
+    s += `<text x="${x + w / 2}" y="${y + 21}" text-anchor="middle" class="pt${dest ? ' pt-strong' : ''}">${a}</text>`;
   });
-  return fig('0 0 340 200', 'Espectro eletromagnético em faixas, da esquerda para a direita: rádio, micro-ondas, infravermelho, luz visível, ultravioleta, raios X e raios gama. Uma seta para a direita indica que a frequência e a energia aumentam nesse sentido. Uma seta para a esquerda indica que o comprimento de onda aumenta no sentido oposto.',
-    `${d}<defs><linearGradient id="arco6" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E53935"/><stop offset=".25" stop-color="#FB8C00"/><stop offset=".45" stop-color="#FDD835"/><stop offset=".65" stop-color="#43A047"/><stop offset=".85" stop-color="#1E88E5"/><stop offset="1" stop-color="#8E24AA"/></linearGradient></defs>${s}
-    <line x1="20" y1="30" x2="320" y2="30" stroke="var(--ink)" stroke-width="2" marker-end="${mk}"/>
-    <text x="170" y="20" text-anchor="middle" class="pt">frequência e energia aumentam</text>
-    <line x1="320" y1="166" x2="20" y2="166" stroke="var(--ink)" stroke-width="2" marker-end="${mk}"/>
-    <text x="170" y="188" text-anchor="middle" class="pt">comprimento de onda aumenta</text>`, 340);
+  return fig('0 0 340 170', 'Quadro com as sete faixas do espectro eletromagnético em ordem alfabética: infravermelho, luz visível, micro-ondas, ondas de rádio, raios gama, raios X e ultravioleta. Micro-ondas e raios X estão destacados.',
+    `<text x="170" y="18" text-anchor="middle" class="pt">faixas do espectro eletromagnético</text>${s}`, 330)
+    .replace('</figure>', '<figcaption>Faixas em ordem alfabética, não na ordem do espectro.</figcaption></figure>');
 })();
 
 /* Q6: oscilação de um ponto da corda ao longo do tempo */
@@ -134,12 +130,12 @@ const QL6 = [
 },
 {
   nivel:'intermediário',
-  text:`Raios X são usados em radiografias, e micro-ondas aquecem alimentos. As duas são ondas eletromagnéticas, como mostra o espectro.${FIG6_4}Comparando, no vácuo, os raios X com as micro-ondas, é correto afirmar que:`,
+  text:`Raios X são usados em radiografias, e micro-ondas aquecem alimentos. As duas fazem parte do espectro eletromagnético, cujas faixas aparecem no quadro.${FIG6_4}Comparando, no vácuo, os raios X com as micro-ondas, é correto afirmar que:`,
   opts:['os raios X são mais rápidos, por terem mais energia','as micro-ondas têm maior frequência e menor comprimento de onda','as duas têm o mesmo comprimento de onda e frequências diferentes','as micro-ondas são mecânicas e os raios X, eletromagnéticos','as duas têm a mesma velocidade, e os raios X têm λ menor'], ans:4,
   hint:'No vácuo, todas as ondas eletromagnéticas têm a mesma velocidade. Com v igual, como se relacionam frequência e comprimento de onda?',
   steps:[
     ['Velocidade', `<p>No vácuo, toda onda eletromagnética se propaga com c = 3 · 10<sup>8</sup> m/s. Raios X e micro-ondas têm a <b>mesma velocidade</b>.</p>`],
-    ['Frequência e λ', `<p>Pelo espectro, os raios X têm frequência bem maior. Como c = λ · f é igual para as duas, frequência maior significa λ menor:</p><div class="eq"><span class="hl">mesma velocidade; λ<sub>raios X</sub> menor</span></div>`],
+    ['Frequência e λ', `<p>Em ordem crescente de frequência, o espectro é: ondas de rádio, micro-ondas, infravermelho, luz visível, ultravioleta, raios X e raios gama. Os raios X têm frequência bem maior que as micro-ondas. Como c = λ · f é igual para as duas, frequência maior significa λ menor:</p><div class="eq"><span class="hl">mesma velocidade; λ<sub>raios X</sub> menor</span></div>`],
   ],
   alt:'A maior energia dos raios X vem da frequência alta, não da velocidade. É por isso que eles atravessam tecidos moles e exigem proteção, e as micro-ondas não.',
   warn:'Mais energia não significa mais velocidade (alternativa a). E micro-ondas não são ondas mecânicas (alternativa d): elas atravessam o vácuo, como toda onda eletromagnética.'
