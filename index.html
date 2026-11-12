@@ -1508,9 +1508,9 @@ const QL6 = [
   opts:['240 km; a onda P é longitudinal','480 km; a onda P é transversal','720 km; a onda P é longitudinal','320 km; a onda P é longitudinal','480 km; a onda P é longitudinal'], ans:4,
   hint:'Leia no gráfico o intervalo entre a chegada da onda P e a da onda S. As duas percorrem a mesma distância d, com velocidades diferentes.',
   steps:[
-    ['Leitura do sismograma', `<p>A onda P chega em 40 s e a S em 100 s:</p><div class="eq">Δt = 100 − 40 = 60 s</div>`],
-    ['Distância', `<div class="eq">${f('d','4')} − ${f('d','8')} = 60</div><div class="eq">${f('d','8')} = 60 → d = 480 km</div>`],
-    ['Tipo da onda P', `<p>A rocha vibra na mesma direção da propagação: onda <b>longitudinal</b>.</p><div class="eq"><span class="hl">480 km; longitudinal</span></div>`],
+    ['Leitura do sismograma', `<p>A onda P chega em 40 s e a S em 100 s. A S chega com atraso de:</p><div class="eq">Δt = 100 − 40 = 60 s</div>`],
+    ['Tempo de viagem de cada onda', `<p>Cada onda percorre a distância d com velocidade constante, então t&nbsp;=&nbsp;d&nbsp;/&nbsp;v (d em km, t em s):</p><div class="eq">t<sub>P</sub> = ${f('d','8')} &nbsp;·&nbsp; t<sub>S</sub> = ${f('d','4')}</div>`],
+    ['O atraso é a diferença dos tempos', `<p>As duas partem juntas do foco; a S demora 60 s a mais:</p><div class="eq">${f('d','4')} − ${f('d','8')} = 60</div><div class="eq">${f('2d','8')} − ${f('d','8')} = ${f('d','8')} = 60</div><div class="eq">d = 480 km</div><p>A onda P comprime e distende a rocha na direção em que se propaga: é <b>longitudinal</b>.</p><div class="eq"><span class="hl">480 km; longitudinal</span></div>`],
   ],
   alt:'A cada quilômetro, a onda S “perde” 1/4 − 1/8 = 1/8 de segundo para a P. Para acumular 60 s de atraso, são 60 · 8 = 480 km. As estações sismológicas usam essa diferença para localizar o foco.',
   deep: ['Uma fórmula para qualquer estação', `<p><b>1. A fórmula geral.</b> As duas ondas percorrem a mesma distância d. A diferença entre os tempos de viagem é o Δt lido no sismograma:</p>
