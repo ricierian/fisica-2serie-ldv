@@ -179,7 +179,7 @@ const QL6 = [
 <div class="eq">= ${f('m²','s²')}</div>
 <p>A raiz de m²/s² é m/s, uma velocidade. As unidades mostram que v tem de ser proporcional a √(F/μ); a dedução completa mostra que não sobra nenhum número multiplicando.</p>
 <p><b>2. O sentido físico.</b> A tensão é o que puxa cada pedaço da corda de volta para o lugar: quanto maior, mais rápido o pulso passa adiante. A densidade linear mede a inércia da corda: quanto mais “pesada”, mais devagar ela responde. A dedução completa aplica a 2ª Lei de Newton a um pedacinho da corda.</p>
-<p><b>3. Ligação com a música.</b> Para dobrar a velocidade da onda numa corda de violão, é preciso quadruplicar a tensão. Com o mesmo comprimento de corda, a nota sobe uma oitava. A questão 10 mostra o outro lado: com a densidade 4 vezes maior, a velocidade cai pela metade.</p>`],
+<p><b>3. Ligação com a música.</b> Para dobrar a velocidade da onda numa corda de violão, é preciso quadruplicar a tensão. Com o mesmo comprimento de corda, a nota sobe uma oitava. Guarde a ideia para a questão 10: lá a mesma equação aparece, mas mudando a densidade linear em vez da tensão.</p>`],
   warn:'Esquecer a raiz quadrada dá 10 000 m/s (alternativa e) ou a ideia de que a velocidade quadruplica (alternativa b). Deixar a massa em gramas dá 3,2 m/s (alternativa c), e usar a massa sem dividir pelo comprimento dá 71 m/s (alternativa d).'
 },
 {
