@@ -2106,8 +2106,12 @@ function renderQuestion(i){
              : (!last ? `<button class="btn ghost" id="jumpBtn">Pular por enquanto</button>` : '')}
     </div>
   </article>
-  ${answeredCount() > 0 && answeredCount() < Q.length ? `<div class="row end-row"><span class="spacer"></span><button class="btn ghost" id="endBtn">Encerrar a lista aqui</button></div>` : ''}`;
-  const eb = $('endBtn'); if (eb) eb.onclick = () => goQ(Q.length);
+  ${answeredCount() > 0 && answeredCount() < Q.length && st.parcial !== answeredCount() ? `<div class="row end-row"><span class="small" id="endNote"></span><span class="spacer"></span><button class="btn ghost" id="endBtn">Encerrar a lista e registrar</button></div>` : ''}`;
+  const eb = $('endBtn'); let eArmed = false;
+  if (eb) eb.onclick = () => {
+    if (!eArmed){ eArmed = true; eb.classList.remove('ghost'); eb.classList.add('primary'); eb.textContent = `Confirmar: registrar ${correctCount()} / ${Q.length}`; $('endNote').textContent = `${answeredCount()} de ${Q.length} respondidas. Toque de novo para confirmar.`; return; }
+    registrarParcial(); goQ(Q.length);
+  };
   $('qa').querySelectorAll('[data-pick]').forEach(b => b.onclick = () => answer(i, +b.dataset.pick));
   const h = $('hintBtn'); if (h) h.onclick = () => { st.hints[i] = true; save(); renderQuestion(i); };
   const s = $('skipBtn'); if (s) s.onclick = () => answer(i, -1);
@@ -2125,6 +2129,7 @@ function answer(i, k){
   if (fb) fb.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
 }
 
+function registrarParcial(){ contarTempo(); st.parcial = answeredCount(); save(); enviar(resumoLista()); }
 function renderEnd(){
   const Q = LI.Q, c = correctCount(), n = answeredCount();
   const msg = n < Q.length
@@ -2141,11 +2146,11 @@ function renderEnd(){
     <div class="qnum">Resultado</div>
     <div class="score">${c}<span> / ${Q.length}</span></div>
     <p style="margin:0">${msg}</p>
+    ${n > 0 && n < Q.length && st.parcial !== n ? `<div class="row"><button class="btn primary" id="parcialBtn">Encerrar e registrar</button><span class="small" id="parcialNote"></span></div>` : ''}
     <ul class="reslist">
       ${Q.map((q,i)=>{ const s = status(i); const t = s==='ok'?'✓ certa':s==='bad'?(st.answers[i]===-1?'→ vista':'✗ errada'):'— pendente';
         return `<li><button class="res ${s}" data-go="${i}"><b>Questão ${i+1}</b><span class="st">${t}</span></button></li>`; }).join('')}
     </ul>
-    ${n > 0 && n < Q.length && st.parcial !== n ? `<div class="row"><button class="btn primary" id="parcialBtn">Encerrar e registrar</button><span class="small" id="parcialNote"></span></div>` : ''}
     <div class="row">
       <button class="btn" id="resetBtn">Refazer a lista do zero</button>
       <button class="btn primary" data-nav="tema">Voltar para ${T.nome}</button>
@@ -2155,7 +2160,7 @@ function renderEnd(){
   const pb = $('parcialBtn'); let pArmed = false;
   if (pb) pb.onclick = () => {
     if (!pArmed){ pArmed = true; pb.textContent = `Confirmar: registrar ${c} / ${Q.length}`; $('parcialNote').textContent = 'Toque de novo para confirmar.'; return; }
-    contarTempo(); st.parcial = n; save(); enviar(resumoLista()); renderEnd();
+    registrarParcial(); renderEnd();
   };
   const r = $('resetBtn'); let armed = false;
   r.onclick = () => {
