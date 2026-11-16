@@ -5,7 +5,7 @@ import glob, os, re
 B=os.path.dirname(os.path.abspath(__file__))+'/'
 head=open(B+'head.html',encoding='utf-8').read().replace('<title>Lista de Cinemática 9º Ano</title>','''<title>Física 2ª Série LDV</title>
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#23395B">
+<meta name="theme-color" content="#C2410C">
 <meta name="description" content="Listas interativas de Física da 2ª série do Colégio Leonardo da Vinci Alfa, com dica e resolução passo a passo.">
 <link rel="icon" type="image/png" href="icons/favicon.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
